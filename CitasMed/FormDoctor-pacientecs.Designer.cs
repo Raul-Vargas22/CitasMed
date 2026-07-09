@@ -115,7 +115,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_230124;
+            pictureBox2.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-07 230124.png");
             pictureBox2.Location = new Point(337, 32);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(38, 27);
@@ -209,7 +209,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2026_07_09_031633;
+            pictureBox1.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-9 021633.png");
+            
             pictureBox1.Location = new Point(908, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(53, 48);

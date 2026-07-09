@@ -70,7 +70,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_224942;
+            pictureBox1.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-07 224942.png");
             pictureBox1.Location = new Point(117, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(74, 62);

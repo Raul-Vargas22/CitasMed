@@ -219,7 +219,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_224942;
+            pictureBox1.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-07 224942.png");
             pictureBox1.Location = new Point(13, 14);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(74, 62);
@@ -280,7 +280,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_100743;
+            pictureBox3.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-07 100743.png");
             pictureBox3.Location = new Point(880, 17);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(88, 40);
@@ -299,7 +299,7 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_230124;
+            pictureBox2.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-07 230124.png");
             pictureBox2.Location = new Point(414, 24);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(38, 27);
