@@ -30,10 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             tntTitulo = new Label();
-            pictureBox1 = new PictureBox();
             linkLabel1 = new LinkLabel();
             lblPassword = new Label();
-            textBox1 = new TextBox();
+            textContrasena = new TextBox();
             button1 = new Button();
             lblDoctor = new LinkLabel();
             lblEmpleado = new LinkLabel();
@@ -41,10 +40,13 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             lblAdministrador = new LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             SuspendLayout();
             // 
             // tntTitulo
@@ -57,16 +59,6 @@
             tntTitulo.Text = "Asministrador";
             tntTitulo.TextAlign = ContentAlignment.TopCenter;
             tntTitulo.Click += label1_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(426, 131);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(171, 168);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // linkLabel1
             // 
@@ -87,13 +79,13 @@
             lblPassword.Text = "Ingresa la contraseña";
             lblPassword.Click += lblPassword_Click;
             // 
-            // textBox1
+            // textContrasena
             // 
-            textBox1.Location = new Point(285, 399);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(482, 27);
-            textBox1.TabIndex = 4;
-            textBox1.TextChanged += textBox1_TextChanged;
+            textContrasena.Location = new Point(285, 399);
+            textContrasena.Name = "textContrasena";
+            textContrasena.Size = new Size(482, 27);
+            textContrasena.TabIndex = 4;
+            textContrasena.TextChanged += textBox1_TextChanged;
             // 
             // button1
             // 
@@ -133,6 +125,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(13, 507);
             pictureBox2.MaximumSize = new Size(28, 28);
@@ -180,11 +173,41 @@
             lblAdministrador.Text = "ADMIN";
             lblAdministrador.LinkClicked += lblAdministrador_LinkClicked;
             // 
+            // iconPictureBox1
+            // 
+            iconPictureBox1.BackColor = Color.SkyBlue;
+            iconPictureBox1.ForeColor = SystemColors.ControlText;
+            iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPictureBox1.IconColor = SystemColors.ControlText;
+            iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox1.IconSize = 649;
+            iconPictureBox1.Location = new Point(-4, -1);
+            iconPictureBox1.Name = "iconPictureBox1";
+            iconPictureBox1.Size = new Size(1018, 649);
+            iconPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            iconPictureBox1.TabIndex = 13;
+            iconPictureBox1.TabStop = false;
+            // 
+            // iconPictureBox2
+            // 
+            iconPictureBox2.BackColor = SystemColors.Control;
+            iconPictureBox2.ForeColor = SystemColors.ControlText;
+            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Circle;
+            iconPictureBox2.IconColor = SystemColors.ControlText;
+            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox2.IconSize = 120;
+            iconPictureBox2.Location = new Point(395, 110);
+            iconPictureBox2.Name = "iconPictureBox2";
+            iconPictureBox2.Size = new Size(273, 225);
+            iconPictureBox2.TabIndex = 15;
+            iconPictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1017, 646);
+            Controls.Add(iconPictureBox2);
             Controls.Add(lblAdministrador);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
@@ -192,18 +215,19 @@
             Controls.Add(lblEmpleado);
             Controls.Add(lblDoctor);
             Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(textContrasena);
             Controls.Add(lblPassword);
             Controls.Add(linkLabel1);
-            Controls.Add(pictureBox1);
             Controls.Add(tntTitulo);
+            Controls.Add(iconPictureBox1);
             Name = "Form1";
             Text = "ADMIN";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -211,10 +235,9 @@
         #endregion
 
         private Label tntTitulo;
-        private PictureBox pictureBox1;
         private LinkLabel linkLabel1;
         private Label lblPassword;
-        private TextBox textBox1;
+        private TextBox textContrasena;
         private Button button1;
         private LinkLabel lblDoctor;
         private LinkLabel lblEmpleado;
@@ -222,5 +245,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private LinkLabel lblAdministrador;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
     }
 }
