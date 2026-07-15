@@ -70,13 +70,13 @@
             Column4 = new DataGridViewTextBoxColumn();
             label20 = new Label();
             panel7 = new Panel();
-            label21 = new Label();
-            label27 = new Label();
-            label28 = new Label();
-            label29 = new Label();
-            label30 = new Label();
-            label31 = new Label();
             label32 = new Label();
+            label31 = new Label();
+            label30 = new Label();
+            label29 = new Label();
+            label28 = new Label();
+            label27 = new Label();
+            label21 = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -206,6 +206,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2026_07_07_224942;
             pictureBox1.Location = new Point(13, 14);
             pictureBox1.Name = "pictureBox1";
@@ -514,60 +515,17 @@
             panel7.Size = new Size(337, 323);
             panel7.TabIndex = 39;
             // 
-            // label21
+            // label32
             // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Cooper Black", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label21.ForeColor = Color.CornflowerBlue;
-            label21.Location = new Point(13, 13);
-            label21.Name = "label21";
-            label21.Size = new Size(273, 26);
-            label21.TabIndex = 23;
-            label21.Text = "Proximas citas de hoy:";
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label27.ForeColor = Color.Black;
-            label27.Location = new Point(10, 79);
-            label27.Name = "label27";
-            label27.Size = new Size(191, 40);
-            label27.TabIndex = 25;
-            label27.Text = "9:00 am Ana López\r\n con Dr.Juan Méndez ";
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label28.ForeColor = Color.Black;
-            label28.Location = new Point(3, 162);
-            label28.Name = "label28";
-            label28.Size = new Size(180, 63);
-            label28.TabIndex = 26;
-            label28.Text = "10:00 am Mario \r\nHernández con Dr.\r\n Manuel Torres ";
-            // 
-            // label29
-            // 
-            label29.AutoSize = true;
-            label29.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label29.ForeColor = Color.Black;
-            label29.Location = new Point(13, 253);
-            label29.Name = "label29";
-            label29.Size = new Size(205, 42);
-            label29.TabIndex = 27;
-            label29.Text = "11:00 am Ana López \r\ncon Dr. Juan Méndez ";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label30.ForeColor = Color.Black;
-            label30.Location = new Point(225, 77);
-            label30.Name = "label30";
-            label30.Size = new Size(96, 42);
-            label30.TabIndex = 28;
-            label30.Text = "Medicina \r\ngeneral";
+            label32.AutoSize = true;
+            label32.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label32.ForeColor = Color.Black;
+            label32.Location = new Point(223, 253);
+            label32.Name = "label32";
+            label32.Size = new Size(113, 21);
+            label32.TabIndex = 30;
+            label32.Text = "Nefrología ";
+            label32.Click += label32_Click;
             // 
             // label31
             // 
@@ -580,17 +538,60 @@
             label31.TabIndex = 29;
             label31.Text = " Cardiología ";
             // 
-            // label32
+            // label30
             // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label32.ForeColor = Color.Black;
-            label32.Location = new Point(223, 253);
-            label32.Name = "label32";
-            label32.Size = new Size(113, 21);
-            label32.TabIndex = 30;
-            label32.Text = "Nefrología ";
-            label32.Click += label32_Click;
+            label30.AutoSize = true;
+            label30.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label30.ForeColor = Color.Black;
+            label30.Location = new Point(225, 77);
+            label30.Name = "label30";
+            label30.Size = new Size(96, 42);
+            label30.TabIndex = 28;
+            label30.Text = "Medicina \r\ngeneral";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label29.ForeColor = Color.Black;
+            label29.Location = new Point(13, 253);
+            label29.Name = "label29";
+            label29.Size = new Size(205, 42);
+            label29.TabIndex = 27;
+            label29.Text = "11:00 am Ana López \r\ncon Dr. Juan Méndez ";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label28.ForeColor = Color.Black;
+            label28.Location = new Point(3, 162);
+            label28.Name = "label28";
+            label28.Size = new Size(180, 63);
+            label28.TabIndex = 26;
+            label28.Text = "10:00 am Mario \r\nHernández con Dr.\r\n Manuel Torres ";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label27.ForeColor = Color.Black;
+            label27.Location = new Point(10, 79);
+            label27.Name = "label27";
+            label27.Size = new Size(191, 40);
+            label27.TabIndex = 25;
+            label27.Text = "9:00 am Ana López\r\n con Dr.Juan Méndez ";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Cooper Black", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label21.ForeColor = Color.CornflowerBlue;
+            label21.Location = new Point(13, 13);
+            label21.Name = "label21";
+            label21.Size = new Size(273, 26);
+            label21.TabIndex = 23;
+            label21.Text = "Proximas citas de hoy:";
             // 
             // FormAdministrador
             // 
