@@ -48,7 +48,7 @@
             lblHistorial = new Label();
             lblProgramada = new Label();
             lblNueva = new Label();
-            button1 = new Button();
+            btnRegresar = new Button();
             pictureBox3 = new PictureBox();
             label7 = new Label();
             label6 = new Label();
@@ -189,7 +189,7 @@
             panel1.Controls.Add(lblHistorial);
             panel1.Controls.Add(lblProgramada);
             panel1.Controls.Add(lblNueva);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnRegresar);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(31, 39);
@@ -222,6 +222,7 @@
             lblMedicos.Size = new Size(232, 50);
             lblMedicos.TabIndex = 30;
             lblMedicos.Text = "> MÉDICOS Y \r\n  ESPECIALIDADES";
+            lblMedicos.Click += lblMedicos_Click;
             // 
             // lblHistorial
             // 
@@ -262,17 +263,18 @@
             lblNueva.Text = "> NUEVA CITA";
             lblNueva.Click += lblNueva_Click;
             // 
-            // button1
+            // btnRegresar
             // 
-            button1.BackColor = Color.Turquoise;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.Location = new Point(31, 159);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Size = new Size(118, 36);
-            button1.TabIndex = 3;
-            button1.Text = "INICIO";
-            button1.UseVisualStyleBackColor = false;
+            btnRegresar.BackColor = Color.Turquoise;
+            btnRegresar.BackgroundImageLayout = ImageLayout.None;
+            btnRegresar.Location = new Point(16, 640);
+            btnRegresar.Margin = new Padding(4);
+            btnRegresar.Name = "btnRegresar";
+            btnRegresar.Size = new Size(118, 36);
+            btnRegresar.TabIndex = 3;
+            btnRegresar.Text = "REGRESAR";
+            btnRegresar.UseVisualStyleBackColor = false;
+            btnRegresar.Click += btnRegresar_Click;
             // 
             // pictureBox3
             // 
@@ -468,7 +470,7 @@
         private Label lblHistorial;
         private Label lblProgramada;
         private Label lblNueva;
-        private Button button1;
+        private Button btnRegresar;
         private PictureBox pictureBox3;
         private Label label7;
         private Label label6;

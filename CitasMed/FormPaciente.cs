@@ -20,10 +20,10 @@ namespace CitasMed
         private void lblPacientes_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-                      "ATENCION",
                       "Actualmente se encuentra en esta seccion",
+                      "ATENCION",
                       MessageBoxButtons.OK,
-                      MessageBoxIcon.Information);
+                      MessageBoxIcon.Warning);
         }
 
         private void lblNueva_Click(object sender, EventArgs e)
@@ -42,7 +42,23 @@ namespace CitasMed
 
         private void lblHistorial_Click(object sender, EventArgs e)
         {
+            FormHistorial_de_consultas historial = new FormHistorial_de_consultas();
+            historial.Show();
+            this.Hide();
+        }
 
+        private void lblMedicos_Click(object sender, EventArgs e)
+        {
+            FormMédicos_y_Especialidades Medicos_especialidades = new FormMédicos_y_Especialidades();
+            Medicos_especialidades.Show();
+            this.Hide();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            FormEmpleado empleado = new FormEmpleado();
+            empleado.Show();
+            this.Hide();
         }
     }
 }
