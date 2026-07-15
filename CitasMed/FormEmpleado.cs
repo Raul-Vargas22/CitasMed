@@ -10,29 +10,19 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
-    public partial class FormAdministrador : Form
+    public partial class FormEmpleado : Form
     {
-        public FormAdministrador()
+        public FormEmpleado()
         {
             InitializeComponent();
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void label21_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      private void btnInicio_admin_Click(object sender, EventArgs e)
+        private void btnInicio_empleado_Click(object sender, EventArgs e)
         {
             Form1 principal = new Form1();
             principal.Show();

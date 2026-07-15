@@ -53,7 +53,7 @@ namespace CitasMed
         {
             tntTitulo.Text = "Doctor";
 
-            lblPassword.Text = "Ingrese la contraseña";
+            lblPassword.Text = "Ingrese su usuario";
             lblPassword.Visible = true;
 
             textContrasena.Visible = true;
@@ -67,11 +67,9 @@ namespace CitasMed
             LinkLabelLinkClickedEventArgs e)
         {
             tntTitulo.Text = "Empleado";
-
-            lblPassword.Text = "Ingrese la contraseña";
+            lblPassword.Text = "";
             lblPassword.Visible = true;
-
-            textContrasena.Visible = true;
+            textContrasena.Visible = false;
             textContrasena.UseSystemPasswordChar = false;
             textContrasena.Clear();
             textContrasena.Focus();
@@ -93,7 +91,7 @@ namespace CitasMed
 
                     textContrasena.Focus();
                 }
-                else if (datoIngresado == "webiwabo(musica de pvz)")
+                else if (datoIngresado == "faul")
                 {
                     MessageBox.Show(
                         "Bienvenido administrador del sistema.",
@@ -125,17 +123,9 @@ namespace CitasMed
                     MessageBox.Show("Bienvenido doctor: " + datoIngresado);
                 }
             }
-            else if (tntTitulo.Text == "Empleado")
+            else
             {
-                if (datoIngresado == "")
-                {
-                    MessageBox.Show("Ingrese la contraseña.");
-                    textContrasena.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Bienvenido doctor: " + datoIngresado);
-                }
+                MessageBox.Show("BIENVENIDO");  
             }
         }
 
@@ -158,7 +148,6 @@ namespace CitasMed
                     return botonEncontrado;
                 }
             }
-
             return null;
         }
 
@@ -184,6 +173,26 @@ namespace CitasMed
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (tntTitulo.Text == "Administrador")
+            {
+                FormAdministrador administrador = new FormAdministrador();
+                administrador.Show();
+            }
+            else if (tntTitulo.Text == "Doctor")
+            {
+                FormDoctor doctor = new FormDoctor();
+                doctor.Show();
+            }
+            else
+            {
+                FormEmpleado empleado = new FormEmpleado();
+                empleado.Show();
+            }
+            this.Hide();
         }
     }
 }
