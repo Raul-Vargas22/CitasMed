@@ -307,6 +307,7 @@
             label22.Size = new Size(180, 25);
             label22.TabIndex = 27;
             label22.Text = "> NUEVA CITA";
+            label22.Click += label22_Click;
             // 
             // pictureBox1
             // 

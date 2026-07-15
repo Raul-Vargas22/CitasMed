@@ -125,7 +125,7 @@ namespace CitasMed
             }
             else
             {
-                MessageBox.Show("BIENVENIDO");  
+                MessageBox.Show("BIENVENIDO");
             }
         }
 
@@ -193,6 +193,10 @@ namespace CitasMed
                 empleado.Show();
             }
             this.Hide();
+        }
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

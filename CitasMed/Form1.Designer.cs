@@ -42,6 +42,7 @@
             lblAdministrador = new LinkLabel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            btnSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -85,7 +86,7 @@
             // textContrasena
             // 
             textContrasena.Location = new Point(356, 499);
-            textContrasena.Margin = new Padding(4, 4, 4, 4);
+            textContrasena.Margin = new Padding(4);
             textContrasena.Name = "textContrasena";
             textContrasena.Size = new Size(602, 31);
             textContrasena.TabIndex = 4;
@@ -95,7 +96,7 @@
             // 
             btnSesion.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSesion.Location = new Point(510, 554);
-            btnSesion.Margin = new Padding(4, 4, 4, 4);
+            btnSesion.Margin = new Padding(4);
             btnSesion.Name = "btnSesion";
             btnSesion.Size = new Size(269, 115);
             btnSesion.TabIndex = 5;
@@ -136,7 +137,7 @@
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(16, 634);
-            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Margin = new Padding(4);
             pictureBox2.MaximumSize = new Size(35, 35);
             pictureBox2.MinimumSize = new Size(35, 35);
             pictureBox2.Name = "pictureBox2";
@@ -149,7 +150,7 @@
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(16, 749);
-            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.MaximumSize = new Size(35, 35);
             pictureBox3.MinimumSize = new Size(35, 35);
             pictureBox3.Name = "pictureBox3";
@@ -162,7 +163,7 @@
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(16, 694);
-            pictureBox4.Margin = new Padding(4, 4, 4, 4);
+            pictureBox4.Margin = new Padding(4);
             pictureBox4.MaximumSize = new Size(35, 35);
             pictureBox4.MinimumSize = new Size(35, 35);
             pictureBox4.Name = "pictureBox4";
@@ -194,7 +195,7 @@
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 811;
             iconPictureBox1.Location = new Point(-5, -1);
-            iconPictureBox1.Margin = new Padding(4, 4, 4, 4);
+            iconPictureBox1.Margin = new Padding(4);
             iconPictureBox1.Name = "iconPictureBox1";
             iconPictureBox1.Size = new Size(1272, 811);
             iconPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -210,17 +211,30 @@
             iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox2.IconSize = 281;
             iconPictureBox2.Location = new Point(494, 138);
-            iconPictureBox2.Margin = new Padding(4, 4, 4, 4);
+            iconPictureBox2.Margin = new Padding(4);
             iconPictureBox2.Name = "iconPictureBox2";
             iconPictureBox2.Size = new Size(341, 281);
             iconPictureBox2.TabIndex = 15;
             iconPictureBox2.TabStop = false;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(977, 695);
+            btnSalir.Margin = new Padding(4);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(269, 115);
+            btnSalir.TabIndex = 16;
+            btnSalir.Text = "SALIR";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 808);
+            Controls.Add(btnSalir);
             Controls.Add(iconPictureBox2);
             Controls.Add(lblAdministrador);
             Controls.Add(pictureBox4);
@@ -234,7 +248,7 @@
             Controls.Add(linkLabel1);
             Controls.Add(tntTitulo);
             Controls.Add(iconPictureBox1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Form1";
             Text = "ADMIN";
             Load += Form1_Load;
@@ -262,5 +276,6 @@
         private LinkLabel lblAdministrador;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
+        private Button btnSalir;
     }
 }

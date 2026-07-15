@@ -28,5 +28,12 @@ namespace CitasMed
             principal.Show();
             this.Hide();
         }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+           Registro_de_paciente registro = new Registro_de_paciente();
+            registro.Show();
+            this.Hide();
+        }
     }
 }
