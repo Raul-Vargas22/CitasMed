@@ -10,17 +10,17 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
-    public partial class FormCitas_programadas : Form
+    public partial class FormDoctor : Form
     {
-        public FormCitas_programadas()
+        public FormDoctor()
         {
             InitializeComponent();
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
+        private void btnInicio_Doc_Click(object sender, EventArgs e)
         {
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
+            Form1 principal = new Form1();
+            principal.Show();
             this.Hide();
         }
     }

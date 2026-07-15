@@ -204,13 +204,12 @@
             label10.Name = "label10";
             label10.Size = new Size(147, 20);
             label10.TabIndex = 121;
-            label10.Text = "Dr. Juna  López ";
+            label10.Text = "Dr. Juan  López ";
             label10.Click += label10_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-9 021633.png");
-            
+            pictureBox1.Image = Image.FromFile(@"Resources\Captura de pantalla 2026-07-09 031633.png");
             pictureBox1.Location = new Point(908, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(53, 48);

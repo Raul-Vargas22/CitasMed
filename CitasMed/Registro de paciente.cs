@@ -21,5 +21,17 @@ namespace CitasMed
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenu_empleado_Click_1(object sender, EventArgs e)
+        {
+            FormEmpleado empleado = new FormEmpleado();
+            empleado.Show();
+            this.Hide();
+        }
     }
 }
