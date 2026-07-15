@@ -16,5 +16,33 @@ namespace CitasMed
         {
             InitializeComponent();
         }
+
+        private void lblPacientes_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                      "ATENCION",
+                      "Actualmente se encuentra en esta seccion",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Information);
+        }
+
+        private void lblNueva_Click(object sender, EventArgs e)
+        {
+            Registro_de_paciente registro = new Registro_de_paciente();
+            registro.Show();
+            this.Hide();
+        }
+
+        private void lblProgramada_Click(object sender, EventArgs e)
+        {
+            FormCitas_programadas programadas = new FormCitas_programadas();
+            programadas.Show();
+            this.Hide();
+        }
+
+        private void lblHistorial_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

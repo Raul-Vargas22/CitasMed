@@ -16,5 +16,12 @@ namespace CitasMed
         {
             InitializeComponent();
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            FormEmpleado empleado = new FormEmpleado();
+            empleado.Show();
+            this.Hide();
+        }
     }
 }
