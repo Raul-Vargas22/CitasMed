@@ -20,6 +20,7 @@ namespace CitasMed
             }
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             tntTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -30,6 +31,9 @@ namespace CitasMed
 
             textContrasena.Visible = true;
             textContrasena.UseSystemPasswordChar = true;
+
+
+
         }
 
         private void lblAdministrador_LinkClicked(
@@ -127,6 +131,8 @@ namespace CitasMed
             {
                 MessageBox.Show("BIENVENIDO");
             }
+
+
         }
 
         private Button BuscarBotonIniciar(Control contenedor)
@@ -197,6 +203,16 @@ namespace CitasMed
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
