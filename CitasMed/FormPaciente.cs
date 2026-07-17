@@ -94,6 +94,12 @@ namespace CitasMed
             this.Hide();
         }
 
+
+        private void FormPaciente_Load(object sender, EventArgs e)
+        {
+        
+        }
+=======
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -103,5 +109,6 @@ namespace CitasMed
         {
             CargarPacientes();
         }
+
     }
 }
