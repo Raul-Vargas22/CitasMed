@@ -60,5 +60,10 @@ namespace CitasMed
             empleado.Show();
             this.Hide();
         }
+
+        private void FormPaciente_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
