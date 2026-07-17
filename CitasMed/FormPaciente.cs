@@ -78,6 +78,8 @@ namespace CitasMed
 
                     adaptador.Fill(tabla);
 
+                    dgvPacientes.Columns.Clear();
+                    dgvPacientes.AutoGenerateColumns = true;
                     dgvPacientes.DataSource = tabla;
                 }
             }
@@ -95,11 +97,7 @@ namespace CitasMed
         }
 
 
-        private void FormPaciente_Load(object sender, EventArgs e)
-        {
-        
-        }
-=======
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
