@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,41 @@ namespace CitasMed
         public FormEmpleado()
         {
             InitializeComponent();
+
+            RedondearPanel(panel1, 25);
+            RedondearPanel(panel6, 25);
+            RedondearPanel(panel5, 25);
+            RedondearPanel(panel7, 25);
+            btnInicio_empleado.FlatStyle = FlatStyle.Flat;
+            btnInicio_empleado.FlatAppearance.BorderSize = 0;
+            btnInicio_empleado.TabStop = false;
+            RedondearBoton(btnInicio_empleado, 20);
         }
 
+        private void RedondearPanel(Panel panel, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radio, radio), 180, 90);
+            path.AddArc(new Rectangle(panel.Width - radio, 0, radio, radio), 270, 90);
+            path.AddArc(new Rectangle(panel.Width - radio, panel.Height - radio, radio, radio), 0, 90);
+            path.AddArc(new Rectangle(0, panel.Height - radio, radio, radio), 90, 90);
+            path.CloseFigure();
+            panel.Region = new Region(path);
+        }
+        private void RedondearBoton(Button boton, int radio)
+        {
+            GraphicsPath path = new GraphicsPath();
+
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, radio, radio), 180, 90);
+            path.AddArc(new Rectangle(boton.Width - radio, 0, radio, radio), 270, 90);
+            path.AddArc(new Rectangle(boton.Width - radio, boton.Height - radio, radio, radio), 0, 90);
+            path.AddArc(new Rectangle(0, boton.Height - radio, radio, radio), 90, 90);
+            path.CloseFigure();
+
+            boton.Region = new Region(path);
+        }
         private void label21_Click(object sender, EventArgs e)
         {
 
@@ -62,6 +96,47 @@ namespace CitasMed
             FormPaciente paciente = new FormPaciente();
             paciente.Show();
             this.Hide();
+        }
+
+        private void FormEmpleado_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_DateChanged_1(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -414,7 +414,11 @@
             Controls.Add(label8);
             Name = "FormPaciente";
             Text = "FormPaciente";
+
+            Load += FormPaciente_Load;
+
             Load += FormPaciente_Load_1;
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
             panel1.ResumeLayout(false);

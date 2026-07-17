@@ -53,7 +53,7 @@
             // 
             tntTitulo.BackColor = Color.FromArgb(155, 179, 232);
             tntTitulo.Font = new Font("Century Gothic", 40.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tntTitulo.Location = new Point(285, 27);
+            tntTitulo.Location = new Point(308, 36);
             tntTitulo.Name = "tntTitulo";
             tntTitulo.Size = new Size(470, 80);
             tntTitulo.TabIndex = 0;
