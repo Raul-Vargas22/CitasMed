@@ -30,7 +30,7 @@
         {
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvPacientes = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -64,7 +64,7 @@
             button2 = new Button();
             button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -90,16 +90,17 @@
             label1.TabIndex = 2;
             label1.Text = "CITASMED";
             // 
-            // dataGridView1
+            // dgvPacientes
             // 
-            dataGridView1.BackgroundColor = Color.PaleTurquoise;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
-            dataGridView1.Location = new Point(329, 103);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1428, 561);
-            dataGridView1.TabIndex = 109;
+            dgvPacientes.BackgroundColor = Color.PaleTurquoise;
+            dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
+            dgvPacientes.Location = new Point(329, 103);
+            dgvPacientes.Name = "dgvPacientes";
+            dgvPacientes.RowHeadersWidth = 51;
+            dgvPacientes.Size = new Size(1428, 561);
+            dgvPacientes.TabIndex = 109;
+            dgvPacientes.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -398,7 +399,7 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button4);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvPacientes);
             Controls.Add(panel1);
             Controls.Add(pictureBox3);
             Controls.Add(label7);
@@ -413,9 +414,13 @@
             Controls.Add(label8);
             Name = "FormPaciente";
             Text = "FormPaciente";
+
             Load += FormPaciente_Load;
+
+            Load += FormPaciente_Load_1;
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -428,7 +433,7 @@
 
         private PictureBox pictureBox1;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvPacientes;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
