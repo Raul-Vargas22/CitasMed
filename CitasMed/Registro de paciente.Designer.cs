@@ -33,27 +33,27 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            txtNombre = new TextBox();
+            txtApellidoPaterno = new TextBox();
+            txtApellidoMaterno = new TextBox();
+            txtCorreo = new TextBox();
+            txtTelefono = new TextBox();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textBox9 = new TextBox();
+            txtMunicipio = new TextBox();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
-            textBox10 = new TextBox();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
+            txtColonia = new TextBox();
+            txtCalle = new TextBox();
+            txtCurp = new TextBox();
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            richTextBox1 = new RichTextBox();
+            cmbGenero = new ComboBox();
+            cmbEspecialidad = new ComboBox();
+            txtEnfermedadCronica = new RichTextBox();
             button1 = new Button();
             btnMenu_empleado = new Button();
             panel1 = new Panel();
@@ -132,55 +132,57 @@
             label4.TabIndex = 4;
             label4.Text = "Apellidos materno:";
             // 
-            // textBox1
+            // txtNombre
             // 
-            textBox1.BackColor = Color.FromArgb(133, 210, 208);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(12, 8);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(152, 34);
-            textBox1.TabIndex = 5;
+            txtNombre.BackColor = Color.FromArgb(133, 210, 208);
+            txtNombre.BorderStyle = BorderStyle.None;
+            txtNombre.Location = new Point(12, 8);
+            txtNombre.Multiline = true;
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(152, 34);
+            txtNombre.TabIndex = 5;
+            txtNombre.TextChanged += textBox1_TextChanged;
             // 
-            // textBox2
+            // txtApellidoPaterno
             // 
-            textBox2.BackColor = Color.FromArgb(133, 210, 208);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(14, 8);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(186, 34);
-            textBox2.TabIndex = 6;
+            txtApellidoPaterno.BackColor = Color.FromArgb(133, 210, 208);
+            txtApellidoPaterno.BorderStyle = BorderStyle.None;
+            txtApellidoPaterno.Location = new Point(14, 8);
+            txtApellidoPaterno.Multiline = true;
+            txtApellidoPaterno.Name = "txtApellidoPaterno";
+            txtApellidoPaterno.Size = new Size(186, 34);
+            txtApellidoPaterno.TabIndex = 6;
+            txtApellidoPaterno.TextChanged += txtApellidoPaterno_TextChanged;
             // 
-            // textBox3
+            // txtApellidoMaterno
             // 
-            textBox3.BackColor = Color.FromArgb(133, 210, 208);
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(14, 8);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(177, 34);
-            textBox3.TabIndex = 7;
+            txtApellidoMaterno.BackColor = Color.FromArgb(133, 210, 208);
+            txtApellidoMaterno.BorderStyle = BorderStyle.None;
+            txtApellidoMaterno.Location = new Point(14, 8);
+            txtApellidoMaterno.Multiline = true;
+            txtApellidoMaterno.Name = "txtApellidoMaterno";
+            txtApellidoMaterno.Size = new Size(177, 34);
+            txtApellidoMaterno.TabIndex = 7;
             // 
-            // textBox4
+            // txtCorreo
             // 
-            textBox4.BackColor = Color.FromArgb(133, 210, 208);
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(15, 6);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(177, 34);
-            textBox4.TabIndex = 13;
+            txtCorreo.BackColor = Color.FromArgb(133, 210, 208);
+            txtCorreo.BorderStyle = BorderStyle.None;
+            txtCorreo.Location = new Point(15, 6);
+            txtCorreo.Multiline = true;
+            txtCorreo.Name = "txtCorreo";
+            txtCorreo.Size = new Size(177, 34);
+            txtCorreo.TabIndex = 13;
             // 
-            // textBox5
+            // txtTelefono
             // 
-            textBox5.BackColor = Color.FromArgb(133, 210, 208);
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Location = new Point(14, 6);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(186, 34);
-            textBox5.TabIndex = 12;
+            txtTelefono.BackColor = Color.FromArgb(133, 210, 208);
+            txtTelefono.BorderStyle = BorderStyle.None;
+            txtTelefono.Location = new Point(14, 6);
+            txtTelefono.Multiline = true;
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(186, 34);
+            txtTelefono.TabIndex = 12;
             // 
             // label5
             // 
@@ -213,15 +215,15 @@
             label7.Text = "Genero:";
             label7.Click += label7_Click;
             // 
-            // textBox9
+            // txtMunicipio
             // 
-            textBox9.BackColor = Color.FromArgb(133, 210, 208);
-            textBox9.BorderStyle = BorderStyle.None;
-            textBox9.Location = new Point(12, 11);
-            textBox9.Multiline = true;
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(152, 34);
-            textBox9.TabIndex = 17;
+            txtMunicipio.BackColor = Color.FromArgb(133, 210, 208);
+            txtMunicipio.BorderStyle = BorderStyle.None;
+            txtMunicipio.Location = new Point(12, 11);
+            txtMunicipio.Multiline = true;
+            txtMunicipio.Name = "txtMunicipio";
+            txtMunicipio.Size = new Size(152, 34);
+            txtMunicipio.TabIndex = 17;
             // 
             // label8
             // 
@@ -253,35 +255,35 @@
             label10.TabIndex = 14;
             label10.Text = "Municipio:";
             // 
-            // textBox10
+            // txtColonia
             // 
-            textBox10.BackColor = Color.FromArgb(133, 210, 208);
-            textBox10.BorderStyle = BorderStyle.None;
-            textBox10.Location = new Point(15, 9);
-            textBox10.Multiline = true;
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(177, 34);
-            textBox10.TabIndex = 25;
+            txtColonia.BackColor = Color.FromArgb(133, 210, 208);
+            txtColonia.BorderStyle = BorderStyle.None;
+            txtColonia.Location = new Point(15, 9);
+            txtColonia.Multiline = true;
+            txtColonia.Name = "txtColonia";
+            txtColonia.Size = new Size(177, 34);
+            txtColonia.TabIndex = 25;
             // 
-            // textBox11
+            // txtCalle
             // 
-            textBox11.BackColor = Color.FromArgb(133, 210, 208);
-            textBox11.BorderStyle = BorderStyle.None;
-            textBox11.Location = new Point(11, 9);
-            textBox11.Multiline = true;
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(186, 34);
-            textBox11.TabIndex = 24;
+            txtCalle.BackColor = Color.FromArgb(133, 210, 208);
+            txtCalle.BorderStyle = BorderStyle.None;
+            txtCalle.Location = new Point(11, 9);
+            txtCalle.Multiline = true;
+            txtCalle.Name = "txtCalle";
+            txtCalle.Size = new Size(186, 34);
+            txtCalle.TabIndex = 24;
             // 
-            // textBox12
+            // txtCurp
             // 
-            textBox12.BackColor = Color.FromArgb(133, 210, 208);
-            textBox12.BorderStyle = BorderStyle.None;
-            textBox12.Location = new Point(12, 12);
-            textBox12.Multiline = true;
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(154, 34);
-            textBox12.TabIndex = 23;
+            txtCurp.BackColor = Color.FromArgb(133, 210, 208);
+            txtCurp.BorderStyle = BorderStyle.None;
+            txtCurp.Location = new Point(12, 12);
+            txtCurp.Multiline = true;
+            txtCurp.Name = "txtCurp";
+            txtCurp.Size = new Size(154, 34);
+            txtCurp.TabIndex = 23;
             // 
             // label11
             // 
@@ -313,32 +315,32 @@
             label13.TabIndex = 20;
             label13.Text = "Curp:";
             // 
-            // comboBox1
+            // cmbGenero
             // 
-            comboBox1.BackColor = Color.FromArgb(133, 210, 208);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(14, 10);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 26;
+            cmbGenero.BackColor = Color.FromArgb(133, 210, 208);
+            cmbGenero.FormattingEnabled = true;
+            cmbGenero.Location = new Point(14, 10);
+            cmbGenero.Name = "cmbGenero";
+            cmbGenero.Size = new Size(151, 28);
+            cmbGenero.TabIndex = 26;
             // 
-            // comboBox2
+            // cmbEspecialidad
             // 
-            comboBox2.BackColor = Color.FromArgb(133, 210, 208);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(11, 17);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(186, 28);
-            comboBox2.TabIndex = 27;
+            cmbEspecialidad.BackColor = Color.FromArgb(133, 210, 208);
+            cmbEspecialidad.FormattingEnabled = true;
+            cmbEspecialidad.Location = new Point(11, 17);
+            cmbEspecialidad.Name = "cmbEspecialidad";
+            cmbEspecialidad.Size = new Size(186, 28);
+            cmbEspecialidad.TabIndex = 27;
             // 
-            // richTextBox1
+            // txtEnfermedadCronica
             // 
-            richTextBox1.BackColor = Color.FromArgb(133, 210, 208);
-            richTextBox1.Location = new Point(15, 8);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(195, 37);
-            richTextBox1.TabIndex = 28;
-            richTextBox1.Text = "";
+            txtEnfermedadCronica.BackColor = Color.FromArgb(133, 210, 208);
+            txtEnfermedadCronica.Location = new Point(15, 8);
+            txtEnfermedadCronica.Name = "txtEnfermedadCronica";
+            txtEnfermedadCronica.Size = new Size(195, 37);
+            txtEnfermedadCronica.TabIndex = 28;
+            txtEnfermedadCronica.Text = "";
             // 
             // button1
             // 
@@ -369,7 +371,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(133, 210, 208);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtNombre);
             panel1.Location = new Point(91, 169);
             panel1.Name = "panel1";
             panel1.Size = new Size(178, 55);
@@ -378,7 +380,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(133, 210, 208);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(txtApellidoPaterno);
             panel2.Location = new Point(385, 169);
             panel2.Name = "panel2";
             panel2.Size = new Size(212, 55);
@@ -387,7 +389,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(133, 210, 208);
-            panel3.Controls.Add(textBox3);
+            panel3.Controls.Add(txtApellidoMaterno);
             panel3.Location = new Point(683, 169);
             panel3.Name = "panel3";
             panel3.Size = new Size(205, 55);
@@ -396,7 +398,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(133, 210, 208);
-            panel4.Controls.Add(comboBox1);
+            panel4.Controls.Add(cmbGenero);
             panel4.Location = new Point(91, 284);
             panel4.Name = "panel4";
             panel4.Size = new Size(178, 55);
@@ -405,7 +407,7 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(133, 210, 208);
-            panel5.Controls.Add(textBox5);
+            panel5.Controls.Add(txtTelefono);
             panel5.Location = new Point(385, 284);
             panel5.Name = "panel5";
             panel5.Size = new Size(212, 55);
@@ -414,7 +416,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(133, 210, 208);
-            panel6.Controls.Add(textBox4);
+            panel6.Controls.Add(txtCorreo);
             panel6.Location = new Point(683, 284);
             panel6.Name = "panel6";
             panel6.Size = new Size(209, 55);
@@ -423,7 +425,7 @@
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(133, 210, 208);
-            panel7.Controls.Add(textBox12);
+            panel7.Controls.Add(txtCurp);
             panel7.Location = new Point(91, 399);
             panel7.Name = "panel7";
             panel7.Size = new Size(178, 55);
@@ -432,7 +434,7 @@
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(133, 210, 208);
-            panel8.Controls.Add(textBox11);
+            panel8.Controls.Add(txtCalle);
             panel8.Location = new Point(385, 402);
             panel8.Name = "panel8";
             panel8.Size = new Size(212, 52);
@@ -441,7 +443,7 @@
             // panel9
             // 
             panel9.BackColor = Color.FromArgb(133, 210, 208);
-            panel9.Controls.Add(textBox10);
+            panel9.Controls.Add(txtColonia);
             panel9.Location = new Point(683, 402);
             panel9.Name = "panel9";
             panel9.Size = new Size(209, 52);
@@ -450,7 +452,7 @@
             // panel10
             // 
             panel10.BackColor = Color.FromArgb(133, 210, 208);
-            panel10.Controls.Add(textBox9);
+            panel10.Controls.Add(txtMunicipio);
             panel10.Location = new Point(91, 515);
             panel10.Name = "panel10";
             panel10.Size = new Size(178, 55);
@@ -459,7 +461,7 @@
             // panel11
             // 
             panel11.BackColor = Color.FromArgb(133, 210, 208);
-            panel11.Controls.Add(comboBox2);
+            panel11.Controls.Add(cmbEspecialidad);
             panel11.Location = new Point(385, 515);
             panel11.Name = "panel11";
             panel11.Size = new Size(212, 55);
@@ -468,7 +470,7 @@
             // panel12
             // 
             panel12.BackColor = Color.FromArgb(133, 210, 208);
-            panel12.Controls.Add(richTextBox1);
+            panel12.Controls.Add(txtEnfermedadCronica);
             panel12.Location = new Point(683, 515);
             panel12.Name = "panel12";
             panel12.Size = new Size(221, 55);
@@ -544,27 +546,27 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox txtNombre;
+        private TextBox txtApellidoPaterno;
+        private TextBox txtApellidoMaterno;
+        private TextBox txtCorreo;
+        private TextBox txtTelefono;
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox textBox9;
+        private TextBox txtMunicipio;
         private Label label8;
         private Label label9;
         private Label label10;
-        private TextBox textBox10;
-        private TextBox textBox11;
-        private TextBox textBox12;
+        private TextBox txtColonia;
+        private TextBox txtCalle;
+        private TextBox txtCurp;
         private Label label11;
         private Label label12;
         private Label label13;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private RichTextBox richTextBox1;
+        private ComboBox cmbGenero;
+        private ComboBox cmbEspecialidad;
+        private RichTextBox txtEnfermedadCronica;
         private Button button1;
         private Button btnMenu_empleado;
         private Panel panel1;

@@ -78,7 +78,19 @@ namespace CitasMed
                 {
                     conexion.Open();
 
-                    string consulta = "SELECT * FROM Paciente";
+                    string consulta = @"SELECT 
+                                id_paciente AS CLAVE,
+                                curp AS CURP,
+                                nombre AS NOMBRE,
+                                apellido_paterno AS 'APELLIDO PATERNO',
+                                apellido_materno AS 'APELLIDO MATERNO',
+                                telefono AS TELEFONO,
+                                calle AS CALLE,
+                                colonia AS COLONIA,
+                                municipio AS MUNICIPIO,
+                                entidad AS ENTIDAD,
+                                enfermedad_cronica AS 'ENFERMEDAD CRONICA'
+                                FROM Paciente";
 
                     MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
                     DataTable tabla = new DataTable();
@@ -96,12 +108,7 @@ namespace CitasMed
             }
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
-            this.Hide();
-        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -112,9 +119,12 @@ namespace CitasMed
 
         }
 
-        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-
+            FormAdministrador admin = new FormAdministrador();
+            admin.Show();
+            this.Hide();
         }
+
     }
 }
