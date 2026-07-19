@@ -17,6 +17,13 @@ namespace CitasMed
         public FormPaciente()
         {
             InitializeComponent();
+            ucMenuEmpleado1.SeleccionarPacientes();
+            ucMenuEmpleado1.InicioClick += btnRegresar_Click;
+            ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
+            ucMenuEmpleado1.ProgramadasClick += lblProgramada_Click;
+            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
+            ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
+            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
         }
 
         private void lblPacientes_Click(object sender, EventArgs e)
@@ -95,18 +102,19 @@ namespace CitasMed
             empleado.Show();
             this.Hide();
         }
-
-
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void FormPaciente_Load_1(object sender, EventArgs e)
+        private void label10_Click(object sender, EventArgs e)
         {
-            CargarPacientes();
+
         }
 
+        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

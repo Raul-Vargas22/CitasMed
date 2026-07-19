@@ -17,14 +17,18 @@ namespace CitasMed
         {
             InitializeComponent();
 
-            RedondearPanel(panel1, 25);
+            ucMenuEmpleado1.InicioClick += btnInicio_empleado_Click;
+            ucMenuEmpleado1.NuevaCitaClick += lblNuevaCita_Click;
+            ucMenuEmpleado1.ProgramadasClick += lblProgramadas_Click;
+            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
+            ucMenuEmpleado1.MedicosClick += lblMedicos_Especialidades_Click;
+            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+
+
             RedondearPanel(panel6, 25);
             RedondearPanel(panel5, 25);
             RedondearPanel(panel7, 25);
-            btnInicio_empleado.FlatStyle = FlatStyle.Flat;
-            btnInicio_empleado.FlatAppearance.BorderSize = 0;
-            btnInicio_empleado.TabStop = false;
-            RedondearBoton(btnInicio_empleado, 20);
+
         }
 
         private void RedondearPanel(Panel panel, int radio)
@@ -38,19 +42,7 @@ namespace CitasMed
             path.CloseFigure();
             panel.Region = new Region(path);
         }
-        private void RedondearBoton(Button boton, int radio)
-        {
-            GraphicsPath path = new GraphicsPath();
-
-            path.StartFigure();
-            path.AddArc(new Rectangle(0, 0, radio, radio), 180, 90);
-            path.AddArc(new Rectangle(boton.Width - radio, 0, radio, radio), 270, 90);
-            path.AddArc(new Rectangle(boton.Width - radio, boton.Height - radio, radio, radio), 0, 90);
-            path.AddArc(new Rectangle(0, boton.Height - radio, radio, radio), 90, 90);
-            path.CloseFigure();
-
-            boton.Region = new Region(path);
-        }
+       
         private void label21_Click(object sender, EventArgs e)
         {
 
@@ -135,6 +127,11 @@ namespace CitasMed
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
         {
 
         }
