@@ -47,17 +47,19 @@
             label4 = new Label();
             label2 = new Label();
             label9 = new Label();
-            pictureBox2 = new PictureBox();
-            textBox1 = new TextBox();
             label10 = new Label();
             label8 = new Label();
             button3 = new Button();
             button2 = new Button();
             button4 = new Button();
             ucMenuEmpleado1 = new UcMenuEmpleado();
+            panel7 = new Panel();
+            textBox1 = new TextBox();
+            iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
             SuspendLayout();
             // 
             // dgvPacientes
@@ -207,23 +209,6 @@
             label9.Size = new Size(0, 20);
             label9.TabIndex = 106;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Location = new Point(400, 30);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(38, 27);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 105;
-            pictureBox2.TabStop = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(438, 31);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(217, 27);
-            textBox1.TabIndex = 104;
-            textBox1.Text = "BUSCAR PACIENTE POR CURP";
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -282,11 +267,45 @@
             ucMenuEmpleado1.TabIndex = 113;
             ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
             // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(133, 210, 208);
+            panel7.Controls.Add(textBox1);
+            panel7.Controls.Add(iconPictureBox4);
+            panel7.Location = new Point(453, 4);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(296, 48);
+            panel7.TabIndex = 114;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(133, 210, 208);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(47, 14);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(232, 20);
+            textBox1.TabIndex = 0;
+            // 
+            // iconPictureBox4
+            // 
+            iconPictureBox4.BackColor = Color.Transparent;
+            iconPictureBox4.ForeColor = SystemColors.ControlText;
+            iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Search;
+            iconPictureBox4.IconColor = SystemColors.ControlText;
+            iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPictureBox4.IconSize = 40;
+            iconPictureBox4.Location = new Point(3, 3);
+            iconPictureBox4.Name = "iconPictureBox4";
+            iconPictureBox4.Size = new Size(40, 40);
+            iconPictureBox4.TabIndex = 65;
+            iconPictureBox4.TabStop = false;
+            // 
             // FormPaciente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1743, 657);
+            Controls.Add(panel7);
             Controls.Add(ucMenuEmpleado1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -299,8 +318,6 @@
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(label9);
-            Controls.Add(pictureBox2);
-            Controls.Add(textBox1);
             Controls.Add(label10);
             Controls.Add(label8);
             Name = "FormPaciente";
@@ -308,7 +325,9 @@
             Load += FormPaciente_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -343,13 +362,14 @@
         private Label label4;
         private Label label2;
         private Label label9;
-        private PictureBox pictureBox2;
-        private TextBox textBox1;
         private Label label10;
         private Label label8;
         private Button button3;
         private Button button2;
         private Button button4;
         private UcMenuEmpleado ucMenuEmpleado1;
+        private Panel panel7;
+        private TextBox textBox1;
+        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
     }
 }
