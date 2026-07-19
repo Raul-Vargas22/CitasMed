@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
             dgvPacientes = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -42,13 +40,6 @@
             Column9 = new DataGridViewTextBoxColumn();
             Column10 = new DataGridViewTextBoxColumn();
             Column11 = new DataGridViewTextBoxColumn();
-            panel1 = new Panel();
-            lblPacientes = new Label();
-            lblMedicos = new Label();
-            lblHistorial = new Label();
-            lblProgramada = new Label();
-            lblNueva = new Label();
-            btnRegresar = new Button();
             pictureBox3 = new PictureBox();
             label7 = new Label();
             label6 = new Label();
@@ -63,42 +54,21 @@
             button3 = new Button();
             button2 = new Button();
             button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ucMenuEmpleado1 = new UcMenuEmpleado();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).BeginInit();
-            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(13, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(74, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(93, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(106, 20);
-            label1.TabIndex = 2;
-            label1.Text = "CITASMED";
             // 
             // dgvPacientes
             // 
             dgvPacientes.BackgroundColor = Color.PaleTurquoise;
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
-            dgvPacientes.Location = new Point(329, 103);
+            dgvPacientes.Location = new Point(305, 68);
             dgvPacientes.Name = "dgvPacientes";
             dgvPacientes.RowHeadersWidth = 51;
-            dgvPacientes.Size = new Size(1428, 561);
+            dgvPacientes.Size = new Size(1428, 495);
             dgvPacientes.TabIndex = 109;
             dgvPacientes.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -179,97 +149,9 @@
             Column11.Name = "Column11";
             Column11.Width = 125;
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Snow;
-            panel1.Controls.Add(lblPacientes);
-            panel1.Controls.Add(lblMedicos);
-            panel1.Controls.Add(lblHistorial);
-            panel1.Controls.Add(lblProgramada);
-            panel1.Controls.Add(lblNueva);
-            panel1.Controls.Add(btnRegresar);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(25, 31);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(287, 664);
-            panel1.TabIndex = 103;
-            // 
-            // lblPacientes
-            // 
-            lblPacientes.AutoSize = true;
-            lblPacientes.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPacientes.ForeColor = Color.SkyBlue;
-            lblPacientes.Location = new Point(13, 440);
-            lblPacientes.Name = "lblPacientes";
-            lblPacientes.Size = new Size(135, 21);
-            lblPacientes.TabIndex = 31;
-            lblPacientes.Text = "> PACIENTES";
-            lblPacientes.Click += lblPacientes_Click;
-            // 
-            // lblMedicos
-            // 
-            lblMedicos.AutoSize = true;
-            lblMedicos.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMedicos.ForeColor = SystemColors.ActiveCaption;
-            lblMedicos.Location = new Point(11, 367);
-            lblMedicos.Name = "lblMedicos";
-            lblMedicos.Size = new Size(188, 42);
-            lblMedicos.TabIndex = 30;
-            lblMedicos.Text = "> MÉDICOS Y \r\n  ESPECIALIDADES";
-            lblMedicos.Click += lblMedicos_Click;
-            // 
-            // lblHistorial
-            // 
-            lblHistorial.AutoSize = true;
-            lblHistorial.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHistorial.ForeColor = SystemColors.ActiveCaption;
-            lblHistorial.Location = new Point(13, 297);
-            lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(167, 42);
-            lblHistorial.TabIndex = 29;
-            lblHistorial.Text = "> HISTORIAL DE \r\n  CONSULTAS";
-            lblHistorial.Click += lblHistorial_Click;
-            // 
-            // lblProgramada
-            // 
-            lblProgramada.AutoSize = true;
-            lblProgramada.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblProgramada.ForeColor = SystemColors.ActiveCaption;
-            lblProgramada.Location = new Point(13, 244);
-            lblProgramada.Name = "lblProgramada";
-            lblProgramada.Size = new Size(244, 21);
-            lblProgramada.TabIndex = 28;
-            lblProgramada.Text = "> CITAS PROGRAMADAS";
-            lblProgramada.Click += lblProgramada_Click;
-            // 
-            // lblNueva
-            // 
-            lblNueva.AutoSize = true;
-            lblNueva.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNueva.ForeColor = SystemColors.ActiveCaption;
-            lblNueva.Location = new Point(13, 187);
-            lblNueva.Name = "lblNueva";
-            lblNueva.Size = new Size(148, 21);
-            lblNueva.TabIndex = 27;
-            lblNueva.Text = "> NUEVA CITA";
-            lblNueva.Click += lblNueva_Click;
-            // 
-            // btnRegresar
-            // 
-            btnRegresar.BackColor = Color.Turquoise;
-            btnRegresar.BackgroundImageLayout = ImageLayout.None;
-            btnRegresar.Location = new Point(13, 512);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(94, 29);
-            btnRegresar.TabIndex = 3;
-            btnRegresar.Text = "REGRESAR";
-            btnRegresar.UseVisualStyleBackColor = false;
-            btnRegresar.Click += btnRegresar_Click;
-            // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(1537, 20);
+            pictureBox3.Location = new Point(1372, 12);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(88, 40);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -347,11 +229,12 @@
             label10.AutoSize = true;
             label10.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ActiveCaption;
-            label10.Location = new Point(1631, 32);
+            label10.Location = new Point(1490, 29);
             label10.Name = "label10";
             label10.Size = new Size(132, 23);
             label10.TabIndex = 107;
             label10.Text = "EMPLEADO";
+            label10.Click += label10_Click;
             // 
             // label8
             // 
@@ -364,7 +247,7 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(743, 695);
+            button3.Location = new Point(756, 587);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 112;
@@ -374,7 +257,7 @@
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(580, 695);
+            button2.Location = new Point(561, 587);
             button2.Name = "button2";
             button2.Size = new Size(140, 50);
             button2.TabIndex = 111;
@@ -384,23 +267,31 @@
             // button4
             // 
             button4.BackColor = Color.Turquoise;
-            button4.Location = new Point(415, 695);
+            button4.Location = new Point(333, 587);
             button4.Name = "button4";
             button4.Size = new Size(140, 50);
             button4.TabIndex = 110;
             button4.Text = "NUEVA CITA";
             button4.UseVisualStyleBackColor = false;
             // 
+            // ucMenuEmpleado1
+            // 
+            ucMenuEmpleado1.Location = new Point(2, 4);
+            ucMenuEmpleado1.Name = "ucMenuEmpleado1";
+            ucMenuEmpleado1.Size = new Size(281, 647);
+            ucMenuEmpleado1.TabIndex = 113;
+            ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
+            // 
             // FormPaciente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1539, 811);
+            ClientSize = new Size(1743, 657);
+            Controls.Add(ucMenuEmpleado1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button4);
             Controls.Add(dgvPacientes);
-            Controls.Add(panel1);
             Controls.Add(pictureBox3);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -414,15 +305,8 @@
             Controls.Add(label8);
             Name = "FormPaciente";
             Text = "FormPaciente";
-
             Load += FormPaciente_Load;
-
-            Load += FormPaciente_Load_1;
-
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPacientes).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -466,5 +350,6 @@
         private Button button3;
         private Button button2;
         private Button button4;
+        private UcMenuEmpleado ucMenuEmpleado1;
     }
 }

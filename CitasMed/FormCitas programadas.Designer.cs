@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCitas_programadas));
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -38,15 +37,6 @@
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column8 = new DataGridViewTextBoxColumn();
-            panel1 = new Panel();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            label23 = new Label();
-            label22 = new Label();
-            btnRegresar = new Button();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -63,9 +53,8 @@
             panel7 = new Panel();
             textBox1 = new TextBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            ucMenuEmpleado1 = new UcMenuEmpleado();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel7.SuspendLayout();
@@ -138,116 +127,6 @@
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
             Column8.Width = 125;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Snow;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Controls.Add(label26);
-            panel1.Controls.Add(label25);
-            panel1.Controls.Add(label24);
-            panel1.Controls.Add(label23);
-            panel1.Controls.Add(label22);
-            panel1.Controls.Add(btnRegresar);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(0, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(281, 643);
-            panel1.TabIndex = 66;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.BackColor = Color.Transparent;
-            label26.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label26.ForeColor = Color.FromArgb(155, 179, 232);
-            label26.Location = new Point(13, 450);
-            label26.Name = "label26";
-            label26.Size = new Size(135, 21);
-            label26.TabIndex = 31;
-            label26.Text = "> PACIENTES";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.BackColor = Color.Transparent;
-            label25.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label25.ForeColor = Color.FromArgb(155, 179, 232);
-            label25.Location = new Point(11, 367);
-            label25.Name = "label25";
-            label25.Size = new Size(188, 42);
-            label25.TabIndex = 30;
-            label25.Text = "> MÉDICOS Y \r\n  ESPECIALIDADES";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.BackColor = Color.Transparent;
-            label24.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label24.ForeColor = Color.FromArgb(155, 179, 232);
-            label24.Location = new Point(13, 297);
-            label24.Name = "label24";
-            label24.Size = new Size(167, 42);
-            label24.TabIndex = 29;
-            label24.Text = "> HISTORIAL DE \r\n  CONSULTAS";
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.BackColor = Color.Transparent;
-            label23.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label23.ForeColor = Color.SkyBlue;
-            label23.Location = new Point(13, 244);
-            label23.Name = "label23";
-            label23.Size = new Size(244, 21);
-            label23.TabIndex = 28;
-            label23.Text = "> CITAS PROGRAMADAS";
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label22.ForeColor = Color.FromArgb(155, 179, 232);
-            label22.Location = new Point(13, 187);
-            label22.Name = "label22";
-            label22.Size = new Size(148, 21);
-            label22.TabIndex = 27;
-            label22.Text = "> NUEVA CITA";
-            // 
-            // btnRegresar
-            // 
-            btnRegresar.BackColor = Color.FromArgb(133, 210, 208);
-            btnRegresar.BackgroundImageLayout = ImageLayout.None;
-            btnRegresar.FlatStyle = FlatStyle.Flat;
-            btnRegresar.ForeColor = SystemColors.Desktop;
-            btnRegresar.Location = new Point(54, 105);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(126, 38);
-            btnRegresar.TabIndex = 3;
-            btnRegresar.Text = "Inicio";
-            btnRegresar.UseVisualStyleBackColor = false;
-            btnRegresar.Click += btnRegresar_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(13, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(74, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(93, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(106, 20);
-            label1.TabIndex = 2;
-            label1.Text = "CITASMED";
             // 
             // label7
             // 
@@ -339,7 +218,7 @@
             // button4
             // 
             button4.BackColor = Color.Turquoise;
-            button4.Location = new Point(431, 581);
+            button4.Location = new Point(326, 593);
             button4.Name = "button4";
             button4.Size = new Size(140, 50);
             button4.TabIndex = 78;
@@ -349,7 +228,7 @@
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(602, 581);
+            button2.Location = new Point(491, 593);
             button2.Name = "button2";
             button2.Size = new Size(140, 50);
             button2.TabIndex = 79;
@@ -359,7 +238,7 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(764, 581);
+            button3.Location = new Point(672, 593);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 80;
@@ -375,6 +254,7 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(296, 51);
             panel7.TabIndex = 81;
+            panel7.Paint += panel7_Paint;
             // 
             // textBox1
             // 
@@ -384,6 +264,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 20);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // iconPictureBox4
             // 
@@ -399,18 +280,26 @@
             iconPictureBox4.TabIndex = 65;
             iconPictureBox4.TabStop = false;
             // 
+            // ucMenuEmpleado1
+            // 
+            ucMenuEmpleado1.Location = new Point(2, 4);
+            ucMenuEmpleado1.Name = "ucMenuEmpleado1";
+            ucMenuEmpleado1.Size = new Size(281, 647);
+            ucMenuEmpleado1.TabIndex = 82;
+            ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
+            // 
             // FormCitas_programadas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1371, 649);
+            ClientSize = new Size(1371, 655);
+            Controls.Add(ucMenuEmpleado1);
             Controls.Add(panel7);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button4);
             Controls.Add(dataGridView1);
-            Controls.Add(panel1);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -425,9 +314,6 @@
             Text = "FormCitas_programadas";
             Load += FormCitas_programadas_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel7.ResumeLayout(false);
@@ -473,5 +359,6 @@
         private Panel panel7;
         private TextBox textBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private UcMenuEmpleado ucMenuEmpleado1;
     }
 }

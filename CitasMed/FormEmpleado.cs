@@ -17,14 +17,18 @@ namespace CitasMed
         {
             InitializeComponent();
 
-            RedondearPanel(panel1, 25);
+            ucMenuEmpleado1.InicioClick += btnInicio_empleado_Click;
+            ucMenuEmpleado1.NuevaCitaClick += lblNuevaCita_Click;
+            ucMenuEmpleado1.ProgramadasClick += lblProgramadas_Click;
+            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
+            ucMenuEmpleado1.MedicosClick += lblMedicos_Especialidades_Click;
+            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+
+
             RedondearPanel(panel6, 25);
             RedondearPanel(panel5, 25);
             RedondearPanel(panel7, 25);
-            btnInicio_empleado.FlatStyle = FlatStyle.Flat;
-            btnInicio_empleado.FlatAppearance.BorderSize = 0;
-            btnInicio_empleado.TabStop = false;
-            RedondearBoton(btnInicio_empleado, 20);
+
         }
 
         private void RedondearPanel(Panel panel, int radio)
@@ -135,6 +139,11 @@ namespace CitasMed
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
         {
 
         }
