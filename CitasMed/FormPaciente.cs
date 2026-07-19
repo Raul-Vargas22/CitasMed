@@ -29,10 +29,7 @@ namespace CitasMed
         private void lblPacientes_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-                      "Actualmente se encuentra en esta seccion",
-                      "ATENCION",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Warning);
+                      "Actualmente se encuentra en esta seccion");
         }
 
         private void FormPaciente_Load(object sender, EventArgs e)
