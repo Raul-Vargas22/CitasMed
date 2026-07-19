@@ -31,6 +31,18 @@
             panel2 = new Panel();
             label15 = new Label();
             label11 = new Label();
+
+
+            panel1 = new Panel();
+            btnInicio_admin = new Button();
+            label26 = new Label();
+            label25 = new Label();
+            label24 = new Label();
+            label23 = new Label();
+            label22 = new Label();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -78,7 +90,7 @@
             panel2.BackColor = Color.White;
             panel2.Controls.Add(label15);
             panel2.Controls.Add(label11);
-            panel2.Location = new Point(301, 91);
+            panel2.Location = new Point(355, 91);
             panel2.Name = "panel2";
             panel2.Size = new Size(153, 156);
             panel2.TabIndex = 34;
@@ -187,7 +199,11 @@
             panel3.BackColor = Color.White;
             panel3.Controls.Add(label16);
             panel3.Controls.Add(label3);
+
             panel3.Location = new Point(495, 91);
+
+            panel3.Location = new Point(520, 91);
+
             panel3.Name = "panel3";
             panel3.Size = new Size(152, 156);
             panel3.TabIndex = 35;
