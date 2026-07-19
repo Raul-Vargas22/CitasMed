@@ -82,6 +82,8 @@ namespace CitasMed
 
                     adaptador.Fill(tabla);
 
+                    dgvPacientes.Columns.Clear();
+                    dgvPacientes.AutoGenerateColumns = true;
                     dgvPacientes.DataSource = tabla;
                 }
             }
