@@ -11,57 +11,41 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
-    public partial class FormAdministrador : Form
+    public partial class FormHistorialCitas : Form
     {
-        public FormAdministrador()
+        public FormHistorialCitas()
         {
             InitializeComponent();
-            ucMenuAdministrador1.InicioClick += btnInicio_admin_Click;
+            ucMenuAdministrador1.InicioClick += btnInicio_Click;
             ucMenuAdministrador1.PersonalMedicoClick += lblPersonalMedico_Click;
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
-            ucMenuAdministrador1.SeleccionarInicio();
+            ucMenuAdministrador1.SeleccionarHistorialCitas();
             RedondearPanel(panel7, 20);
-
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
+        private void FormHistorialCitas_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void label32_Click(object sender, EventArgs e)
+        private void btnInicio_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnInicio_admin_Click(object sender, EventArgs e)
-        {
-            Form1 principal = new Form1();
-            principal.Show();
+            FormAdministrador administrador = new FormAdministrador();
+            administrador.Show();
             this.Hide();
         }
-
-        private void FormAdministrador_Load(object sender, EventArgs e)
+        private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
-
-        }
-        private void lblPersonalMedico_Click (object sender, EventArgs e)
-        {
-            FormPersonalMedico personal =new FormPersonalMedico();
+            FormPersonalMedico personal = new FormPersonalMedico();
             personal.Show();
             this.Hide();
-
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
-            FormHistorialCitas historial = new FormHistorialCitas();
-            historial.Show();
-            this.Hide();
+           
+        }
+
+        private void ucMenuAdministrador1_Load(object sender, EventArgs e)
+        {
 
         }
         private void RedondearPanel(Panel panel, int radio)
@@ -77,6 +61,5 @@ namespace CitasMed
 
             panel.Region = new Region(path);
         }
-
     }
 }

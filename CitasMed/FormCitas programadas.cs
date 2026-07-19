@@ -16,6 +16,13 @@ namespace CitasMed
         public FormCitas_programadas()
         {
             InitializeComponent();
+            ucMenuEmpleado1.SeleccionarProgramadas();
+            ucMenuEmpleado1.InicioClick += btnRegresar_Click;
+            ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
+            ucMenuEmpleado1.ProgramadasClick += lblProgramada_Click;
+            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
+            ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
+            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
         }
         private void RedondearPanel(Panel panel, int radio)
         {
@@ -56,11 +63,42 @@ namespace CitasMed
         {
 
         }
+        private void lblNueva_Click(object sender, EventArgs e)
+        {
+            Registro_de_paciente registro = new Registro_de_paciente();
+            registro.Show();
+            this.Hide();
+        }
+
+        private void lblProgramada_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Actualmente se encuentra en esta sección");
+        }
+
+        private void lblHistorial_Click(object sender, EventArgs e)
+        {
+            FormHistorial_de_consultas historial = new FormHistorial_de_consultas();
+            historial.Show();
+            this.Hide();
+        }
+
+        private void lblMedicos_Click(object sender, EventArgs e)
+        {
+            FormMédicos_y_Especialidades medicos = new FormMédicos_y_Especialidades();
+            medicos.Show();
+            this.Hide();
+        }
+
+        private void lblPacientes_Click(object sender, EventArgs e)
+        {
+            FormPaciente paciente = new FormPaciente();
+            paciente.Show();
+            this.Hide();
+        }
 
         private void FormCitas_programadas_Load(object sender, EventArgs e)
         {
-            btnRegresar.FlatStyle = FlatStyle.Flat;
-            btnRegresar.FlatAppearance.BorderSize = 0;
+
 
             button2.FlatStyle = FlatStyle.Flat;
             button2.FlatAppearance.BorderSize = 0;
@@ -70,13 +108,29 @@ namespace CitasMed
 
             button4.FlatStyle = FlatStyle.Flat;
             button4.FlatAppearance.BorderSize = 0;
-            RedondearPanel(panel1, 25);
+
+
             RedondearPanel(panel7, 20);
-            RedondearBoton(btnRegresar, 20);
+
             RedondearBoton(button2, 20);
             RedondearBoton(button3, 20);
             RedondearBoton(button4, 20);
-           
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

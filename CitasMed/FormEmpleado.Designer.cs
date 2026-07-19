@@ -41,15 +41,6 @@
             label8 = new Label();
             label15 = new Label();
             label11 = new Label();
-            panel1 = new Panel();
-            lblNuevaCita = new Label();
-            btnInicio_empleado = new Button();
-            lblPacientes = new Label();
-            lblMedicos_Especialidades = new Label();
-            lblHistorial = new Label();
-            lblProgramadas = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -72,11 +63,10 @@
             panel7 = new Panel();
             textBox1 = new TextBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
+            ucMenuEmpleado1 = new UcMenuEmpleado();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
@@ -221,123 +211,6 @@
             label11.Size = new Size(134, 21);
             label11.TabIndex = 19;
             label11.Text = "Siguiente cita";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.Controls.Add(lblNuevaCita);
-            panel1.Controls.Add(btnInicio_empleado);
-            panel1.Controls.Add(lblPacientes);
-            panel1.Controls.Add(lblMedicos_Especialidades);
-            panel1.Controls.Add(lblHistorial);
-            panel1.Controls.Add(lblProgramadas);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(2, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(281, 643);
-            panel1.TabIndex = 44;
-            panel1.Paint += panel1_Paint;
-            // 
-            // lblNuevaCita
-            // 
-            lblNuevaCita.AutoSize = true;
-            lblNuevaCita.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNuevaCita.ForeColor = Color.FromArgb(155, 179, 232);
-            lblNuevaCita.Location = new Point(13, 176);
-            lblNuevaCita.Name = "lblNuevaCita";
-            lblNuevaCita.Size = new Size(148, 21);
-            lblNuevaCita.TabIndex = 33;
-            lblNuevaCita.Text = "> NUEVA CITA";
-            lblNuevaCita.Click += lblNuevaCita_Click;
-            // 
-            // btnInicio_empleado
-            // 
-            btnInicio_empleado.BackColor = Color.FromArgb(133, 210, 208);
-            btnInicio_empleado.BackgroundImageLayout = ImageLayout.None;
-            btnInicio_empleado.FlatStyle = FlatStyle.Flat;
-            btnInicio_empleado.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnInicio_empleado.ForeColor = Color.Black;
-            btnInicio_empleado.Location = new Point(54, 108);
-            btnInicio_empleado.Name = "btnInicio_empleado";
-            btnInicio_empleado.Size = new Size(126, 38);
-            btnInicio_empleado.TabIndex = 32;
-            btnInicio_empleado.Text = "INICIO";
-            btnInicio_empleado.UseVisualStyleBackColor = false;
-            btnInicio_empleado.Click += btnInicio_empleado_Click;
-            // 
-            // lblPacientes
-            // 
-            lblPacientes.AutoSize = true;
-            lblPacientes.BackColor = Color.Transparent;
-            lblPacientes.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPacientes.ForeColor = Color.FromArgb(155, 179, 232);
-            lblPacientes.Location = new Point(13, 481);
-            lblPacientes.Name = "lblPacientes";
-            lblPacientes.Size = new Size(135, 21);
-            lblPacientes.TabIndex = 31;
-            lblPacientes.Text = "> PACIENTES";
-            lblPacientes.Click += lblPacientes_Click;
-            // 
-            // lblMedicos_Especialidades
-            // 
-            lblMedicos_Especialidades.AutoSize = true;
-            lblMedicos_Especialidades.BackColor = Color.Transparent;
-            lblMedicos_Especialidades.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMedicos_Especialidades.ForeColor = Color.FromArgb(155, 179, 232);
-            lblMedicos_Especialidades.Location = new Point(13, 388);
-            lblMedicos_Especialidades.Name = "lblMedicos_Especialidades";
-            lblMedicos_Especialidades.Size = new Size(188, 42);
-            lblMedicos_Especialidades.TabIndex = 30;
-            lblMedicos_Especialidades.Text = "> MÉDICOS Y \r\n  ESPECIALIDADES";
-            lblMedicos_Especialidades.Click += lblMedicos_Especialidades_Click;
-            // 
-            // lblHistorial
-            // 
-            lblHistorial.AutoSize = true;
-            lblHistorial.BackColor = Color.Transparent;
-            lblHistorial.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHistorial.ForeColor = Color.FromArgb(155, 179, 232);
-            lblHistorial.Location = new Point(13, 299);
-            lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(167, 42);
-            lblHistorial.TabIndex = 29;
-            lblHistorial.Text = "> HISTORIAL DE \r\n  CONSULTAS";
-            lblHistorial.Click += lblHistorial_Click;
-            // 
-            // lblProgramadas
-            // 
-            lblProgramadas.AutoSize = true;
-            lblProgramadas.BackColor = Color.Transparent;
-            lblProgramadas.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblProgramadas.ForeColor = Color.FromArgb(155, 179, 232);
-            lblProgramadas.Location = new Point(13, 241);
-            lblProgramadas.Name = "lblProgramadas";
-            lblProgramadas.Size = new Size(244, 21);
-            lblProgramadas.TabIndex = 28;
-            lblProgramadas.Text = "> CITAS PROGRAMADAS";
-            lblProgramadas.Click += lblProgramadas_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(13, 14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(74, 62);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(0, 119, 182);
-            label1.Location = new Point(93, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(106, 20);
-            label1.TabIndex = 2;
-            label1.Text = "CITASMED";
             // 
             // label6
             // 
@@ -578,12 +451,21 @@
             iconPictureBox4.TabIndex = 65;
             iconPictureBox4.TabStop = false;
             // 
+            // ucMenuEmpleado1
+            // 
+            ucMenuEmpleado1.Location = new Point(2, 4);
+            ucMenuEmpleado1.Name = "ucMenuEmpleado1";
+            ucMenuEmpleado1.Size = new Size(281, 647);
+            ucMenuEmpleado1.TabIndex = 34;
+            ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
+            // 
             // FormEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1106, 649);
+            Controls.Add(ucMenuEmpleado1);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(panel5);
@@ -591,7 +473,6 @@
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -611,9 +492,6 @@
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel5.ResumeLayout(false);
@@ -640,13 +518,6 @@
         private Panel panel2;
         private Label label15;
         private Label label11;
-        private Panel panel1;
-        private Label lblPacientes;
-        private Label lblMedicos_Especialidades;
-        private Label lblHistorial;
-        private Label lblProgramadas;
-        private PictureBox pictureBox1;
-        private Label label1;
         private Label label6;
         private Label label5;
         private Label label4;
@@ -663,8 +534,6 @@
         private Label label27;
         private Label label18;
         private Label label19;
-        private Button btnInicio_empleado;
-        private Label lblNuevaCita;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
@@ -674,5 +543,6 @@
         private Panel panel7;
         private TextBox textBox1;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
+        private UcMenuEmpleado ucMenuEmpleado1;
     }
 }
