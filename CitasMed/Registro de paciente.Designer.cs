@@ -341,6 +341,7 @@
             txtEnfermedadCronica.Size = new Size(195, 37);
             txtEnfermedadCronica.TabIndex = 28;
             txtEnfermedadCronica.Text = "";
+            txtEnfermedadCronica.TextChanged += txtEnfermedadCronica_TextChanged;
             // 
             // button1
             // 

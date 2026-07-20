@@ -6,130 +6,130 @@ namespace CitasMed
 {
     public partial class Form1 : Form
     {
+        private const string CONTRASENA = "faul";
+
         public Form1()
         {
             InitializeComponent();
 
-            // Busca automáticamente el botón que dice "Iniciar sesión"
             Button botonIniciar = BuscarBotonIniciar(this);
 
             if (botonIniciar != null)
             {
                 botonIniciar.Click -= btnIniciarSesion_Click;
+                botonIniciar.Click -= button1_Click;
                 botonIniciar.Click += btnIniciarSesion_Click;
             }
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            PrepararRol("Administrador");
+        }
+
+        private void PrepararRol(string rol)
+        {
             tntTitulo.TextAlign = ContentAlignment.MiddleCenter;
-            tntTitulo.Text = "Administrador";
+            tntTitulo.Text = rol;
 
             lblPassword.Text = "Ingrese la contraseña";
             lblPassword.Visible = true;
 
             textContrasena.Visible = true;
-            textContrasena.UseSystemPasswordChar = true;
+
+            textContrasena.UseSystemPasswordChar = false;
+            textContrasena.PasswordChar = '\0';
+
+            textContrasena.Clear();
+            textContrasena.Focus();
         }
 
         private void lblAdministrador_LinkClicked(
             object sender,
             LinkLabelLinkClickedEventArgs e)
         {
-            tntTitulo.Text = "Administrador";
-
-            lblPassword.Text = "Ingrese la contraseña";
-            lblPassword.Visible = true;
-
-            textContrasena.Visible = true;
-            textContrasena.UseSystemPasswordChar = true;
-            textContrasena.Clear();
-            textContrasena.Focus();
+            PrepararRol("Administrador");
         }
 
         private void lblDoctor_LinkClicked(
             object sender,
             LinkLabelLinkClickedEventArgs e)
         {
-            tntTitulo.Text = "Doctor";
-
-            lblPassword.Text = "Ingrese su usuario";
-            lblPassword.Visible = true;
-
-            textContrasena.Visible = true;
-            textContrasena.UseSystemPasswordChar = false;
-            textContrasena.Clear();
-            textContrasena.Focus();
+            PrepararRol("Doctor");
         }
 
         private void label4_LinkClicked(
             object sender,
             LinkLabelLinkClickedEventArgs e)
         {
-            tntTitulo.Text = "Empleado";
-            lblPassword.Text = "";
-            lblPassword.Visible = true;
-            textContrasena.Visible = false;
-            textContrasena.UseSystemPasswordChar = false;
-            textContrasena.Clear();
-            textContrasena.Focus();
+            PrepararRol("Empleado");
         }
 
-        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        private void btnIniciarSesion_Click(
+            object sender,
+            EventArgs e)
         {
             string datoIngresado = textContrasena.Text.Trim();
+            string rolSeleccionado = tntTitulo.Text.Trim();
 
-            if (tntTitulo.Text == "Administrador")
+            if (datoIngresado == "")
             {
-                if (datoIngresado == "")
-                {
-                    MessageBox.Show(
-                        "Ingrese la contraseña.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Ingrese la contraseña.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
 
-                    textContrasena.Focus();
-                }
-                else if (datoIngresado == "faul")
-                {
-                    MessageBox.Show(
-                        "Bienvenido administrador del sistema.",
-                        "Acceso correcto",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Contraseña incorrecta.",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-
-                    textContrasena.Clear();
-                    textContrasena.Focus();
-                }
+                textContrasena.Focus();
+                return;
             }
-            else if (tntTitulo.Text == "Doctor")
+
+            if (datoIngresado != CONTRASENA)
             {
-                if (datoIngresado == "")
-                {
-                    MessageBox.Show("Ingrese la contraseña.");
-                    textContrasena.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Bienvenido doctor: " + datoIngresado);
-                }
+                MessageBox.Show(
+                    "Contraseña incorrecta.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+
+                textContrasena.Clear();
+                textContrasena.Focus();
+                return;
+            }
+
+            Form formularioDestino;
+
+            if (rolSeleccionado == "Administrador")
+            {
+                formularioDestino = new FormAdministrador();
+            }
+            else if (rolSeleccionado == "Doctor")
+            {
+                formularioDestino = new FormDoctor();
             }
             else
             {
-                MessageBox.Show("BIENVENIDO");
+                formularioDestino = new FormEmpleado();
             }
 
+            MessageBox.Show(
+                "Bienvenido " + rolSeleccionado.ToLower() + ".",
+                "Acceso correcto",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
 
+            formularioDestino.FormClosed += (s, args) =>
+            {
+                this.Show();
+                textContrasena.Clear();
+                textContrasena.Focus();
+            };
+
+            formularioDestino.Show();
+            this.Hide();
         }
 
         private Button BuscarBotonIniciar(Control contenedor)
@@ -144,29 +144,41 @@ namespace CitasMed
                     return boton;
                 }
 
-                Button botonEncontrado = BuscarBotonIniciar(control);
+                Button botonEncontrado =
+                    BuscarBotonIniciar(control);
 
                 if (botonEncontrado != null)
                 {
                     return botonEncontrado;
                 }
             }
+
             return null;
         }
 
-        // Estos métodos se conservan porque pueden estar conectados
-        // desde el diseñador de Windows Forms.
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btnIniciarSesion_Click(sender, e);
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
         }
 
         private void lblPassword_Click(object sender, EventArgs e)
         {
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -179,36 +191,17 @@ namespace CitasMed
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (tntTitulo.Text == "Administrador")
-            {
-                FormAdministrador administrador = new FormAdministrador();
-                administrador.Show();
-            }
-            else if (tntTitulo.Text == "Doctor")
-            {
-                FormDoctor doctor = new FormDoctor();
-                doctor.Show();
-            }
-            else
-            {
-                FormEmpleado empleado = new FormEmpleado();
-                empleado.Show();
-            }
-            this.Hide();
-        }
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void iconPictureBox1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconPictureBox3_Click(object sender, EventArgs e)
         {
 
         }

@@ -13,15 +13,35 @@ namespace CitasMed
 {
     public partial class UcMenuEmpleado : UserControl
     {
-        public event EventHandler InicioClick;
-        public event EventHandler NuevaCitaClick;
-        public event EventHandler ProgramadasClick;
-        public event EventHandler HistorialClick;
-        public event EventHandler MedicosClick;
-        public event EventHandler PacientesClick;
+        public event EventHandler? InicioClick;
+        public event EventHandler? NuevaCitaClick;
+        public event EventHandler? ProgramadasClick;
+        public event EventHandler? HistorialClick;
+        public event EventHandler? MedicosClick;
+        public event EventHandler? PacientesClick;
+
         public UcMenuEmpleado()
         {
             InitializeComponent();
+
+            btnInicio_empleado.Click -= btnInicio_empleado_Click;
+            btnInicio_empleado.Click += btnInicio_empleado_Click;
+
+            lblNuevaCita.Click -= lblNuevaCita_Click;
+            lblNuevaCita.Click += lblNuevaCita_Click;
+
+            lblProgramadas.Click -= lblProgramadas_Click;
+            lblProgramadas.Click += lblProgramadas_Click;
+
+            lblHistorial.Click -= lblHistorial_Click;
+            lblHistorial.Click += lblHistorial_Click;
+
+            lblMedicos_Especialidades.Click -= lblMedicos_Especialidades_Click;
+            lblMedicos_Especialidades.Click += lblMedicos_Especialidades_Click;
+
+            lblPacientes.Click -= lblPacientes_Click;
+            lblPacientes.Click += lblPacientes_Click;
+
             btnInicio_empleado.FlatStyle = FlatStyle.Flat;
             btnInicio_empleado.FlatAppearance.BorderSize = 0;
             btnInicio_empleado.TabStop = false;

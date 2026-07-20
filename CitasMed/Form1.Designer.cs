@@ -188,6 +188,7 @@
             iconPictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             iconPictureBox3.TabIndex = 17;
             iconPictureBox3.TabStop = false;
+            iconPictureBox3.Click += iconPictureBox3_Click;
             // 
             // iconPictureBox2
             // 
