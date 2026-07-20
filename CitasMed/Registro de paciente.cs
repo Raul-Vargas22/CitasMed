@@ -129,7 +129,7 @@ namespace CitasMed
                 MessageBox.Show("Error al cargar especialidades: " + ex.Message);
             }
         }
-        
+
 
         private void Registro_de_paciente_Load(object sender, EventArgs e)
         {
@@ -162,6 +162,11 @@ namespace CitasMed
         }
 
         private void txtApellidoPaterno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEnfermedadCronica_TextChanged(object sender, EventArgs e)
         {
 
         }

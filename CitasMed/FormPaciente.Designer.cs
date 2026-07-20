@@ -265,7 +265,6 @@
             ucMenuEmpleado1.Name = "ucMenuEmpleado1";
             ucMenuEmpleado1.Size = new Size(281, 647);
             ucMenuEmpleado1.TabIndex = 113;
-            ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
             // 
             // panel7
             // 

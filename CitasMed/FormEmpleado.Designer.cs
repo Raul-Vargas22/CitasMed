@@ -63,7 +63,6 @@
             panel7 = new Panel();
             textBox1 = new TextBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            ucMenuEmpleado1 = new UcMenuEmpleado();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -427,12 +426,13 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(296, 51);
             panel7.TabIndex = 64;
+            panel7.Paint += panel7_Paint;
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(47, 14);
+            textBox1.Location = new Point(47, 28);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 20);
             textBox1.TabIndex = 0;
@@ -451,21 +451,12 @@
             iconPictureBox4.TabIndex = 65;
             iconPictureBox4.TabStop = false;
             // 
-            // ucMenuEmpleado1
-            // 
-            ucMenuEmpleado1.Location = new Point(2, 4);
-            ucMenuEmpleado1.Name = "ucMenuEmpleado1";
-            ucMenuEmpleado1.Size = new Size(281, 647);
-            ucMenuEmpleado1.TabIndex = 34;
-            ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
-            // 
             // FormEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(1106, 649);
-            Controls.Add(ucMenuEmpleado1);
             Controls.Add(panel7);
             Controls.Add(panel6);
             Controls.Add(panel5);
