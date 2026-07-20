@@ -17,7 +17,7 @@ namespace CitasMed
         {
             InitializeComponent();
             RedondearPanel(panel7, 20);
-            RedondearBoton(btnGuardar,20);
+            RedondearBoton(btnGuardar, 20);
         }
 
         private void btnInicio_Doc_Click(object sender, EventArgs e)
