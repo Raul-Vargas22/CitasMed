@@ -32,17 +32,6 @@
             label15 = new Label();
             label11 = new Label();
 
-
-            panel1 = new Panel();
-            btnInicio_admin = new Button();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            label23 = new Label();
-            label22 = new Label();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
