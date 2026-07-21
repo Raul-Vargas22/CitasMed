@@ -112,7 +112,10 @@ namespace CitasMed
                 {
                     conexion.Open();
 
-                    string consulta = "SELECT id_especialidad, nombre FROM Especialidad";
+                    string consulta = @"
+                        SELECT id_especialidad, nombre
+                        FROM Especialidad
+                        ORDER BY nombre;";
 
                     MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
                     DataTable tabla = new DataTable();
@@ -167,6 +170,11 @@ namespace CitasMed
         }
 
         private void txtEnfermedadCronica_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

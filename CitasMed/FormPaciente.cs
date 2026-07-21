@@ -118,10 +118,14 @@ namespace CitasMed
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            FormAdministrador admin = new FormAdministrador();
-            admin.Show();
-            this.Hide();
+            FormEmpleado empleado = new FormEmpleado();
+            empleado.Show();
+            this.Close();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

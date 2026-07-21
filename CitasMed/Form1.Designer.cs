@@ -42,6 +42,7 @@
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
+            btnVerPassword = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
@@ -235,12 +236,26 @@
             iconPictureBox5.TabIndex = 20;
             iconPictureBox5.TabStop = false;
             // 
+            // btnVerPassword
+            // 
+            btnVerPassword.FlatStyle = FlatStyle.Flat;
+            btnVerPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            btnVerPassword.IconColor = Color.Black;
+            btnVerPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnVerPassword.Location = new Point(676, 385);
+            btnVerPassword.Name = "btnVerPassword";
+            btnVerPassword.Size = new Size(49, 41);
+            btnVerPassword.TabIndex = 21;
+            btnVerPassword.UseVisualStyleBackColor = true;
+            btnVerPassword.Click += btnVerPassword_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1017, 646);
+            Controls.Add(btnVerPassword);
             Controls.Add(iconPictureBox5);
             Controls.Add(iconPictureBox4);
             Controls.Add(iconPictureBox2);
@@ -284,5 +299,6 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
+        private FontAwesome.Sharp.IconButton btnVerPassword;
     }
 }

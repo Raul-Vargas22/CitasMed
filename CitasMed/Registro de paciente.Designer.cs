@@ -121,6 +121,7 @@
             label3.Size = new Size(164, 28);
             label3.TabIndex = 3;
             label3.Text = "Apellido paterno:";
+            label3.Click += label3_Click;
             // 
             // label4
             // 
