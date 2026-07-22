@@ -12,6 +12,9 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            btnVerPassword.Click -= btnVerPassword_Click;
+            btnVerPassword.Click += btnVerPassword_Click;
+
             Button botonIniciar = BuscarBotonIniciar(this);
 
             if (botonIniciar != null)
@@ -36,9 +39,8 @@ namespace CitasMed
             lblPassword.Visible = true;
 
             textContrasena.Visible = true;
-
             textContrasena.UseSystemPasswordChar = false;
-            textContrasena.PasswordChar = '\0';
+            textContrasena.PasswordChar = '●';
 
             textContrasena.Clear();
             textContrasena.Focus();
@@ -163,7 +165,18 @@ namespace CitasMed
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult respuesta = MessageBox.Show
+            (
+                "¿Estás seguro de querer salir?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (respuesta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -204,6 +217,15 @@ namespace CitasMed
         private void iconPictureBox3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVerPassword_Click(object sender, EventArgs e)
+        {
+            textContrasena.UseSystemPasswordChar =! textContrasena.UseSystemPasswordChar;
+
+            textContrasena.Focus();
+            textContrasena.SelectionStart =
+            textContrasena.Text.Length;
         }
     }
 }

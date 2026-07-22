@@ -51,7 +51,7 @@
             label8 = new Label();
             button3 = new Button();
             button2 = new Button();
-            button4 = new Button();
+            btnNuevaCita_Click = new Button();
             ucMenuEmpleado1 = new UcMenuEmpleado();
             panel7 = new Panel();
             textBox1 = new TextBox();
@@ -249,15 +249,16 @@
             button2.Text = "EDITAR";
             button2.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnNuevaCita_Click
             // 
-            button4.BackColor = Color.Turquoise;
-            button4.Location = new Point(333, 587);
-            button4.Name = "button4";
-            button4.Size = new Size(140, 50);
-            button4.TabIndex = 110;
-            button4.Text = "NUEVA CITA";
-            button4.UseVisualStyleBackColor = false;
+            btnNuevaCita_Click.BackColor = Color.Turquoise;
+            btnNuevaCita_Click.Location = new Point(333, 587);
+            btnNuevaCita_Click.Name = "btnNuevaCita_Click";
+            btnNuevaCita_Click.Size = new Size(140, 50);
+            btnNuevaCita_Click.TabIndex = 110;
+            btnNuevaCita_Click.Text = "NUEVA CITA";
+            btnNuevaCita_Click.UseVisualStyleBackColor = false;
+            btnNuevaCita_Click.Click += button4_Click;
             // 
             // ucMenuEmpleado1
             // 
@@ -308,7 +309,7 @@
             Controls.Add(ucMenuEmpleado1);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button4);
+            Controls.Add(btnNuevaCita_Click);
             Controls.Add(dgvPacientes);
             Controls.Add(pictureBox3);
             Controls.Add(label7);
@@ -365,7 +366,7 @@
         private Label label8;
         private Button button3;
         private Button button2;
-        private Button button4;
+        private Button btnNuevaCita_Click;
         private UcMenuEmpleado ucMenuEmpleado1;
         private Panel panel7;
         private TextBox textBox1;
