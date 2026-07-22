@@ -51,7 +51,6 @@
             label8 = new Label();
             button3 = new Button();
             button2 = new Button();
-            btnNuevaCita_Click = new Button();
             ucMenuEmpleado1 = new UcMenuEmpleado();
             panel7 = new Panel();
             textBox1 = new TextBox();
@@ -232,33 +231,24 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(756, 587);
+            button3.Location = new Point(456, 587);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 112;
             button3.Text = "ELIMINAR";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(561, 587);
+            button2.Location = new Point(305, 587);
             button2.Name = "button2";
             button2.Size = new Size(140, 50);
             button2.TabIndex = 111;
             button2.Text = "EDITAR";
             button2.UseVisualStyleBackColor = false;
-            // 
-            // btnNuevaCita_Click
-            // 
-            btnNuevaCita_Click.BackColor = Color.Turquoise;
-            btnNuevaCita_Click.Location = new Point(333, 587);
-            btnNuevaCita_Click.Name = "btnNuevaCita_Click";
-            btnNuevaCita_Click.Size = new Size(140, 50);
-            btnNuevaCita_Click.TabIndex = 110;
-            btnNuevaCita_Click.Text = "NUEVA CITA";
-            btnNuevaCita_Click.UseVisualStyleBackColor = false;
-            btnNuevaCita_Click.Click += button4_Click;
+            button2.Click += button2_Click;
             // 
             // ucMenuEmpleado1
             // 
@@ -309,7 +299,6 @@
             Controls.Add(ucMenuEmpleado1);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(btnNuevaCita_Click);
             Controls.Add(dgvPacientes);
             Controls.Add(pictureBox3);
             Controls.Add(label7);
@@ -366,7 +355,6 @@
         private Label label8;
         private Button button3;
         private Button button2;
-        private Button btnNuevaCita_Click;
         private UcMenuEmpleado ucMenuEmpleado1;
         private Panel panel7;
         private TextBox textBox1;

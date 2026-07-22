@@ -35,41 +35,34 @@ namespace CitasMed
         {
             try
             {
-                using MySqlConnection conexion =
-                ConexionBD.ObtenerConexion();
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
 
-                conexion.Open();
-
-                string consulta = @"
-                SELECT
+                    string consulta = @"SELECT
                     m.id_medico AS ID,
                     m.nombre AS Nombre,
                     m.apellido_paterno AS 'Apellido paterno',
                     m.apellido_materno AS 'Apellido materno',
                     m.cedula AS Cedula,
                     e.nombre AS Especialidad
-                FROM Medico m
-                LEFT JOIN Especialidad e
-                    ON m.id_especialidad = e.id_especialidad
-                ORDER BY m.id_medico;";
+                    FROM Medico m";
 
-                using MySqlDataAdapter adaptador =
-                new MySqlDataAdapter(consulta, conexion);
+                    MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
+                    DataTable tabla = new DataTable();
 
-                DataTable tabla = new DataTable();
-                adaptador.Fill(tabla);
+                    adaptador.Fill(tabla);
 
-                dataGridView1.DataSource = null;
-                dataGridView1.Columns.Clear();
-                dataGridView1.AutoGenerateColumns = true;
-                dataGridView1.DataSource = tabla;
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.AutoGenerateColumns = true;
+                    dataGridView1.DataSource = tabla;
 
-                dataGridView1.ReadOnly = true;
-                dataGridView1.AllowUserToAddRows = false;
-                dataGridView1.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
-                dataGridView1.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.ReadOnly = false;
+                    dataGridView1.AllowUserToAddRows = false;
+                    dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
             }
             catch (Exception ex)
             {

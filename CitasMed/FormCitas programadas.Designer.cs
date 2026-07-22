@@ -47,7 +47,6 @@
             pictureBox2 = new PictureBox();
             label10 = new Label();
             label8 = new Label();
-            button4 = new Button();
             button2 = new Button();
             button3 = new Button();
             panel7 = new Panel();
@@ -71,6 +70,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1033, 511);
             dataGridView1.TabIndex = 72;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -215,20 +215,10 @@
             label8.Size = new Size(0, 20);
             label8.TabIndex = 65;
             // 
-            // button4
-            // 
-            button4.BackColor = Color.Turquoise;
-            button4.Location = new Point(326, 593);
-            button4.Name = "button4";
-            button4.Size = new Size(140, 50);
-            button4.TabIndex = 78;
-            button4.Text = "NUEVA CITA";
-            button4.UseVisualStyleBackColor = false;
-            // 
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(491, 593);
+            button2.Location = new Point(326, 593);
             button2.Name = "button2";
             button2.Size = new Size(140, 50);
             button2.TabIndex = 79;
@@ -238,7 +228,7 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(672, 593);
+            button3.Location = new Point(488, 601);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 80;
@@ -298,7 +288,6 @@
             Controls.Add(panel7);
             Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button4);
             Controls.Add(dataGridView1);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -353,7 +342,6 @@
         private PictureBox pictureBox2;
         private Label label10;
         private Label label8;
-        private Button button4;
         private Button button2;
         private Button button3;
         private Panel panel7;
