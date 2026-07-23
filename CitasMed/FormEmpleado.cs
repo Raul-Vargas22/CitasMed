@@ -1009,13 +1009,9 @@ namespace CitasMed
             formulario.Show();
         }
 
-        private void btnInicio_empleado_Click(
-            object? sender,
-            EventArgs e)
+        private void btnInicio_empleado_Click(object? sender, EventArgs e)
         {
-            menuEmpleado.SeleccionarInicio();
-            Show();
-            BringToFront();
+            this.Close();
         }
 
         private void lblNuevaCita_Click(

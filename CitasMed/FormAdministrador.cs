@@ -41,18 +41,16 @@ namespace CitasMed
 
         private void btnInicio_admin_Click(object sender, EventArgs e)
         {
-            Form1 principal = new Form1();
-            principal.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void FormAdministrador_Load(object sender, EventArgs e)
         {
 
         }
-        private void lblPersonalMedico_Click (object sender, EventArgs e)
+        private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
-            FormPersonalMedico personal =new FormPersonalMedico();
+            FormPersonalMedico personal = new FormPersonalMedico();
             personal.Show();
             this.Hide();
 
@@ -78,5 +76,16 @@ namespace CitasMed
             panel.Region = new Region(path);
         }
 
+        private void ucMenuAdministrador1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRegistrar_Click(object sender, EventArgs e)
+        {
+            FormPaciente registro = new FormPaciente();
+            registro.Show();
+            this.Hide();
+        }
     }
 }

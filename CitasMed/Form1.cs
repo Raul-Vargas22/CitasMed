@@ -12,8 +12,8 @@ namespace CitasMed
         {
             InitializeComponent();
 
-            btnVerPassword.Click -= btnVerPassword_Click;
-            btnVerPassword.Click += btnVerPassword_Click;
+            //btnVerPassword.Click -= btnVerPassword_Click;
+            // btnVerPassword.Click += btnVerPassword_Click;
 
             Button botonIniciar = BuscarBotonIniciar(this);
 
@@ -161,23 +161,10 @@ namespace CitasMed
         private void button1_Click(object sender, EventArgs e)
         {
             btnIniciarSesion_Click(sender, e);
+            this.Hide();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show
-            (
-                "¿Estás seguro de querer salir?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
 
-            if (respuesta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -221,11 +208,27 @@ namespace CitasMed
 
         private void btnVerPassword_Click(object sender, EventArgs e)
         {
-            textContrasena.UseSystemPasswordChar =! textContrasena.UseSystemPasswordChar;
+            textContrasena.UseSystemPasswordChar = !textContrasena.UseSystemPasswordChar;
 
             textContrasena.Focus();
             textContrasena.SelectionStart =
             textContrasena.Text.Length;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show
+        (
+            "¿Estás seguro de querer salir?",
+            "Confirmar salida",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        );
+
+            if (respuesta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
