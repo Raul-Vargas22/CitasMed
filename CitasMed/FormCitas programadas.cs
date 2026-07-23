@@ -106,15 +106,11 @@ namespace CitasMed
             button3.FlatStyle = FlatStyle.Flat;
             button3.FlatAppearance.BorderSize = 0;
 
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.FlatAppearance.BorderSize = 0;
-
 
             RedondearPanel(panel7, 20);
 
             RedondearBoton(button2, 20);
             RedondearBoton(button3, 20);
-            RedondearBoton(button4, 20);
 
         }
 
@@ -129,6 +125,11 @@ namespace CitasMed
         }
 
         private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

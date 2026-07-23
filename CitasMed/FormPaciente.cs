@@ -16,7 +16,9 @@ namespace CitasMed
     {
         public FormPaciente()
         {
+
             InitializeComponent();
+
             ucMenuEmpleado1.SeleccionarPacientes();
             ucMenuEmpleado1.InicioClick += btnRegresar_Click;
             ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
@@ -36,8 +38,6 @@ namespace CitasMed
         {
             CargarPacientes();
         }
-
-
 
         private void lblNueva_Click(object sender, EventArgs e)
         {
@@ -97,6 +97,15 @@ namespace CitasMed
                     dgvPacientes.Columns.Clear();
                     dgvPacientes.AutoGenerateColumns = true;
                     dgvPacientes.DataSource = tabla;
+                    dgvPacientes.ReadOnly = true;
+                    dgvPacientes.SelectionMode =
+                    DataGridViewSelectionMode.FullRowSelect;
+                    dgvPacientes.MultiSelect = false;
+                    dgvPacientes.AllowUserToAddRows = false;
+                    dgvPacientes.ReadOnly = false;
+                    dgvPacientes.Columns["CLAVE"].ReadOnly = true;
+                    dgvPacientes.AllowUserToAddRows = false;
+                    dgvPacientes.Columns[0].ReadOnly = true;
                 }
             }
             catch (Exception ex)
@@ -123,9 +132,93 @@ namespace CitasMed
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Entró al botón Editar");
+
+            if (dgvPacientes.CurrentRow == null ||
+                dgvPacientes.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Selecciona un paciente para editar.");
+                return;
+            }
+
+            int idPaciente = Convert.ToInt32(
+                dgvPacientes.CurrentRow.Cells["CLAVE"].Value);
+
+            Registro_de_paciente formulario =
+                new Registro_de_paciente(idPaciente);
+
+            formulario.ShowDialog();
+
+            CargarPacientes();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
 
+            if (dgvPacientes.CurrentRow == null ||
+                dgvPacientes.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show("Selecciona un paciente.");
+                return;
+            }
+
+            int idPaciente = Convert.ToInt32(
+                dgvPacientes.CurrentRow.Cells[0].Value);
+
+            string nombre = Convert.ToString(
+                dgvPacientes.CurrentRow.Cells[2].Value);
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Estás seguro de eliminar al paciente " +
+                nombre + "?",
+                "Eliminar paciente",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (respuesta != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"DELETE FROM Paciente
+                                WHERE id_paciente = @idPaciente";
+
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@idPaciente", idPaciente);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Paciente eliminado correctamente.");
+                CargarPacientes();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1451)
+                {
+                    MessageBox.Show(
+                        "No se puede eliminar porque el paciente tiene citas registradas.");
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Error al eliminar: " + ex.Message);
+                }
+            }
         }
+
     }
 }
