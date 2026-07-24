@@ -17,6 +17,12 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            button3.Enabled = true;
+            button3.BringToFront();
+
+            button3.Click -= button3_Click;
+            button3.Click += button3_Click;
+
             ucMenuEmpleado1.SeleccionarPacientes();
             ucMenuEmpleado1.InicioClick += btnRegresar_Click;
             ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
@@ -43,9 +49,11 @@ namespace CitasMed
 
         private void lblNueva_Click(object sender, EventArgs e)
         {
-            Registro_de_paciente registro = new Registro_de_paciente();
-            registro.Show();
-            this.Hide();
+            using (Registro_de_paciente registro =
+                   new Registro_de_paciente())
+            {
+                registro.ShowDialog(this);
+            }
         }
 
         private void lblProgramada_Click(object sender, EventArgs e)

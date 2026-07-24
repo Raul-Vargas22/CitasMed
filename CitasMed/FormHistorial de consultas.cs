@@ -29,7 +29,7 @@ namespace CitasMed
         {
             GraphicsPath ruta = new GraphicsPath();
 
-            int radio = 20; 
+            int radio = 20;
 
             ruta.StartFigure();
             ruta.AddArc(0, 0, radio, radio, 180, 90);
@@ -58,9 +58,11 @@ namespace CitasMed
 
         private void lblNueva_Click(object sender, EventArgs e)
         {
-            Registro_de_paciente registro = new Registro_de_paciente();
-            registro.Show();
-            this.Hide();
+            using (Registro_de_paciente registro =
+                   new Registro_de_paciente())
+            {
+                registro.ShowDialog(this);
+            }
         }
 
         private void lblProgramada_Click(object sender, EventArgs e)
@@ -90,6 +92,11 @@ namespace CitasMed
         }
 
         private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

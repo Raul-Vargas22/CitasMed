@@ -213,16 +213,6 @@ namespace CitasMed
 
         private void btnMenu_empleado_Click_1(object sender, EventArgs e)
         {
-            if (modoEdicion)
-            {
-                // Cierra la edición y regresa a la tabla de pacientes
-                this.Close();
-                return;
-            }
-
-            // Cuando se abre para registrar un paciente nuevo
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
             this.Close();
         }
 
