@@ -448,6 +448,7 @@
             lblMedicos_especialidades.Size = new Size(220, 50);
             lblMedicos_especialidades.TabIndex = 67;
             lblMedicos_especialidades.Text = "> MEDICOS Y  \r\nESPECIALIDADES";
+            lblMedicos_especialidades.Click += lblMedicos_especialidades_Click;
             // 
             // lblConsultas
             // 
@@ -461,6 +462,7 @@
             lblConsultas.Size = new Size(205, 50);
             lblConsultas.TabIndex = 68;
             lblConsultas.Text = "> HISTORIAL DE \r\nCONSULTAS";
+            lblConsultas.Click += lblConsultas_Click;
             // 
             // lblProgramadas
             // 

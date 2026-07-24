@@ -79,5 +79,15 @@ namespace CitasMed
             registro.Show();
             this.Close();
         }
+
+        private void lblConsultas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMedicos_especialidades_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

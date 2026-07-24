@@ -245,6 +245,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(490, 50);
             txtUsuario.TabIndex = 23;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // panel1
             // 

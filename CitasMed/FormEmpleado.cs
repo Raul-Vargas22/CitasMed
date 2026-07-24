@@ -63,19 +63,13 @@ namespace CitasMed
                 .OrderByDescending(textBox => textBox.Width)
                 .FirstOrDefault();
 
-            controlBuscar = BuscarControlPorTexto(
-                this,
-                "Buscar por paciente"
+            controlBuscar = BuscarControlPorTexto( this,"Buscar por paciente"
             );
 
-            controlEditar = BuscarControlPorTexto(
-                this,
-                "Editar cita"
+            controlEditar = BuscarControlPorTexto(this,"Editar cita"
             );
 
-            controlEliminar = BuscarControlPorTexto(
-                this,
-                "Eliminar cita"
+            controlEliminar = BuscarControlPorTexto(this,"Eliminar cita"
             );
 
             if (txtBusquedaCitas != null)
@@ -288,8 +282,7 @@ namespace CitasMed
                 Width = 110
             };
 
-            btnCerrar.Click += (sender, e) =>
-                ventanaResultados.Close();
+            btnCerrar.Click += (sender, e) => ventanaResultados.Close();
 
             Panel panelInferior = new Panel
             {
@@ -376,8 +369,7 @@ namespace CitasMed
                         return;
                     }
 
-                    fecha = Convert.ToDateTime(
-                        lector["fecha"]
+                    fecha = Convert.ToDateTime(lector["fecha"]
                     );
 
                     hora = (TimeSpan)lector["hora"];

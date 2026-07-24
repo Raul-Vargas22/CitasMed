@@ -78,7 +78,7 @@ namespace CitasMed
             string datousuario = txtUsuario.Text.Trim();
             string rolSeleccionado = tntTitulo.Text.Trim();
 
-            if (datopassword == "" && datousuario=="")
+            if (datopassword == "" && datousuario == "")
             {
                 MessageBox.Show(
                     "Favor de llenar todos los campos.",
@@ -227,6 +227,11 @@ namespace CitasMed
             {
                 textContrasena.UseSystemPasswordChar = false;
             }
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
