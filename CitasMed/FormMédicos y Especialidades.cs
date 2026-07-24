@@ -35,46 +35,51 @@ namespace CitasMed
         {
             try
             {
-                using MySqlConnection conexion =
-                ConexionBD.ObtenerConexion();
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
 
-                conexion.Open();
-
-                string consulta = @"
+                    string consulta = @"
                 SELECT
-                    m.id_medico AS ID,
-                    m.nombre AS Nombre,
-                    m.apellido_paterno AS 'Apellido paterno',
-                    m.apellido_materno AS 'Apellido materno',
-                    m.cedula AS Cedula,
-                    e.nombre AS Especialidad
+                    m.nombre AS NOMBRE,
+                    m.apellido_paterno AS 'APELLIDO PATERNO',
+                    m.apellido_materno AS 'APELLIDO MATERNO',
+                    e.nombre AS ESPECIALIDAD,
+                    m.cedula AS CÉDULA
                 FROM Medico m
                 LEFT JOIN Especialidad e
                     ON m.id_especialidad = e.id_especialidad
-                ORDER BY m.id_medico;";
+                ORDER BY m.nombre;";
 
-                using MySqlDataAdapter adaptador =
-                new MySqlDataAdapter(consulta, conexion);
+                    MySqlDataAdapter adaptador =
+                        new MySqlDataAdapter(consulta, conexion);
 
-                DataTable tabla = new DataTable();
-                adaptador.Fill(tabla);
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
 
-                dataGridView1.DataSource = null;
-                dataGridView1.Columns.Clear();
-                dataGridView1.AutoGenerateColumns = true;
-                dataGridView1.DataSource = tabla;
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.AutoGenerateColumns = true;
+                    dataGridView1.DataSource = tabla;
 
-                dataGridView1.ReadOnly = true;
-                dataGridView1.AllowUserToAddRows = false;
-                dataGridView1.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
-                dataGridView1.AutoSizeColumnsMode =
-                DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.AllowUserToAddRows = false;
+                    dataGridView1.AllowUserToDeleteRows = false;
+                    dataGridView1.EditMode =
+                        DataGridViewEditMode.EditProgrammatically;
+
+                    dataGridView1.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridView1.MultiSelect = false;
+
+                    dataGridView1.AutoSizeColumnsMode =
+                        DataGridViewAutoSizeColumnsMode.Fill;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show
-                (
+                MessageBox.Show(
                     "Error al cargar los médicos:\n" + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,

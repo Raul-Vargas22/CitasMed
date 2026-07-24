@@ -15,27 +15,20 @@ namespace CitasMed
     public partial class FormEmpleado : Form
     {
         private UcMenuEmpleado menuEmpleado = null!;
-
         private TextBox? txtBusquedaCitas;
         private Control? controlBuscar;
         private Control? controlEditar;
         private Control? controlEliminar;
-
         private bool accionesConfiguradas = false;
-
         public FormEmpleado()
         {
             InitializeComponent();
-
             CrearMenuEmpleado();
             ConectarEventosMenu();
-
             RedondearPanel(panel6, 25);
             RedondearPanel(panel5, 25);
             RedondearPanel(panel7, 25);
-
             menuEmpleado.SeleccionarInicio();
-
             Shown -= FormEmpleado_Shown;
             Shown += FormEmpleado_Shown;
         }
@@ -70,19 +63,13 @@ namespace CitasMed
                 .OrderByDescending(textBox => textBox.Width)
                 .FirstOrDefault();
 
-            controlBuscar = BuscarControlPorTexto(
-                this,
-                "Buscar por paciente"
+            controlBuscar = BuscarControlPorTexto( this,"Buscar por paciente"
             );
 
-            controlEditar = BuscarControlPorTexto(
-                this,
-                "Editar cita"
+            controlEditar = BuscarControlPorTexto(this,"Editar cita"
             );
 
-            controlEliminar = BuscarControlPorTexto(
-                this,
-                "Eliminar cita"
+            controlEliminar = BuscarControlPorTexto(this,"Eliminar cita"
             );
 
             if (txtBusquedaCitas != null)
@@ -125,9 +112,7 @@ namespace CitasMed
             accionesConfiguradas = true;
         }
 
-        private void txtBusquedaCitas_KeyDown(
-            object? sender,
-            KeyEventArgs e)
+        private void txtBusquedaCitas_KeyDown(object? sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -136,23 +121,17 @@ namespace CitasMed
             }
         }
 
-        private void controlBuscar_Click(
-            object? sender,
-            EventArgs e)
+        private void controlBuscar_Click(object? sender, EventArgs e)
         {
             BuscarCitas();
         }
 
-        private void controlEditar_Click(
-            object? sender,
-            EventArgs e)
+        private void controlEditar_Click(object? sender, EventArgs e)
         {
             EditarCita();
         }
 
-        private void controlEliminar_Click(
-            object? sender,
-            EventArgs e)
+        private void controlEliminar_Click(object? sender, EventArgs e)
         {
             EliminarCita();
         }
@@ -270,9 +249,7 @@ namespace CitasMed
             }
         }
 
-        private void MostrarResultados(
-            string titulo,
-            DataTable tabla)
+        private void MostrarResultados(string titulo, DataTable tabla)
         {
             Form ventanaResultados = new Form
             {
@@ -305,8 +282,7 @@ namespace CitasMed
                 Width = 110
             };
 
-            btnCerrar.Click += (sender, e) =>
-                ventanaResultados.Close();
+            btnCerrar.Click += (sender, e) => ventanaResultados.Close();
 
             Panel panelInferior = new Panel
             {
@@ -322,7 +298,6 @@ namespace CitasMed
 
             ventanaResultados.ShowDialog(this);
         }
-
         private void EditarCita()
         {
             string resultado = PedirDato(
@@ -358,13 +333,13 @@ namespace CitasMed
                     ObtenerColumnaEstado(conexion);
 
                 string consulta = $@"
-                    SELECT
-                        fecha,
-                        hora,
-                        motivo,
-                        {columnaEstado}
-                    FROM Cita
-                    WHERE id_cita = @idCita;";
+            SELECT
+                fecha,
+                hora,
+                motivo,
+                {columnaEstado}
+            FROM Cita
+            WHERE id_cita = @idCita;";
 
                 using MySqlCommand comando =
                     new MySqlCommand(consulta, conexion);
@@ -394,8 +369,7 @@ namespace CitasMed
                         return;
                     }
 
-                    fecha = Convert.ToDateTime(
-                        lector["fecha"]
+                    fecha = Convert.ToDateTime(lector["fecha"]
                     );
 
                     hora = (TimeSpan)lector["hora"];
@@ -429,14 +403,7 @@ namespace CitasMed
             }
         }
 
-        private void MostrarVentanaEditarCita(
-            MySqlConnection conexion,
-            string columnaEstado,
-            int idCita,
-            DateTime fecha,
-            TimeSpan hora,
-            string motivo,
-            string estado)
+        private void MostrarVentanaEditarCita(MySqlConnection conexion, string columnaEstado, int idCita, DateTime fecha, TimeSpan hora, string motivo, string estado)
         {
             Form ventana = new Form
             {
@@ -519,10 +486,10 @@ namespace CitasMed
             cmbEstado.Items.AddRange(
                 new object[]
                 {
-                    "Programada",
-                    "Reagendada",
-                    "Atendida",
-                    "Cancelada"
+            "Programada",
+            "Reagendada",
+            "Atendida",
+            "Cancelada"
                 }
             );
 
@@ -570,13 +537,13 @@ namespace CitasMed
             try
             {
                 string actualizar = $@"
-                    UPDATE Cita
-                    SET
-                        fecha = @fecha,
-                        hora = @hora,
-                        motivo = @motivo,
-                        {columnaEstado} = @estado
-                    WHERE id_cita = @idCita;";
+            UPDATE Cita
+            SET
+                fecha = @fecha,
+                hora = @hora,
+                motivo = @motivo,
+                {columnaEstado} = @estado
+            WHERE id_cita = @idCita;";
 
                 using MySqlCommand comando =
                     new MySqlCommand(actualizar, conexion);
@@ -609,11 +576,11 @@ namespace CitasMed
                 comando.ExecuteNonQuery();
 
                 MessageBox.Show(
-                    "Cita actualizada correctamente.",
-                    "Edición completada",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+      "Cita actualizada correctamente.",
+      "Edición completada",
+      MessageBoxButtons.OK,
+      MessageBoxIcon.Information
+  );
             }
             catch (Exception ex)
             {
@@ -631,9 +598,7 @@ namespace CitasMed
         {
             string resultado = PedirDato(
                 "Eliminar cita",
-                "Escribe el ID de la cita que deseas eliminar:"
-            );
-
+                "Escribe el ID de la cita que deseas eliminar:");
             if (resultado == "")
             {
                 return;
@@ -650,7 +615,6 @@ namespace CitasMed
 
                 return;
             }
-
             try
             {
                 using MySqlConnection conexion =
@@ -661,15 +625,15 @@ namespace CitasMed
                 using MySqlCommand comprobarCita =
                     new MySqlCommand(
                         @"SELECT COUNT(*)
-                          FROM Cita
-                          WHERE id_cita = @idCita;",
+                  FROM Cita
+                  WHERE id_cita = @idCita;",
                         conexion
-                    );
+                        );
 
                 comprobarCita.Parameters.AddWithValue(
                     "@idCita",
                     idCita
-                );
+                    );
 
                 int cantidadCitas =
                     Convert.ToInt32(
@@ -684,15 +648,14 @@ namespace CitasMed
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
-
                     return;
                 }
 
                 using MySqlCommand comprobarConsulta =
                     new MySqlCommand(
                         @"SELECT COUNT(*)
-                          FROM Consulta
-                          WHERE id_cita = @idCita;",
+                  FROM Consulta
+                  WHERE id_cita = @idCita;",
                         conexion
                     );
 
@@ -715,7 +678,6 @@ namespace CitasMed
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
-
                     return;
                 }
 
@@ -736,7 +698,7 @@ namespace CitasMed
                 using MySqlCommand eliminar =
                     new MySqlCommand(
                         @"DELETE FROM Cita
-                          WHERE id_cita = @idCita;",
+                  WHERE id_cita = @idCita;",
                         conexion
                     );
 
@@ -766,9 +728,7 @@ namespace CitasMed
             }
         }
 
-        private string PedirDato(
-            string titulo,
-            string mensaje)
+        private string PedirDato(string titulo, string mensaje)
         {
             Form ventana = new Form
             {
@@ -824,10 +784,7 @@ namespace CitasMed
                 ? cajaTexto.Text.Trim()
                 : "";
         }
-
-        private Control? BuscarControlPorTexto(
-            Control contenedor,
-            string texto)
+        private Control? BuscarControlPorTexto(Control contenedor, string texto)
         {
             foreach (Control control
                 in contenedor.Controls)
@@ -858,8 +815,7 @@ namespace CitasMed
             return null;
         }
 
-        private IEnumerable<Control> ObtenerControles(
-            Control contenedor)
+        private IEnumerable<Control> ObtenerControles(Control contenedor)
         {
             foreach (Control control
                 in contenedor.Controls)
@@ -876,9 +832,7 @@ namespace CitasMed
                 }
             }
         }
-
-        private Control? BuscarIconoCercaDelTextBox(
-            TextBox textBox)
+        private Control? BuscarIconoCercaDelTextBox(TextBox textBox)
         {
             Rectangle areaTextBox =
                 textBox.RectangleToScreen(
@@ -896,7 +850,6 @@ namespace CitasMed
                 {
                     continue;
                 }
-
                 string nombreTipo =
                     control.GetType().Name;
 
@@ -958,13 +911,12 @@ namespace CitasMed
             return controlCercano;
         }
 
-        private string ObtenerColumnaEstado(
-            MySqlConnection conexion)
+        private string ObtenerColumnaEstado(MySqlConnection conexion)
         {
             using MySqlCommand comando =
                 new MySqlCommand(
                     @"SHOW COLUMNS FROM Cita
-                      LIKE 'estado_cita';",
+              LIKE 'estado_cita';",
                     conexion
                 );
 
@@ -1009,18 +961,12 @@ namespace CitasMed
             formulario.Show();
         }
 
-        private void btnInicio_empleado_Click(
-            object? sender,
-            EventArgs e)
+        private void btnInicio_empleado_Click(object? sender, EventArgs e)
         {
-            menuEmpleado.SeleccionarInicio();
-            Show();
-            BringToFront();
+            this.Close();
         }
 
-        private void lblNuevaCita_Click(
-            object? sender,
-            EventArgs e)
+        private void lblNuevaCita_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarNuevaCita();
 
@@ -1030,9 +976,7 @@ namespace CitasMed
             AbrirFormulario(registro);
         }
 
-        private void lblProgramadas_Click(
-            object? sender,
-            EventArgs e)
+        private void lblProgramadas_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarProgramadas();
 
@@ -1042,9 +986,7 @@ namespace CitasMed
             AbrirFormulario(programadas);
         }
 
-        private void lblHistorial_Click(
-            object? sender,
-            EventArgs e)
+        private void lblHistorial_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarHistorial();
 
@@ -1054,9 +996,7 @@ namespace CitasMed
             AbrirFormulario(historial);
         }
 
-        private void lblMedicos_Especialidades_Click(
-            object? sender,
-            EventArgs e)
+        private void lblMedicos_Especialidades_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarMedicos();
 
@@ -1066,9 +1006,7 @@ namespace CitasMed
             AbrirFormulario(medicos);
         }
 
-        private void lblPacientes_Click(
-            object? sender,
-            EventArgs e)
+        private void lblPacientes_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarPacientes();
 
@@ -1078,9 +1016,7 @@ namespace CitasMed
             AbrirFormulario(pacientes);
         }
 
-        private void RedondearPanel(
-            Panel panel,
-            int radio)
+        private void RedondearPanel(Panel panel, int radio)
         {
             if (panel.Width <= 0 ||
                 panel.Height <= 0)
@@ -1143,72 +1079,33 @@ namespace CitasMed
                 new Region(path);
         }
 
-        private void FormEmpleado_Load(
-            object sender,
-            EventArgs e)
+        private void FormEmpleado_Load(object sender, EventArgs e)
         {
             RedondearPanel(panel6, 25);
             RedondearPanel(panel5, 25);
             RedondearPanel(panel7, 25);
         }
 
-        private void label21_Click(
-            object sender,
-            EventArgs e)
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
         }
 
-        private void panel1_Paint(
-            object sender,
-            PaintEventArgs e)
+        private void label20_Click(object sender, EventArgs e)
+        {
+        }
+        private void panel6_Paint(object sender, PaintEventArgs e)
         {
         }
 
-        private void monthCalendar1_DateChanged(
-            object sender,
-            DateRangeEventArgs e)
+        private void label16_Click(object sender, EventArgs e)
         {
         }
 
-        private void label20_Click(
-            object sender,
-            EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
         }
 
-        private void monthCalendar1_DateChanged_1(
-            object sender,
-            DateRangeEventArgs e)
-        {
-        }
-
-        private void panel6_Paint(
-            object sender,
-            PaintEventArgs e)
-        {
-        }
-
-        private void label16_Click(
-            object sender,
-            EventArgs e)
-        {
-        }
-
-        private void label3_Click(
-            object sender,
-            EventArgs e)
-        {
-        }
-
-        private void ucMenuEmpleado1_Load(
-            object sender,
-            EventArgs e)
-        {
-        }
-
-        private void panel7_Paint(
-            object sender,
-            PaintEventArgs e)
+        private void panel7_Paint(object sender, PaintEventArgs e)
         {
         }
     }

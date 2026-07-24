@@ -1,4 +1,5 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,97 @@ namespace CitasMed
 {
     public partial class FormCitas_programadas : Form
     {
+        private DataTable tablaCitas = new DataTable();
+
+        private void CargarCitas()
+        {
+            try
+            {
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"
+                SELECT
+                    c.id_cita AS CLAVE,
+
+                    CONCAT(
+                        p.nombre, ' ',
+                        p.apellido_paterno, ' ',
+                        IFNULL(p.apellido_materno, '')
+                    ) AS PACIENTE,
+
+                    p.telefono AS TELEFONO,
+
+                    e.nombre AS ESPECIALIDAD,
+
+                    CONCAT(
+                        m.nombre, ' ',
+                        m.apellido_paterno, ' ',
+                        IFNULL(m.apellido_materno, '')
+                    ) AS DOCTOR,
+
+                    DATE_FORMAT(c.fecha, '%d/%m/%Y') AS FECHA,
+                    TIME_FORMAT(c.hora, '%H:%i') AS HORA,
+                    c.motivo AS MOTIVO
+
+                FROM Cita c
+
+                INNER JOIN Paciente p
+                    ON c.id_paciente = p.id_paciente
+
+                INNER JOIN Medico m
+                    ON c.id_medico = m.id_medico
+
+                INNER JOIN Especialidad e
+                    ON m.id_especialidad = e.id_especialidad
+
+                WHERE c.estado IN ('Programada', 'Reagendada')
+
+                ORDER BY c.fecha, c.hora;";
+
+                    MySqlDataAdapter adaptador =
+                        new MySqlDataAdapter(consulta, conexion);
+
+                    tablaCitas.Clear();
+                    tablaCitas.Columns.Clear();
+
+                    adaptador.Fill(tablaCitas);
+
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.AutoGenerateColumns = true;
+                    dataGridView1.DataSource = tablaCitas;
+
+                    // Evitar modificaciones directas
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.AllowUserToAddRows = false;
+                    dataGridView1.AllowUserToDeleteRows = false;
+                    dataGridView1.EditMode =
+                        DataGridViewEditMode.EditProgrammatically;
+
+                    dataGridView1.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridView1.MultiSelect = false;
+                    dataGridView1.RowHeadersVisible = false;
+
+                    dataGridView1.AutoSizeColumnsMode =
+                        DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar las citas:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
         public FormCitas_programadas()
         {
             InitializeComponent();
@@ -106,21 +198,27 @@ namespace CitasMed
             button3.FlatStyle = FlatStyle.Flat;
             button3.FlatAppearance.BorderSize = 0;
 
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.FlatAppearance.BorderSize = 0;
-
 
             RedondearPanel(panel7, 20);
 
             RedondearBoton(button2, 20);
             RedondearBoton(button3, 20);
-            RedondearBoton(button4, 20);
+
+            CargarCitas();
 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            string texto = textBox1.Text
+                .Trim()
+                .Replace("'", "''");
 
+            tablaCitas.DefaultView.RowFilter =
+                "PACIENTE LIKE '%" + texto + "%' OR " +
+                "DOCTOR LIKE '%" + texto + "%' OR " +
+                "ESPECIALIDAD LIKE '%" + texto + "%' OR " +
+                "MOTIVO LIKE '%" + texto + "%'";
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
@@ -131,6 +229,81 @@ namespace CitasMed
         private void ucMenuEmpleado1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show(
+                    "Selecciona una cita para eliminar.");
+                return;
+            }
+
+            int idCita = Convert.ToInt32(
+                dataGridView1.CurrentRow.Cells["CLAVE"].Value);
+
+            string paciente = Convert.ToString(
+                dataGridView1.CurrentRow.Cells["PACIENTE"].Value);
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Estás seguro de eliminar la cita de " +
+                paciente + "?",
+                "Eliminar cita",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (respuesta != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"
+                DELETE FROM Cita
+                WHERE id_cita = @idCita;";
+
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@idCita", idCita);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show(
+                    "Cita eliminada correctamente.");
+
+                CargarCitas();
+            }
+            catch (MySqlException ex)
+            {
+                if (ex.Number == 1451)
+                {
+                    MessageBox.Show(
+                        "No se puede eliminar porque esta cita ya tiene una consulta registrada.");
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Error al eliminar la cita:\n" +
+                        ex.Message);
+                }
+            }
         }
     }
 }

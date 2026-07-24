@@ -14,10 +14,22 @@ namespace CitasMed
 {
     public partial class Registro_de_paciente : Form
     {
+        private bool modoEdicion = false;
+        private int idPacienteEditar = 0;
+
         public Registro_de_paciente()
         {
             InitializeComponent();
         }
+
+        public Registro_de_paciente(int idPaciente)
+        {
+            InitializeComponent();
+
+            modoEdicion = true;
+            idPacienteEditar = idPaciente;
+        }
+
         private void RedondearPanel(Panel panel, int radio)
         {
             GraphicsPath path = new GraphicsPath();
@@ -42,41 +54,141 @@ namespace CitasMed
         {
             try
             {
-                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
                 {
                     conexion.Open();
 
-                    string consulta = @"INSERT INTO Paciente
-                                (curp, nombre, apellido_paterno, apellido_materno, genero, telefono, correo, calle, colonia, municipio, entidad, enfermedad_cronica, id_especialidad_solicitada)
-                                VALUES
-                                (@curp, @nombre, @apellido_paterno, @apellido_materno, @genero, @telefono, @correo, @calle, @colonia, @municipio, @entidad, @enfermedad_cronica, @id_especialidad)";
+                    string consulta;
 
-                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    if (modoEdicion)
+                    {
+                        consulta = @"UPDATE Paciente SET
+                            curp = @curp,
+                            nombre = @nombre,
+                            apellido_paterno = @apellido_paterno,
+                            apellido_materno = @apellido_materno,
+                            genero = @genero,
+                            edad = @edad,
+                            telefono = @telefono,
+                            correo = @correo,
+                            calle = @calle,
+                            colonia = @colonia,
+                            municipio = @municipio,
+                            entidad = @entidad,
+                            enfermedad_cronica = @enfermedad_cronica
+                            WHERE id_paciente = @idPaciente";
+                    }
+                    else
+                    {
+                        consulta = @"INSERT INTO Paciente
+                            (
+                                curp,
+                                nombre,
+                                apellido_paterno,
+                                apellido_materno,
+                                genero,
+                                edad,
+                                telefono,
+                                correo,
+                                calle,
+                                colonia,
+                                municipio,
+                                entidad,
+                                enfermedad_cronica
+                            )
+                            VALUES
+                            (
+                                @curp,
+                                @nombre,
+                                @apellido_paterno,
+                                @apellido_materno,
+                                @genero,
+                                @edad,
+                                @telefono,
+                                @correo,
+                                @calle,
+                                @colonia,
+                                @municipio,
+                                @entidad,
+                                @enfermedad_cronica
+                            )";
+                    }
 
-                    comando.Parameters.AddWithValue("@curp", txtCurp.Text);
-                    comando.Parameters.AddWithValue("@nombre", txtNombre.Text);
-                    comando.Parameters.AddWithValue("@apellido_paterno", txtApellidoPaterno.Text);
-                    comando.Parameters.AddWithValue("@apellido_materno", txtApellidoMaterno.Text);
-                    comando.Parameters.AddWithValue("@genero", cmbGenero.Text);
-                    comando.Parameters.AddWithValue("@telefono", txtTelefono.Text);
-                    comando.Parameters.AddWithValue("@correo", txtCorreo.Text);
-                    comando.Parameters.AddWithValue("@calle", txtCalle.Text);
-                    comando.Parameters.AddWithValue("@colonia", txtColonia.Text);
-                    comando.Parameters.AddWithValue("@municipio", txtMunicipio.Text);
-                    comando.Parameters.AddWithValue("@entidad", "Hidalgo");
-                    comando.Parameters.AddWithValue("@enfermedad_cronica", txtEnfermedadCronica.Text);
-                    comando.Parameters.AddWithValue("@id_especialidad", cmbEspecialidad.SelectedValue);
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@curp", txtCurp.Text.Trim());
 
-                    comando.ExecuteNonQuery();
+                        comando.Parameters.AddWithValue(
+                            "@nombre", txtNombre.Text.Trim());
 
-                    MessageBox.Show("Paciente registrado correctamente.");
+                        comando.Parameters.AddWithValue(
+                            "@apellido_paterno",
+                            txtApellidoPaterno.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@apellido_materno",
+                            txtApellidoMaterno.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@genero", cmbGenero.Text);
+
+                        comando.Parameters.AddWithValue(
+                            "@edad", Convert.ToInt32(numEdad.Value));
+
+                        comando.Parameters.AddWithValue(
+                            "@telefono", txtTelefono.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@correo", txtCorreo.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@calle", txtCalle.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@colonia", txtColonia.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@municipio", txtMunicipio.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@entidad", "Hidalgo");
+
+                        comando.Parameters.AddWithValue(
+                            "@enfermedad_cronica",
+                            txtEnfermedadCronica.Text.Trim());
+
+                        if (modoEdicion)
+                        {
+                            comando.Parameters.AddWithValue(
+                                "@idPaciente", idPacienteEditar);
+                        }
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                if (modoEdicion)
+                {
+                    MessageBox.Show(
+                        "Paciente actualizado correctamente.");
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Paciente registrado correctamente.");
 
                     LimpiarCampos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar paciente: " + ex.Message);
+                MessageBox.Show(
+                    "Error al guardar paciente: " + ex.Message);
             }
         }
 
@@ -95,13 +207,23 @@ namespace CitasMed
 
             cmbGenero.SelectedIndex = -1;
             cmbEspecialidad.SelectedIndex = -1;
+
+            numEdad.Value = numEdad.Minimum;
         }
 
         private void btnMenu_empleado_Click_1(object sender, EventArgs e)
         {
+            if (modoEdicion)
+            {
+                // Cierra la edición y regresa a la tabla de pacientes
+                this.Close();
+                return;
+            }
+
+            // Cuando se abre para registrar un paciente nuevo
             FormEmpleado empleado = new FormEmpleado();
             empleado.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void CargarEspecialidades()
@@ -157,6 +279,123 @@ namespace CitasMed
             }
 
             CargarEspecialidades();
+
+            if (modoEdicion)
+            {
+                button1.Text = "GUARDAR CAMBIOS";
+                this.Text = "Editar paciente";
+
+                CargarDatosPaciente();
+            }
+            else
+            {
+                button1.Text = "REGISTRAR";
+            }
+        }
+
+        private void CargarDatosPaciente()
+        {
+            try
+            {
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"SELECT
+                                curp,
+                                nombre,
+                                apellido_paterno,
+                                apellido_materno,
+                                genero,
+                                edad,
+                                telefono,
+                                correo,
+                                calle,
+                                colonia,
+                                municipio,
+                                entidad,
+                                enfermedad_cronica
+                                FROM Paciente
+                                WHERE id_paciente = @idPaciente";
+
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@idPaciente", idPacienteEditar);
+
+                        using (MySqlDataReader lector =
+                               comando.ExecuteReader())
+                        {
+                            if (lector.Read())
+                            {
+                                txtCurp.Text = Convert.ToString(lector["curp"]);
+
+                                txtNombre.Text = Convert.ToString(lector["nombre"]);
+
+                                numEdad.Value = Convert.ToDecimal(lector["edad"]);
+
+                                txtApellidoPaterno.Text = Convert.ToString(lector["apellido_paterno"]);
+
+                                txtApellidoMaterno.Text = Convert.ToString(lector["apellido_materno"]);
+
+                                cmbGenero.Text = Convert.ToString(lector["genero"]);
+
+                                txtTelefono.Text = Convert.ToString(lector["telefono"]);
+
+                                txtCorreo.Text = Convert.ToString(lector["correo"]);
+
+                                txtCalle.Text = Convert.ToString(lector["calle"]);
+
+                                txtColonia.Text = Convert.ToString(lector["colonia"]);
+
+                                if (lector["edad"] != DBNull.Value)
+                                {
+                                    numEdad.Value =
+                                        Convert.ToDecimal(lector["edad"]);
+                                }
+
+                                txtTelefono.Text =
+                                    Convert.ToString(lector["telefono"]);
+
+                                txtCorreo.Text =
+                                    Convert.ToString(lector["correo"]);
+
+                                txtCalle.Text =
+                                    Convert.ToString(lector["calle"]);
+
+                                txtColonia.Text =
+                                    Convert.ToString(lector["colonia"]);
+
+                                txtMunicipio.Text =
+                                    Convert.ToString(lector["municipio"]);
+
+                                txtEnfermedadCronica.Text =
+                                    Convert.ToString(
+                                        lector["enfermedad_cronica"]);
+                            }
+                            else
+                            {
+                                MessageBox.Show(
+                                    "No se encontró el paciente.");
+
+                                txtMunicipio.Text = Convert.ToString(lector["municipio"]);
+
+                                txtEnfermedadCronica.Text = Convert.ToString(lector["enfermedad_cronica"]);
+
+                                dtFecha_cita.Value = Convert.ToDateTime(lector["Fecha de la cita"]);
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar el paciente: " + ex.Message);
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
