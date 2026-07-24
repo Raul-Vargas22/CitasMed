@@ -69,6 +69,7 @@ namespace CitasMed
                             apellido_paterno = @apellido_paterno,
                             apellido_materno = @apellido_materno,
                             genero = @genero,
+                            edad = @edad,
                             telefono = @telefono,
                             correo = @correo,
                             calle = @calle,
@@ -81,74 +82,83 @@ namespace CitasMed
                     else
                     {
                         consulta = @"INSERT INTO Paciente
-                            (curp,
-                             nombre,
-                             apellido_paterno,
-                             apellido_materno,
-                             genero,
-                             telefono,
-                             correo,
-                             calle,
-                             colonia,
-                             municipio,
-                             entidad,
-                             enfermedad_cronica)
+                            (
+                                curp,
+                                nombre,
+                                apellido_paterno,
+                                apellido_materno,
+                                genero,
+                                edad,
+                                telefono,
+                                correo,
+                                calle,
+                                colonia,
+                                municipio,
+                                entidad,
+                                enfermedad_cronica
+                            )
                             VALUES
-                            (@curp,
-                             @nombre,
-                             @apellido_paterno,
-                             @apellido_materno,
-                             @genero,
-                             @telefono,
-                             @correo,
-                             @calle,
-                             @colonia,
-                             @municipio,
-                             @entidad,
-                             @enfermedad_cronica)";
+                            (
+                                @curp,
+                                @nombre,
+                                @apellido_paterno,
+                                @apellido_materno,
+                                @genero,
+                                @edad,
+                                @telefono,
+                                @correo,
+                                @calle,
+                                @colonia,
+                                @municipio,
+                                @entidad,
+                                @enfermedad_cronica
+                            )";
                     }
 
                     using (MySqlCommand comando =
                            new MySqlCommand(consulta, conexion))
                     {
                         comando.Parameters.AddWithValue(
-                            "@curp", txtCurp.Text);
+                            "@curp", txtCurp.Text.Trim());
 
                         comando.Parameters.AddWithValue(
-                            "@nombre", txtNombre.Text);
+                            "@nombre", txtNombre.Text.Trim());
 
                         comando.Parameters.AddWithValue(
                             "@apellido_paterno",
-                            txtApellidoPaterno.Text);
+                            txtApellidoPaterno.Text.Trim());
 
                         comando.Parameters.AddWithValue(
                             "@apellido_materno",
-                            txtApellidoMaterno.Text);
+                            txtApellidoMaterno.Text.Trim());
 
                         comando.Parameters.AddWithValue(
                             "@genero", cmbGenero.Text);
 
                         comando.Parameters.AddWithValue(
-                            "@telefono", txtTelefono.Text);
+                            "@edad", Convert.ToInt32(numEdad.Value));
 
                         comando.Parameters.AddWithValue(
-                            "@correo", txtCorreo.Text);
+                            "@telefono", txtTelefono.Text.Trim());
 
                         comando.Parameters.AddWithValue(
-                            "@calle", txtCalle.Text);
+                            "@correo", txtCorreo.Text.Trim());
 
                         comando.Parameters.AddWithValue(
-                            "@colonia", txtColonia.Text);
+                            "@calle", txtCalle.Text.Trim());
 
                         comando.Parameters.AddWithValue(
-                            "@municipio", txtMunicipio.Text);
+                            "@colonia", txtColonia.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@municipio", txtMunicipio.Text.Trim());
 
                         comando.Parameters.AddWithValue(
                             "@entidad", "Hidalgo");
 
                         comando.Parameters.AddWithValue(
                             "@enfermedad_cronica",
-                            txtEnfermedadCronica.Text);
+                            txtEnfermedadCronica.Text.Trim());
 
                         if (modoEdicion)
                         {
@@ -197,13 +207,23 @@ namespace CitasMed
 
             cmbGenero.SelectedIndex = -1;
             cmbEspecialidad.SelectedIndex = -1;
+
+            numEdad.Value = numEdad.Minimum;
         }
 
         private void btnMenu_empleado_Click_1(object sender, EventArgs e)
         {
+            if (modoEdicion)
+            {
+                // Cierra la edición y regresa a la tabla de pacientes
+                this.Close();
+                return;
+            }
+
+            // Cuando se abre para registrar un paciente nuevo
             FormEmpleado empleado = new FormEmpleado();
             empleado.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void CargarEspecialidades()
@@ -288,6 +308,7 @@ namespace CitasMed
                                 apellido_paterno,
                                 apellido_materno,
                                 genero,
+                                edad,
                                 telefono,
                                 correo,
                                 calle,
@@ -301,6 +322,8 @@ namespace CitasMed
                     using (MySqlCommand comando =
                            new MySqlCommand(consulta, conexion))
                     {
+                        comando.Parameters.AddWithValue(
+                            "@idPaciente", idPacienteEditar);
 
                         using (MySqlDataReader lector =
                                comando.ExecuteReader())
@@ -327,11 +350,42 @@ namespace CitasMed
 
                                 txtColonia.Text = Convert.ToString(lector["colonia"]);
 
+                                if (lector["edad"] != DBNull.Value)
+                                {
+                                    numEdad.Value =
+                                        Convert.ToDecimal(lector["edad"]);
+                                }
+
+                                txtTelefono.Text =
+                                    Convert.ToString(lector["telefono"]);
+
+                                txtCorreo.Text =
+                                    Convert.ToString(lector["correo"]);
+
+                                txtCalle.Text =
+                                    Convert.ToString(lector["calle"]);
+
+                                txtColonia.Text =
+                                    Convert.ToString(lector["colonia"]);
+
+                                txtMunicipio.Text =
+                                    Convert.ToString(lector["municipio"]);
+
+                                txtEnfermedadCronica.Text =
+                                    Convert.ToString(
+                                        lector["enfermedad_cronica"]);
+                            }
+                            else
+                            {
+                                MessageBox.Show(
+                                    "No se encontró el paciente.");
+
                                 txtMunicipio.Text = Convert.ToString(lector["municipio"]);
 
                                 txtEnfermedadCronica.Text = Convert.ToString(lector["enfermedad_cronica"]);
 
                                 dtFecha_cita.Value = Convert.ToDateTime(lector["Fecha de la cita"]);
+
                             }
                         }
                     }

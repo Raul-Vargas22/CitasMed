@@ -228,12 +228,13 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(488, 601);
+            button3.Location = new Point(488, 593);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 80;
             button3.Text = "ELIMINAR";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // panel7
             // 

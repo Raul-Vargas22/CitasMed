@@ -78,40 +78,44 @@ namespace CitasMed
                     conexion.Open();
 
                     string consulta = @"SELECT 
-                                id_paciente AS CLAVE,
-                                curp AS CURP,
-                                nombre AS NOMBRE,
-                                apellido_paterno AS 'APELLIDO PATERNO',
-                                apellido_materno AS 'APELLIDO MATERNO',
-                                telefono AS TELEFONO,
-                                calle AS CALLE,
-                                colonia AS COLONIA,
-                                municipio AS MUNICIPIO,
-                                entidad AS ENTIDAD,
-                                enfermedad_cronica AS 'ENFERMEDAD CRONICA'
-                                FROM Paciente";
+                        id_paciente AS CLAVE,
+                        curp AS CURP,
+                        nombre AS NOMBRE,
+                        apellido_paterno AS 'APELLIDO PATERNO',
+                        apellido_materno AS 'APELLIDO MATERNO',
+                        genero AS GENERO,
+                        edad AS EDAD,
+                        telefono AS TELEFONO,
+                        correo AS CORREO,
+                        calle AS CALLE,
+                        colonia AS COLONIA,
+                        municipio AS MUNICIPIO,
+                        entidad AS ENTIDAD,
+                        enfermedad_cronica AS 'ENFERMEDAD CRONICA'
+                        FROM Paciente
+                        ORDER BY id_paciente;";
 
-                    MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
+                    MySqlDataAdapter adaptador =
+                        new MySqlDataAdapter(consulta, conexion);
+
                     DataTable tabla = new DataTable();
-
                     adaptador.Fill(tabla);
 
+                    dgvPacientes.DataSource = null;
                     dgvPacientes.Columns.Clear();
                     dgvPacientes.AutoGenerateColumns = true;
                     dgvPacientes.DataSource = tabla;
+
+                    // Tabla completamente inmodificable
                     dgvPacientes.ReadOnly = true;
                     dgvPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                     dgvPacientes.MultiSelect = false;
-                    dgvPacientes.AllowUserToAddRows = false;
-                    dgvPacientes.ReadOnly = false;
-                    dgvPacientes.Columns["CLAVE"].ReadOnly = true;
-                    dgvPacientes.AllowUserToAddRows = false;
-                    dgvPacientes.Columns[0].ReadOnly = true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar pacientes: " + ex.Message);
+                MessageBox.Show(
+                    "Error al cargar pacientes: " + ex.Message);
             }
         }
 
@@ -135,7 +139,8 @@ namespace CitasMed
 
             if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
-                MessageBox.Show("Selecciona un paciente para editar.");
+                MessageBox.Show(
+                    "Selecciona un paciente para editar.");
                 return;
             }
 

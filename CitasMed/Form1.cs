@@ -1,4 +1,5 @@
 using System;
+using MySql.Data.MySqlClient;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -7,8 +8,9 @@ namespace CitasMed
 {
     public partial class Form1 : Form
     {
-        private const string CONTRASENA = "faul";
+
         private const string USUARIO = "Raul";
+
         public Form1()
         {
             InitializeComponent();
@@ -78,7 +80,79 @@ namespace CitasMed
             string datousuario = txtUsuario.Text.Trim();
             string rolSeleccionado = tntTitulo.Text.Trim();
 
+        private bool ValidarCredenciales(string rol, string usuario, string contrasena)
+        {
+            try
+            {
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = "";
+
+                    if (rol == "Administrador")
+                    {
+                        consulta = @"SELECT COUNT(*)
+                             FROM Administrador
+                             WHERE usuario = @usuario
+                             AND contrasena = @contrasena";
+                    }
+                    else if (rol == "Doctor")
+                    {
+                        consulta = @"SELECT COUNT(*)
+                             FROM Medico
+                             WHERE usuario = @usuario
+                             AND contrasena = @contrasena";
+                    }
+                    else if (rol == "Empleado")
+                    {
+                        consulta = @"SELECT COUNT(*)
+                             FROM Empleado
+                             WHERE usuario = @usuario
+                             AND contrasena = @contrasena";
+                    }
+
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@usuario", usuario);
+
+                        comando.Parameters.AddWithValue(
+                            "@contrasena", contrasena);
+
+                        int cantidad = Convert.ToInt32(
+                            comando.ExecuteScalar());
+
+                        return cantidad > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al conectar con la base de datos: " +
+                    ex.Message);
+
+                return false;
+            }
+        }
+
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
+        {
+            string datopassword =
+                textContrasena.Text.Trim();
+
+            string datousuario =
+                txtUsuario.Text.Trim();
+
+            string rolSeleccionado =
+                tntTitulo.Text.Trim();
+
+            if (datopassword == "" || datousuario == "")
+
             if (datopassword == "" && datousuario == "")
+
             {
                 MessageBox.Show(
                     "Favor de llenar todos los campos.",
@@ -87,14 +161,23 @@ namespace CitasMed
                     MessageBoxIcon.Warning
                 );
 
-                textContrasena.Focus();
+                txtUsuario.Focus();
                 return;
             }
 
+            bool accesoCorrecto = ValidarCredenciales(
+                rolSeleccionado,
+                datousuario,
+                datopassword
+            );
+
+            if (!accesoCorrecto)
+
             if (datopassword != CONTRASENA || datousuario != USUARIO)
+
             {
                 MessageBox.Show(
-                    "Contraseña incorrecta.",
+                    "Usuario o contraseña incorrectos.",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -109,19 +192,23 @@ namespace CitasMed
 
             if (rolSeleccionado == "Administrador")
             {
-                formularioDestino = new FormAdministrador();
+                formularioDestino =
+                    new FormAdministrador();
             }
             else if (rolSeleccionado == "Doctor")
             {
-                formularioDestino = new FormDoctor();
+                formularioDestino =
+                    new FormDoctor();
             }
             else
             {
-                formularioDestino = new FormEmpleado();
+                formularioDestino =
+                    new FormEmpleado();
             }
 
             MessageBox.Show(
-                "Bienvenido " + rolSeleccionado.ToLower() + ".",
+                "Bienvenido " +
+                rolSeleccionado.ToLower() + ".",
                 "Acceso correcto",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
@@ -130,8 +217,11 @@ namespace CitasMed
             formularioDestino.FormClosed += (s, args) =>
             {
                 this.Show();
+
+                txtUsuario.Clear();
                 textContrasena.Clear();
-                textContrasena.Focus();
+
+                txtUsuario.Focus();
             };
 
             formularioDestino.Show();
