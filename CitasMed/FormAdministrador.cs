@@ -24,21 +24,6 @@ namespace CitasMed
 
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnInicio_admin_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -86,6 +71,13 @@ namespace CitasMed
             FormPaciente registro = new FormPaciente();
             registro.Show();
             this.Hide();
+        }
+
+        private void lblProgramadas_Click(object sender, EventArgs e)
+        {
+            FormPaciente registro = new FormPaciente();
+            registro.Show();
+            this.Close();
         }
     }
 }

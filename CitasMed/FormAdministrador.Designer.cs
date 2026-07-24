@@ -473,6 +473,7 @@
             lblProgramadas.Size = new Size(295, 25);
             lblProgramadas.TabIndex = 69;
             lblProgramadas.Text = "> CITAS PROGRAMADAS";
+            lblProgramadas.Click += lblProgramadas_Click;
             // 
             // lblRegistrar
             // 

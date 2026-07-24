@@ -40,13 +40,14 @@
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            lblUsuario = new Label();
+            txtUsuario = new TextBox();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             btnSalir = new Button();
+            iconoUsuario = new FontAwesome.Sharp.IconButton();
+            iconoPassword = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
@@ -82,17 +83,17 @@
             lblPassword.AutoSize = true;
             lblPassword.BackColor = Color.FromArgb(155, 179, 232);
             lblPassword.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPassword.Location = new Point(688, 185);
+            lblPassword.Location = new Point(618, 360);
             lblPassword.Margin = new Padding(4, 0, 4, 0);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(327, 43);
+            lblPassword.Size = new Size(403, 43);
             lblPassword.TabIndex = 3;
-            lblPassword.Text = "Ingrese su usuario";
+            lblPassword.Text = "Ingrese su contraseña";
             lblPassword.Click += lblPassword_Click;
             // 
             // textContrasena
             // 
-            textContrasena.Location = new Point(618, 264);
+            textContrasena.Location = new Point(618, 426);
             textContrasena.Margin = new Padding(4);
             textContrasena.Multiline = true;
             textContrasena.Name = "textContrasena";
@@ -224,40 +225,26 @@
             iconPictureBox5.TabIndex = 20;
             iconPictureBox5.TabStop = false;
             // 
-            // label1
+            // lblUsuario
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.FromArgb(155, 179, 232);
-            label1.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(654, 345);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(403, 43);
-            label1.TabIndex = 22;
-            label1.Text = "Ingrese su contraseña";
+            lblUsuario.AutoSize = true;
+            lblUsuario.BackColor = Color.FromArgb(155, 179, 232);
+            lblUsuario.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.Location = new Point(655, 171);
+            lblUsuario.Margin = new Padding(4, 0, 4, 0);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(327, 43);
+            lblUsuario.TabIndex = 22;
+            lblUsuario.Text = "Ingrese su usuario";
             // 
-            // textBox1
+            // txtUsuario
             // 
-            textBox1.Location = new Point(618, 426);
-            textBox1.Margin = new Padding(4);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(490, 50);
-            textBox1.TabIndex = 23;
-            // 
-            // iconButton1
-            // 
-            iconButton1.BackColor = SystemColors.ButtonHighlight;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(1048, 426);
-            iconButton1.Margin = new Padding(4);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(61, 51);
-            iconButton1.TabIndex = 24;
-            iconButton1.UseVisualStyleBackColor = false;
+            txtUsuario.Location = new Point(618, 264);
+            txtUsuario.Margin = new Padding(4);
+            txtUsuario.Multiline = true;
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(490, 50);
+            txtUsuario.TabIndex = 23;
             // 
             // panel1
             // 
@@ -307,17 +294,48 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // iconoUsuario
+            // 
+            iconoUsuario.BackColor = SystemColors.ButtonHighlight;
+            iconoUsuario.FlatStyle = FlatStyle.Flat;
+            iconoUsuario.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconoUsuario.IconColor = Color.Black;
+            iconoUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconoUsuario.Location = new Point(1047, 264);
+            iconoUsuario.Margin = new Padding(4);
+            iconoUsuario.Name = "iconoUsuario";
+            iconoUsuario.Size = new Size(61, 51);
+            iconoUsuario.TabIndex = 27;
+            iconoUsuario.UseVisualStyleBackColor = false;
+            iconoUsuario.Click += iconoUsuario_Click;
+            // 
+            // iconoPassword
+            // 
+            iconoPassword.BackColor = SystemColors.ButtonHighlight;
+            iconoPassword.FlatStyle = FlatStyle.Flat;
+            iconoPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconoPassword.IconColor = Color.Black;
+            iconoPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconoPassword.Location = new Point(1047, 426);
+            iconoPassword.Margin = new Padding(4);
+            iconoPassword.Name = "iconoPassword";
+            iconoPassword.Size = new Size(61, 51);
+            iconoPassword.TabIndex = 28;
+            iconoPassword.UseVisualStyleBackColor = false;
+            iconoPassword.Click += iconoPassword_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
             ClientSize = new Size(1271, 808);
+            Controls.Add(iconoPassword);
+            Controls.Add(iconoUsuario);
             Controls.Add(btnSalir);
             Controls.Add(panel1);
-            Controls.Add(iconButton1);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
+            Controls.Add(txtUsuario);
+            Controls.Add(lblUsuario);
             Controls.Add(iconPictureBox5);
             Controls.Add(iconPictureBox4);
             Controls.Add(iconPictureBox2);
@@ -360,12 +378,13 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private Label label1;
-        private TextBox textBox1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private Label lblUsuario;
+        private TextBox txtUsuario;
         private Panel panel1;
         private PictureBox pictureBox1;
         private Label label2;
         private Button btnSalir;
+        private FontAwesome.Sharp.IconButton iconoUsuario;
+        private FontAwesome.Sharp.IconButton iconoPassword;
     }
 }
