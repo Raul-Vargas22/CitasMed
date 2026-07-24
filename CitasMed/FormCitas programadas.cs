@@ -157,9 +157,11 @@ namespace CitasMed
         }
         private void lblNueva_Click(object sender, EventArgs e)
         {
-            Registro_de_paciente registro = new Registro_de_paciente();
-            registro.Show();
-            this.Hide();
+            using (Registro_de_paciente registro =
+                   new Registro_de_paciente())
+            {
+                registro.ShowDialog(this);
+            }
         }
 
         private void lblProgramada_Click(object sender, EventArgs e)
