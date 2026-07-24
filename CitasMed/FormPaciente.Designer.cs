@@ -66,10 +66,11 @@
             dgvPacientes.BackgroundColor = Color.PaleTurquoise;
             dgvPacientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPacientes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9, Column10, Column11 });
-            dgvPacientes.Location = new Point(305, 68);
+            dgvPacientes.Location = new Point(381, 85);
+            dgvPacientes.Margin = new Padding(4, 4, 4, 4);
             dgvPacientes.Name = "dgvPacientes";
             dgvPacientes.RowHeadersWidth = 51;
-            dgvPacientes.Size = new Size(1428, 495);
+            dgvPacientes.Size = new Size(1785, 619);
             dgvPacientes.TabIndex = 109;
             dgvPacientes.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -152,9 +153,10 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(1372, 12);
+            pictureBox3.Location = new Point(1715, 15);
+            pictureBox3.Margin = new Padding(4, 4, 4, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(88, 40);
+            pictureBox3.Size = new Size(110, 50);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 108;
             pictureBox3.TabStop = false;
@@ -162,50 +164,56 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(504, 511);
+            label7.Location = new Point(630, 639);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(0, 20);
+            label7.Size = new Size(0, 25);
             label7.TabIndex = 101;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(473, 425);
+            label6.Location = new Point(591, 531);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(0, 20);
+            label6.Size = new Size(0, 25);
             label6.TabIndex = 100;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(469, 302);
+            label5.Location = new Point(586, 378);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(0, 20);
+            label5.Size = new Size(0, 25);
             label5.TabIndex = 99;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(620, 345);
+            label4.Location = new Point(775, 431);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(0, 20);
+            label4.Size = new Size(0, 25);
             label4.TabIndex = 98;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(544, 208);
+            label2.Location = new Point(680, 260);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(0, 20);
+            label2.Size = new Size(0, 25);
             label2.TabIndex = 97;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.ActiveCaption;
-            label9.Location = new Point(580, 136);
+            label9.Location = new Point(725, 170);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(0, 20);
+            label9.Size = new Size(0, 25);
             label9.TabIndex = 106;
             // 
             // label10
@@ -213,9 +221,10 @@
             label10.AutoSize = true;
             label10.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ActiveCaption;
-            label10.Location = new Point(1490, 29);
+            label10.Location = new Point(1862, 36);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(132, 23);
+            label10.Size = new Size(156, 27);
             label10.TabIndex = 107;
             label10.Text = "EMPLEADO";
             label10.Click += label10_Click;
@@ -223,17 +232,19 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(561, 543);
+            label8.Location = new Point(701, 679);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(0, 20);
+            label8.Size = new Size(0, 25);
             label8.TabIndex = 102;
             // 
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(456, 587);
+            button3.Location = new Point(570, 734);
+            button3.Margin = new Padding(4, 4, 4, 4);
             button3.Name = "button3";
-            button3.Size = new Size(140, 50);
+            button3.Size = new Size(175, 62);
             button3.TabIndex = 112;
             button3.Text = "ELIMINAR";
             button3.UseVisualStyleBackColor = false;
@@ -242,9 +253,10 @@
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(305, 587);
+            button2.Location = new Point(381, 734);
+            button2.Margin = new Padding(4, 4, 4, 4);
             button2.Name = "button2";
-            button2.Size = new Size(140, 50);
+            button2.Size = new Size(175, 62);
             button2.TabIndex = 111;
             button2.Text = "EDITAR";
             button2.UseVisualStyleBackColor = false;
@@ -252,9 +264,10 @@
             // 
             // ucMenuEmpleado1
             // 
-            ucMenuEmpleado1.Location = new Point(2, 4);
+            ucMenuEmpleado1.Location = new Point(2, 5);
+            ucMenuEmpleado1.Margin = new Padding(5, 5, 5, 5);
             ucMenuEmpleado1.Name = "ucMenuEmpleado1";
-            ucMenuEmpleado1.Size = new Size(281, 647);
+            ucMenuEmpleado1.Size = new Size(351, 809);
             ucMenuEmpleado1.TabIndex = 113;
             ucMenuEmpleado1.Load += ucMenuEmpleado1_Load;
             // 
@@ -263,19 +276,22 @@
             panel7.BackColor = Color.FromArgb(133, 210, 208);
             panel7.Controls.Add(textBox1);
             panel7.Controls.Add(iconPictureBox4);
-            panel7.Location = new Point(453, 4);
+            panel7.Location = new Point(566, 5);
+            panel7.Margin = new Padding(4, 4, 4, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(296, 48);
+            panel7.Size = new Size(370, 60);
             panel7.TabIndex = 114;
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(47, 14);
+            textBox1.Location = new Point(59, 18);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 20);
+            textBox1.Size = new Size(290, 24);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // iconPictureBox4
             // 
@@ -284,18 +300,19 @@
             iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Search;
             iconPictureBox4.IconColor = SystemColors.ControlText;
             iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox4.IconSize = 40;
-            iconPictureBox4.Location = new Point(3, 3);
+            iconPictureBox4.IconSize = 50;
+            iconPictureBox4.Location = new Point(4, 4);
+            iconPictureBox4.Margin = new Padding(4, 4, 4, 4);
             iconPictureBox4.Name = "iconPictureBox4";
-            iconPictureBox4.Size = new Size(40, 40);
+            iconPictureBox4.Size = new Size(50, 50);
             iconPictureBox4.TabIndex = 65;
             iconPictureBox4.TabStop = false;
             // 
             // FormPaciente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1743, 657);
+            ClientSize = new Size(1924, 821);
             Controls.Add(panel7);
             Controls.Add(ucMenuEmpleado1);
             Controls.Add(button3);
@@ -310,6 +327,7 @@
             Controls.Add(label9);
             Controls.Add(label10);
             Controls.Add(label8);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "FormPaciente";
             Text = "FormPaciente";
             Load += FormPaciente_Load;

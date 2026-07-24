@@ -1,23 +1,22 @@
 using System;
 using MySql.Data.MySqlClient;
 using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace CitasMed
 {
     public partial class Form1 : Form
     {
-<<<<<<< Updated upstream
-        private const string CONTRASENA = "faul";
 
-=======
->>>>>>> Stashed changes
+        private const string USUARIO = "Raul";
+
         public Form1()
         {
             InitializeComponent();
 
-            btnVerPassword.Click -= btnVerPassword_Click;
-            btnVerPassword.Click += btnVerPassword_Click;
+            //btnVerPassword.Click -= btnVerPassword_Click;
+            // btnVerPassword.Click += btnVerPassword_Click;
 
             Button botonIniciar = BuscarBotonIniciar(this);
 
@@ -39,15 +38,19 @@ namespace CitasMed
             tntTitulo.TextAlign = ContentAlignment.MiddleCenter;
             tntTitulo.Text = rol;
 
-            lblPassword.Text = "Ingrese la contraseña";
+            lblPassword.Text = "Ingrese su Contraseña";
             lblPassword.Visible = true;
+            lblUsuario.Text = "Ingrese su Usuario";
+            lblUsuario.Visible = true;
 
             textContrasena.Visible = true;
             textContrasena.UseSystemPasswordChar = false;
-            textContrasena.PasswordChar = '●';
+            textContrasena.PasswordChar = '*';
 
             textContrasena.Clear();
             textContrasena.Focus();
+            txtUsuario.Clear();
+            txtUsuario.Focus();
         }
 
         private void lblAdministrador_LinkClicked(
@@ -71,16 +74,12 @@ namespace CitasMed
             PrepararRol("Empleado");
         }
 
-<<<<<<< Updated upstream
-        private void btnIniciarSesion_Click(
-            object sender,
-            EventArgs e)
+        private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            string datoIngresado = textContrasena.Text.Trim();
+            string datopassword = textContrasena.Text.Trim();
+            string datousuario = txtUsuario.Text.Trim();
             string rolSeleccionado = tntTitulo.Text.Trim();
 
-            if (datoIngresado == "")
-=======
         private bool ValidarCredenciales(string rol, string usuario, string contrasena)
         {
             try
@@ -151,10 +150,12 @@ namespace CitasMed
                 tntTitulo.Text.Trim();
 
             if (datopassword == "" || datousuario == "")
->>>>>>> Stashed changes
+
+            if (datopassword == "" && datousuario == "")
+
             {
                 MessageBox.Show(
-                    "Ingrese la contraseña.",
+                    "Favor de llenar todos los campos.",
                     "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
@@ -164,9 +165,6 @@ namespace CitasMed
                 return;
             }
 
-<<<<<<< Updated upstream
-            if (datoIngresado != CONTRASENA)
-=======
             bool accesoCorrecto = ValidarCredenciales(
                 rolSeleccionado,
                 datousuario,
@@ -174,7 +172,9 @@ namespace CitasMed
             );
 
             if (!accesoCorrecto)
->>>>>>> Stashed changes
+
+            if (datopassword != CONTRASENA || datousuario != USUARIO)
+
             {
                 MessageBox.Show(
                     "Usuario o contraseña incorrectos.",
@@ -240,8 +240,7 @@ namespace CitasMed
                     return boton;
                 }
 
-                Button botonEncontrado =
-                    BuscarBotonIniciar(control);
+                Button botonEncontrado = BuscarBotonIniciar(control);
 
                 if (botonEncontrado != null)
                 {
@@ -255,30 +254,9 @@ namespace CitasMed
         private void button1_Click(object sender, EventArgs e)
         {
             btnIniciarSesion_Click(sender, e);
+            this.Hide();
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show
-            (
-                "¿Estás seguro de querer salir?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (respuesta == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
@@ -293,33 +271,57 @@ namespace CitasMed
 
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void iconPictureBox1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
+            DialogResult respuesta = MessageBox.Show
+        (
+            "¿Estás seguro de querer salir?",
+            "Confirmar salida",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question
+        );
+
+            if (respuesta == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void iconoUsuario_Click(object sender, EventArgs e)
+        {
+            if (txtUsuario.UseSystemPasswordChar == false)
+            {
+                txtUsuario.UseSystemPasswordChar = true;
+                txtUsuario.PasswordChar = '●';
+            }
+            else
+            {
+                txtUsuario.UseSystemPasswordChar = false;
+            }
 
         }
 
-        private void iconPictureBox3_Click(object sender, EventArgs e)
+        private void iconoPassword_Click(object sender, EventArgs e)
         {
-
+            if (textContrasena.UseSystemPasswordChar == false)
+            {
+                textContrasena.UseSystemPasswordChar = true;
+                textContrasena.PasswordChar = '●';
+            }
+            else
+            {
+                textContrasena.UseSystemPasswordChar = false;
+            }
         }
 
-        private void btnVerPassword_Click(object sender, EventArgs e)
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
-            textContrasena.UseSystemPasswordChar =! textContrasena.UseSystemPasswordChar;
 
-            textContrasena.Focus();
-            textContrasena.SelectionStart =
-            textContrasena.Text.Length;
         }
     }
 }

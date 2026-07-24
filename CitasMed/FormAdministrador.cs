@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
+        
     public partial class FormAdministrador : Form
     {
         public FormAdministrador()
@@ -24,35 +25,18 @@ namespace CitasMed
 
         }
 
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnInicio_admin_Click(object sender, EventArgs e)
         {
-            Form1 principal = new Form1();
-            principal.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void FormAdministrador_Load(object sender, EventArgs e)
         {
 
         }
-        private void lblPersonalMedico_Click (object sender, EventArgs e)
+        private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
-            FormPersonalMedico personal =new FormPersonalMedico();
+            FormPersonalMedico personal = new FormPersonalMedico();
             personal.Show();
             this.Hide();
 
@@ -78,5 +62,37 @@ namespace CitasMed
             panel.Region = new Region(path);
         }
 
+        private void ucMenuAdministrador1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRegistrar_Click(object sender, EventArgs e)
+        {
+            FormPaciente registro = new FormPaciente();
+            registro.Show();
+            this.Hide();
+        }
+
+        private void lblProgramadas_Click(object sender, EventArgs e)
+        {
+            FormPaciente registro = new FormPaciente();
+            registro.Show();
+            this.Close();
+        }
+
+        private void lblConsultas_Click(object sender, EventArgs e)
+        {
+            FormCitas_programadas programadas = new FormCitas_programadas();
+            programadas.Show();
+            this.Close();
+        }
+
+        private void lblMedicos_especialidades_Click(object sender, EventArgs e)
+        {
+            FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
+            especialidades.Show();
+            this.Close();
+        }
     }
 }

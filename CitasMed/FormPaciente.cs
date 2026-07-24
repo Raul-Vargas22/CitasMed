@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CitasMed
 {
@@ -16,7 +15,6 @@ namespace CitasMed
     {
         public FormPaciente()
         {
-
             InitializeComponent();
 
             ucMenuEmpleado1.SeleccionarPacientes();
@@ -30,13 +28,17 @@ namespace CitasMed
 
         private void lblPacientes_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                      "Actualmente se encuentra en esta seccion");
+            MessageBox.Show("Actualmente se encuentra en esta seccion");
         }
 
         private void FormPaciente_Load(object sender, EventArgs e)
         {
             CargarPacientes();
+            
+            if (Sesion.perfil != "Admin")
+            {
+                button3.Enabled = false;
+            }
         }
 
         private void lblNueva_Click(object sender, EventArgs e)
@@ -106,14 +108,7 @@ namespace CitasMed
 
                     // Tabla completamente inmodificable
                     dgvPacientes.ReadOnly = true;
-                    dgvPacientes.AllowUserToAddRows = false;
-                    dgvPacientes.AllowUserToDeleteRows = false;
-                    dgvPacientes.EditMode =
-                        DataGridViewEditMode.EditProgrammatically;
-
-                    dgvPacientes.SelectionMode =
-                        DataGridViewSelectionMode.FullRowSelect;
-
+                    dgvPacientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                     dgvPacientes.MultiSelect = false;
                 }
             }
@@ -124,65 +119,52 @@ namespace CitasMed
             }
         }
 
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
-
         }
-
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
+            
+            Sesion.AbrirFormularioSegunRol();
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dgvPacientes.CurrentRow == null ||
-                dgvPacientes.CurrentRow.IsNewRow)
+            MessageBox.Show("Entró al botón Editar");
+
+            if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
                 MessageBox.Show(
                     "Selecciona un paciente para editar.");
                 return;
             }
 
-            int idPaciente = Convert.ToInt32(
-                dgvPacientes.CurrentRow.Cells["CLAVE"].Value);
+            int idPaciente = Convert.ToInt32(dgvPacientes.CurrentRow.Cells["CLAVE"].Value);
 
-            using (Registro_de_paciente formulario =
-                   new Registro_de_paciente(idPaciente))
-            {
-                formulario.ShowDialog();
-            }
+            Registro_de_paciente formulario = new Registro_de_paciente(idPaciente);
+            formulario.ShowDialog();
 
             CargarPacientes();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            if (dgvPacientes.CurrentRow == null ||
-                dgvPacientes.CurrentRow.IsNewRow)
+            if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
                 MessageBox.Show("Selecciona un paciente.");
                 return;
             }
 
-            int idPaciente = Convert.ToInt32(
-                dgvPacientes.CurrentRow.Cells[0].Value);
-
-            string nombre = Convert.ToString(
-                dgvPacientes.CurrentRow.Cells[2].Value);
+            int idPaciente = Convert.ToInt32(dgvPacientes.CurrentRow.Cells[0].Value);
+            string nombre = Convert.ToString(dgvPacientes.CurrentRow.Cells[2].Value);
 
             DialogResult respuesta = MessageBox.Show(
-                "¿Estás seguro de eliminar al paciente " +
-                nombre + "?",
+                "¿Estás seguro de eliminar al paciente " + nombre + "?",
                 "Eliminar paciente",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
@@ -194,20 +176,15 @@ namespace CitasMed
 
             try
             {
-                using (MySqlConnection conexion =
-                       ConexionBD.ObtenerConexion())
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
                 {
                     conexion.Open();
 
-                    string consulta = @"DELETE FROM Paciente
-                                WHERE id_paciente = @idPaciente";
+                    string consulta = @"DELETE FROM Paciente WHERE id_paciente = @idPaciente";
 
-                    using (MySqlCommand comando =
-                           new MySqlCommand(consulta, conexion))
+                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
                     {
-                        comando.Parameters.AddWithValue(
-                            "@idPaciente", idPaciente);
-
+                        comando.Parameters.AddWithValue("@idPaciente", idPaciente);
                         comando.ExecuteNonQuery();
                     }
                 }
@@ -219,18 +196,16 @@ namespace CitasMed
             {
                 if (ex.Number == 1451)
                 {
-                    MessageBox.Show(
-                        "No se puede eliminar porque el paciente tiene citas registradas.");
+                    MessageBox.Show("No se puede eliminar porque el paciente tiene citas registradas.");
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Error al eliminar: " + ex.Message);
+                    MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }
         }
 
-        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -330,43 +330,26 @@ namespace CitasMed
                         {
                             if (lector.Read())
                             {
-                                txtCurp.Text =
-                                    Convert.ToString(lector["curp"]);
+                                txtCurp.Text = Convert.ToString(lector["curp"]);
 
-                                txtNombre.Text =
-                                    Convert.ToString(lector["nombre"]);
+                                txtNombre.Text = Convert.ToString(lector["nombre"]);
 
-                                txtApellidoPaterno.Text =
-                                    Convert.ToString(
-                                        lector["apellido_paterno"]);
+                                numEdad.Value = Convert.ToDecimal(lector["edad"]);
 
-                                txtApellidoMaterno.Text =
-                                    Convert.ToString(
-                                        lector["apellido_materno"]);
+                                txtApellidoPaterno.Text = Convert.ToString(lector["apellido_paterno"]);
 
-                                cmbGenero.Text =
-                                    Convert.ToString(lector["genero"]);
+                                txtApellidoMaterno.Text = Convert.ToString(lector["apellido_materno"]);
 
-<<<<<<< Updated upstream
-                                txtTelefono.Text =
-                                    Convert.ToString(lector["telefono"]);
+                                cmbGenero.Text = Convert.ToString(lector["genero"]);
 
-                                txtCorreo.Text =
-                                    Convert.ToString(lector["correo"]);
+                                txtTelefono.Text = Convert.ToString(lector["telefono"]);
 
-                                txtCalle.Text =
-                                    Convert.ToString(lector["calle"]);
+                                txtCorreo.Text = Convert.ToString(lector["correo"]);
 
-                                txtColonia.Text =
-                                    Convert.ToString(lector["colonia"]);
+                                txtCalle.Text = Convert.ToString(lector["calle"]);
 
-                                txtMunicipio.Text =
-                                    Convert.ToString(lector["municipio"]);
+                                txtColonia.Text = Convert.ToString(lector["colonia"]);
 
-                                txtEnfermedadCronica.Text =
-                                    Convert.ToString(
-                                        lector["enfermedad_cronica"]);
-=======
                                 if (lector["edad"] != DBNull.Value)
                                 {
                                     numEdad.Value =
@@ -396,7 +379,13 @@ namespace CitasMed
                             {
                                 MessageBox.Show(
                                     "No se encontró el paciente.");
->>>>>>> Stashed changes
+
+                                txtMunicipio.Text = Convert.ToString(lector["municipio"]);
+
+                                txtEnfermedadCronica.Text = Convert.ToString(lector["enfermedad_cronica"]);
+
+                                dtFecha_cita.Value = Convert.ToDateTime(lector["Fecha de la cita"]);
+
                             }
                         }
                     }

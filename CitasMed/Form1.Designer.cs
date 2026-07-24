@@ -37,57 +37,67 @@
             lblEmpleado = new LinkLabel();
             lblAdministrador = new LinkLabel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            btnSalir = new Button();
-            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            btnVerPassword = new FontAwesome.Sharp.IconButton();
+            lblUsuario = new Label();
+            txtUsuario = new TextBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
+            label2 = new Label();
+            btnSalir = new Button();
+            iconoUsuario = new FontAwesome.Sharp.IconButton();
+            iconoPassword = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox5).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tntTitulo
             // 
             tntTitulo.BackColor = Color.FromArgb(155, 179, 232);
-            tntTitulo.Font = new Font("Century Gothic", 40.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tntTitulo.Location = new Point(308, 36);
+            tntTitulo.Font = new Font("Century Gothic", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tntTitulo.Location = new Point(559, 40);
+            tntTitulo.Margin = new Padding(4, 0, 4, 0);
             tntTitulo.Name = "tntTitulo";
-            tntTitulo.Size = new Size(470, 80);
+            tntTitulo.Size = new Size(669, 100);
             tntTitulo.TabIndex = 0;
-            tntTitulo.Text = "Asministrador";
+            tntTitulo.Text = "¡Bienvenido de nuevo!";
             tntTitulo.TextAlign = ContentAlignment.TopCenter;
             tntTitulo.Click += label1_Click;
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(510, 443);
+            linkLabel1.Location = new Point(638, 554);
+            linkLabel1.Margin = new Padding(4, 0, 4, 0);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(0, 20);
+            linkLabel1.Size = new Size(0, 25);
             linkLabel1.TabIndex = 2;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
             lblPassword.BackColor = Color.FromArgb(155, 179, 232);
-            lblPassword.Font = new Font("Century Gothic", 22F);
-            lblPassword.Location = new Point(332, 338);
+            lblPassword.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPassword.Location = new Point(618, 360);
+            lblPassword.Margin = new Padding(4, 0, 4, 0);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(408, 44);
+            lblPassword.Size = new Size(403, 43);
             lblPassword.TabIndex = 3;
-            lblPassword.Text = "Ingresa la contraseña";
+            lblPassword.Text = "Ingrese su contraseña";
             lblPassword.Click += lblPassword_Click;
             // 
             // textContrasena
             // 
-            textContrasena.Location = new Point(332, 385);
+            textContrasena.Location = new Point(618, 426);
+            textContrasena.Margin = new Padding(4);
             textContrasena.Multiline = true;
             textContrasena.Name = "textContrasena";
-            textContrasena.Size = new Size(393, 41);
+            textContrasena.Size = new Size(490, 50);
             textContrasena.TabIndex = 4;
             textContrasena.TextChanged += textBox1_TextChanged;
             // 
@@ -96,9 +106,10 @@
             btnSesion.BackColor = Color.FromArgb(133, 210, 208);
             btnSesion.FlatStyle = FlatStyle.Flat;
             btnSesion.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSesion.Location = new Point(408, 443);
+            btnSesion.Location = new Point(720, 536);
+            btnSesion.Margin = new Padding(4);
             btnSesion.Name = "btnSesion";
-            btnSesion.Size = new Size(215, 92);
+            btnSesion.Size = new Size(270, 54);
             btnSesion.TabIndex = 5;
             btnSesion.Text = "Iniciar sesión";
             btnSesion.UseVisualStyleBackColor = false;
@@ -110,9 +121,10 @@
             lblDoctor.BackColor = Color.FromArgb(155, 179, 232);
             lblDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDoctor.LinkColor = Color.Black;
-            lblDoctor.Location = new Point(47, 555);
+            lblDoctor.Location = new Point(1116, 768);
+            lblDoctor.Margin = new Padding(4, 0, 4, 0);
             lblDoctor.Name = "lblDoctor";
-            lblDoctor.Size = new Size(89, 28);
+            lblDoctor.Size = new Size(108, 32);
             lblDoctor.TabIndex = 7;
             lblDoctor.TabStop = true;
             lblDoctor.Text = "DOCTOR";
@@ -124,9 +136,10 @@
             lblEmpleado.BackColor = Color.FromArgb(155, 179, 232);
             lblEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEmpleado.LinkColor = Color.Black;
-            lblEmpleado.Location = new Point(47, 599);
+            lblEmpleado.Location = new Point(848, 768);
+            lblEmpleado.Margin = new Padding(4, 0, 4, 0);
             lblEmpleado.Name = "lblEmpleado";
-            lblEmpleado.Size = new Size(112, 28);
+            lblEmpleado.Size = new Size(134, 32);
             lblEmpleado.TabIndex = 8;
             lblEmpleado.TabStop = true;
             lblEmpleado.Text = "EMPLEADO";
@@ -138,12 +151,13 @@
             lblAdministrador.BackColor = Color.FromArgb(155, 179, 232);
             lblAdministrador.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblAdministrador.LinkColor = Color.Black;
-            lblAdministrador.Location = new Point(47, 507);
+            lblAdministrador.Location = new Point(529, 768);
+            lblAdministrador.Margin = new Padding(4, 0, 4, 0);
             lblAdministrador.Name = "lblAdministrador";
-            lblAdministrador.Size = new Size(77, 28);
+            lblAdministrador.Size = new Size(202, 32);
             lblAdministrador.TabIndex = 12;
             lblAdministrador.TabStop = true;
-            lblAdministrador.Text = "ADMIN";
+            lblAdministrador.Text = "ADMINISTRADOR";
             lblAdministrador.LinkClicked += lblAdministrador_LinkClicked;
             // 
             // iconPictureBox1
@@ -153,43 +167,15 @@
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.None;
             iconPictureBox1.IconColor = SystemColors.ControlText;
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.IconSize = 649;
-            iconPictureBox1.Location = new Point(-4, -1);
+            iconPictureBox1.IconSize = 811;
+            iconPictureBox1.Location = new Point(468, 0);
+            iconPictureBox1.Margin = new Padding(4);
             iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Size = new Size(1018, 649);
+            iconPictureBox1.Size = new Size(820, 811);
             iconPictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             iconPictureBox1.TabIndex = 13;
             iconPictureBox1.TabStop = false;
             iconPictureBox1.Click += iconPictureBox1_Click;
-            // 
-            // btnSalir
-            // 
-            btnSalir.BackColor = Color.FromArgb(133, 210, 208);
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.Font = new Font("Century Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(850, 584);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(155, 50);
-            btnSalir.TabIndex = 16;
-            btnSalir.Text = "SALIR";
-            btnSalir.UseVisualStyleBackColor = false;
-            btnSalir.Click += btnSalir_Click;
-            // 
-            // iconPictureBox3
-            // 
-            iconPictureBox3.BackColor = Color.FromArgb(155, 179, 232);
-            iconPictureBox3.ForeColor = SystemColors.ControlText;
-            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
-            iconPictureBox3.IconColor = SystemColors.ControlText;
-            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox3.IconSize = 195;
-            iconPictureBox3.Location = new Point(430, 128);
-            iconPictureBox3.Name = "iconPictureBox3";
-            iconPictureBox3.Size = new Size(215, 195);
-            iconPictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
-            iconPictureBox3.TabIndex = 17;
-            iconPictureBox3.TabStop = false;
-            iconPictureBox3.Click += iconPictureBox3_Click;
             // 
             // iconPictureBox2
             // 
@@ -198,10 +184,11 @@
             iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             iconPictureBox2.IconColor = SystemColors.ControlText;
             iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 42;
-            iconPictureBox2.Location = new Point(-4, 501);
+            iconPictureBox2.IconSize = 52;
+            iconPictureBox2.Location = new Point(594, 711);
+            iconPictureBox2.Margin = new Padding(4);
             iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(53, 42);
+            iconPictureBox2.Size = new Size(66, 52);
             iconPictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
             iconPictureBox2.TabIndex = 18;
             iconPictureBox2.TabStop = false;
@@ -213,10 +200,11 @@
             iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             iconPictureBox4.IconColor = SystemColors.ControlText;
             iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox4.IconSize = 42;
-            iconPictureBox4.Location = new Point(-4, 597);
+            iconPictureBox4.IconSize = 52;
+            iconPictureBox4.Location = new Point(1132, 711);
+            iconPictureBox4.Margin = new Padding(4);
             iconPictureBox4.Name = "iconPictureBox4";
-            iconPictureBox4.Size = new Size(53, 42);
+            iconPictureBox4.Size = new Size(66, 52);
             iconPictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             iconPictureBox4.TabIndex = 19;
             iconPictureBox4.TabStop = false;
@@ -228,39 +216,130 @@
             iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.UserCircle;
             iconPictureBox5.IconColor = SystemColors.ControlText;
             iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox5.IconSize = 42;
-            iconPictureBox5.Location = new Point(-4, 549);
+            iconPictureBox5.IconSize = 52;
+            iconPictureBox5.Location = new Point(884, 711);
+            iconPictureBox5.Margin = new Padding(4);
             iconPictureBox5.Name = "iconPictureBox5";
-            iconPictureBox5.Size = new Size(53, 42);
+            iconPictureBox5.Size = new Size(66, 52);
             iconPictureBox5.SizeMode = PictureBoxSizeMode.CenterImage;
             iconPictureBox5.TabIndex = 20;
             iconPictureBox5.TabStop = false;
             // 
-            // btnVerPassword
+            // lblUsuario
             // 
-            btnVerPassword.FlatStyle = FlatStyle.Flat;
-            btnVerPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            btnVerPassword.IconColor = Color.Black;
-            btnVerPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnVerPassword.Location = new Point(676, 385);
-            btnVerPassword.Name = "btnVerPassword";
-            btnVerPassword.Size = new Size(49, 41);
-            btnVerPassword.TabIndex = 21;
-            btnVerPassword.UseVisualStyleBackColor = true;
-            btnVerPassword.Click += btnVerPassword_Click;
+            lblUsuario.AutoSize = true;
+            lblUsuario.BackColor = Color.FromArgb(155, 179, 232);
+            lblUsuario.Font = new Font("Century Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.Location = new Point(655, 171);
+            lblUsuario.Margin = new Padding(4, 0, 4, 0);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(327, 43);
+            lblUsuario.TabIndex = 22;
+            lblUsuario.Text = "Ingrese su usuario";
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.Location = new Point(618, 264);
+            txtUsuario.Margin = new Padding(4);
+            txtUsuario.Multiline = true;
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(490, 50);
+            txtUsuario.TabIndex = 23;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(label2);
+            panel1.Location = new Point(1, 0);
+            panel1.Margin = new Padding(4);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(474, 811);
+            panel1.TabIndex = 25;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Captura_de_pantalla_2026_07_22_192654;
+            pictureBox1.Location = new Point(46, 116);
+            pictureBox1.Margin = new Padding(4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(386, 438);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Cooper Black", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(0, 119, 182);
+            label2.Location = new Point(46, 575);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(370, 82);
+            label2.TabIndex = 0;
+            label2.Text = "CitasMed";
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.FromArgb(133, 210, 208);
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(720, 616);
+            btnSalir.Margin = new Padding(4);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(270, 54);
+            btnSalir.TabIndex = 26;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // iconoUsuario
+            // 
+            iconoUsuario.BackColor = SystemColors.ButtonHighlight;
+            iconoUsuario.FlatStyle = FlatStyle.Flat;
+            iconoUsuario.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconoUsuario.IconColor = Color.Black;
+            iconoUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconoUsuario.Location = new Point(1047, 264);
+            iconoUsuario.Margin = new Padding(4);
+            iconoUsuario.Name = "iconoUsuario";
+            iconoUsuario.Size = new Size(61, 51);
+            iconoUsuario.TabIndex = 27;
+            iconoUsuario.UseVisualStyleBackColor = false;
+            iconoUsuario.Click += iconoUsuario_Click;
+            // 
+            // iconoPassword
+            // 
+            iconoPassword.BackColor = SystemColors.ButtonHighlight;
+            iconoPassword.FlatStyle = FlatStyle.Flat;
+            iconoPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            iconoPassword.IconColor = Color.Black;
+            iconoPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconoPassword.Location = new Point(1047, 426);
+            iconoPassword.Margin = new Padding(4);
+            iconoPassword.Name = "iconoPassword";
+            iconoPassword.Size = new Size(61, 51);
+            iconoPassword.TabIndex = 28;
+            iconoPassword.UseVisualStyleBackColor = false;
+            iconoPassword.Click += iconoPassword_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(1017, 646);
-            Controls.Add(btnVerPassword);
+            ClientSize = new Size(1271, 808);
+            Controls.Add(iconoPassword);
+            Controls.Add(iconoUsuario);
+            Controls.Add(btnSalir);
+            Controls.Add(panel1);
+            Controls.Add(txtUsuario);
+            Controls.Add(lblUsuario);
             Controls.Add(iconPictureBox5);
             Controls.Add(iconPictureBox4);
             Controls.Add(iconPictureBox2);
-            Controls.Add(iconPictureBox3);
-            Controls.Add(btnSalir);
             Controls.Add(lblAdministrador);
             Controls.Add(lblEmpleado);
             Controls.Add(lblDoctor);
@@ -271,14 +350,17 @@
             Controls.Add(tntTitulo);
             Controls.Add(iconPictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4);
             Name = "Form1";
             Text = "ADMIN";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox5).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -294,11 +376,16 @@
         private LinkLabel lblEmpleado;
         private LinkLabel lblAdministrador;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private Button btnSalir;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconButton btnVerPassword;
+        private Label lblUsuario;
+        private TextBox txtUsuario;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Label label2;
+        private Button btnSalir;
+        private FontAwesome.Sharp.IconButton iconoUsuario;
+        private FontAwesome.Sharp.IconButton iconoPassword;
     }
 }

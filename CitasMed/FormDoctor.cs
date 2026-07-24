@@ -26,12 +26,12 @@ namespace CitasMed
             principal.Show();
             this.Hide();
         }
-       
+
         private void FormDoctor_Load(object sender, EventArgs e)
         {
 
         }
-        
+
 
         private void RedondearPanel(Panel panel, int radio)
         {
@@ -60,5 +60,9 @@ namespace CitasMed
             boton.Region = new Region(path);
         }
 
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
