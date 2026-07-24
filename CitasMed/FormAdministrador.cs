@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
+        
     public partial class FormAdministrador : Form
     {
         public FormAdministrador()
@@ -82,12 +83,16 @@ namespace CitasMed
 
         private void lblConsultas_Click(object sender, EventArgs e)
         {
-
+            FormCitas_programadas programadas = new FormCitas_programadas();
+            programadas.Show();
+            this.Close();
         }
 
         private void lblMedicos_especialidades_Click(object sender, EventArgs e)
         {
-
+            FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
+            especialidades.Show();
+            this.Close();
         }
     }
 }
