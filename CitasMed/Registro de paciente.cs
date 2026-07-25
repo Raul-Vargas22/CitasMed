@@ -407,5 +407,10 @@ namespace CitasMed
         {
 
         }
+
+        private void txtHora_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
