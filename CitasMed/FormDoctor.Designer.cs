@@ -38,20 +38,22 @@
             textBox1 = new TextBox();
             iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             panel1 = new Panel();
+            lblPacientesD = new Label();
+            lblNuevaCitaD = new Label();
             label3 = new Label();
             textBox3 = new TextBox();
             textBox2 = new TextBox();
             label2 = new Label();
             label1 = new Label();
             dataGridView1 = new DataGridView();
+            btnRegresar = new Button();
+            btnGuardar = new Button();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
-            btnRegresar = new Button();
-            btnGuardar = new Button();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
             panel1.SuspendLayout();
@@ -63,47 +65,42 @@
             label10.AutoSize = true;
             label10.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ActiveCaption;
-            label10.Location = new Point(1606, 62);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(1285, 50);
             label10.Name = "label10";
-            label10.Size = new Size(122, 27);
+            label10.Size = new Size(102, 23);
             label10.TabIndex = 50;
             label10.Text = "DOCTOR";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(412, 452);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(330, 362);
             label9.Name = "label9";
-            label9.Size = new Size(0, 25);
+            label9.Size = new Size(0, 20);
             label9.TabIndex = 56;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(408, 299);
-            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Location = new Point(326, 239);
             label18.Name = "label18";
-            label18.Size = new Size(0, 25);
+            label18.Size = new Size(0, 20);
             label18.TabIndex = 55;
             // 
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(596, 352);
-            label19.Margin = new Padding(4, 0, 4, 0);
+            label19.Location = new Point(477, 282);
             label19.Name = "label19";
-            label19.Size = new Size(0, 25);
+            label19.Size = new Size(0, 20);
             label19.TabIndex = 54;
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(502, 182);
-            label21.Margin = new Padding(4, 0, 4, 0);
+            label21.Location = new Point(402, 146);
             label21.Name = "label21";
-            label21.Size = new Size(0, 25);
+            label21.Size = new Size(0, 20);
             label21.TabIndex = 53;
             // 
             // panel7
@@ -111,20 +108,18 @@
             panel7.BackColor = Color.FromArgb(133, 210, 208);
             panel7.Controls.Add(textBox1);
             panel7.Controls.Add(iconPictureBox4);
-            panel7.Location = new Point(706, 15);
-            panel7.Margin = new Padding(4, 4, 4, 4);
+            panel7.Location = new Point(565, 12);
             panel7.Name = "panel7";
-            panel7.Size = new Size(370, 59);
+            panel7.Size = new Size(296, 47);
             panel7.TabIndex = 67;
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(59, 18);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Location = new Point(47, 14);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(290, 24);
+            textBox1.Size = new Size(232, 20);
             textBox1.TabIndex = 0;
             // 
             // iconPictureBox4
@@ -134,11 +129,10 @@
             iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.Search;
             iconPictureBox4.IconColor = SystemColors.ControlText;
             iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox4.IconSize = 50;
-            iconPictureBox4.Location = new Point(4, 0);
-            iconPictureBox4.Margin = new Padding(4, 4, 4, 4);
+            iconPictureBox4.IconSize = 40;
+            iconPictureBox4.Location = new Point(3, 0);
             iconPictureBox4.Name = "iconPictureBox4";
-            iconPictureBox4.Size = new Size(50, 50);
+            iconPictureBox4.Size = new Size(40, 40);
             iconPictureBox4.TabIndex = 65;
             iconPictureBox4.TabStop = false;
             // 
@@ -146,62 +140,82 @@
             // 
             panel1.BackColor = Color.White;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.Controls.Add(lblPacientesD);
+            panel1.Controls.Add(lblNuevaCitaD);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(textBox3);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(1, 5);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Location = new Point(1, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(468, 799);
+            panel1.Size = new Size(374, 639);
             panel1.TabIndex = 68;
+            // 
+            // lblPacientesD
+            // 
+            lblPacientesD.AutoSize = true;
+            lblPacientesD.BackColor = Color.Transparent;
+            lblPacientesD.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPacientesD.ForeColor = Color.FromArgb(155, 179, 232);
+            lblPacientesD.Location = new Point(79, 540);
+            lblPacientesD.Name = "lblPacientesD";
+            lblPacientesD.Size = new Size(135, 21);
+            lblPacientesD.TabIndex = 71;
+            lblPacientesD.Text = "> PACIENTES";
+            // 
+            // lblNuevaCitaD
+            // 
+            lblNuevaCitaD.AutoSize = true;
+            lblNuevaCitaD.BackColor = Color.Transparent;
+            lblNuevaCitaD.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNuevaCitaD.ForeColor = Color.FromArgb(155, 179, 232);
+            lblNuevaCitaD.Location = new Point(79, 465);
+            lblNuevaCitaD.Name = "lblNuevaCitaD";
+            lblNuevaCitaD.Size = new Size(148, 21);
+            lblNuevaCitaD.TabIndex = 70;
+            lblNuevaCitaD.Text = "> NUEVA CITA";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(4, 46);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(3, 37);
             label3.Name = "label3";
-            label3.Size = new Size(116, 25);
+            label3.Size = new Size(96, 20);
             label3.TabIndex = 69;
             label3.Text = "Diagnostico :";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(4, 75);
-            textBox3.Margin = new Padding(4, 4, 4, 4);
+            textBox3.Location = new Point(3, 60);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(445, 296);
+            textBox3.Size = new Size(357, 172);
             textBox3.TabIndex = 69;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(4, 420);
-            textBox2.Margin = new Padding(4, 4, 4, 4);
+            textBox2.Location = new Point(3, 275);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(445, 354);
+            textBox2.Size = new Size(357, 141);
             textBox2.TabIndex = 69;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(4, 391);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(3, 252);
             label2.Name = "label2";
-            label2.Size = new Size(114, 25);
+            label2.Size = new Size(96, 20);
             label2.TabIndex = 69;
             label2.Text = "Tratamiento :";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(4, 10);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(3, 8);
             label1.Name = "label1";
-            label1.Size = new Size(171, 25);
+            label1.Size = new Size(144, 20);
             label1.TabIndex = 69;
             label1.Text = "Registro de datalles:";
             // 
@@ -210,12 +224,33 @@
             dataGridView1.BackgroundColor = Color.PaleTurquoise;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dataGridView1.Location = new Point(476, 95);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Location = new Point(381, 76);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1295, 612);
+            dataGridView1.Size = new Size(1036, 490);
             dataGridView1.TabIndex = 69;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnRegresar
+            // 
+            btnRegresar.Location = new Point(523, 591);
+            btnRegresar.Name = "btnRegresar";
+            btnRegresar.Size = new Size(102, 54);
+            btnRegresar.TabIndex = 70;
+            btnRegresar.Text = "INICIO";
+            btnRegresar.UseVisualStyleBackColor = true;
+            btnRegresar.Click += btnRegresar_Click;
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.BackColor = Color.FromArgb(133, 210, 208);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Location = new Point(402, 591);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(115, 52);
+            btnGuardar.TabIndex = 71;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = false;
             // 
             // Column1
             // 
@@ -233,21 +268,21 @@
             // 
             // Column3
             // 
-            Column3.HeaderText = "Apellido_Paterno";
+            Column3.HeaderText = "Apellido Paterno";
             Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             Column3.Width = 180;
             // 
             // Column4
             // 
-            Column4.HeaderText = "Apellido_Materno";
+            Column4.HeaderText = "Apellido Materno";
             Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             Column4.Width = 180;
             // 
             // Column5
             // 
-            Column5.HeaderText = "Enfermedades_Cronicas";
+            Column5.HeaderText = "Enfermedades Cronicas";
             Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             Column5.Width = 200;
@@ -259,35 +294,12 @@
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
-            // btnRegresar
-            // 
-            btnRegresar.Location = new Point(654, 739);
-            btnRegresar.Margin = new Padding(4, 4, 4, 4);
-            btnRegresar.Name = "btnRegresar";
-            btnRegresar.Size = new Size(127, 67);
-            btnRegresar.TabIndex = 70;
-            btnRegresar.Text = "INICIO";
-            btnRegresar.UseVisualStyleBackColor = true;
-            btnRegresar.Click += btnRegresar_Click;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.FromArgb(133, 210, 208);
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.Location = new Point(502, 739);
-            btnGuardar.Margin = new Padding(4, 4, 4, 4);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(144, 65);
-            btnGuardar.TabIndex = 71;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
-            // 
             // FormDoctor
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1786, 819);
+            ClientSize = new Size(1429, 655);
             Controls.Add(btnGuardar);
             Controls.Add(btnRegresar);
             Controls.Add(dataGridView1);
@@ -329,7 +341,7 @@
         private Label label7;
         private Label label6;
         private Label label5;
-        private Label label4;
+        private Label lblPacientesD;
         private Button btnInicio_Doc;
         private PictureBox pictureBox3;
         private Label label10;
@@ -354,6 +366,7 @@
         private TextBox textBox3;
         private TextBox textBox2;
         private DataGridView dataGridView1;
+        private Label lblNuevaCitaD;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

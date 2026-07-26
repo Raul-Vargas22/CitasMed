@@ -230,7 +230,7 @@
             // 
             txtMunicipio.BackColor = Color.FromArgb(133, 210, 208);
             txtMunicipio.BorderStyle = BorderStyle.None;
-            txtMunicipio.Location = new Point(63, 11);
+            txtMunicipio.Location = new Point(14, 11);
             txtMunicipio.Multiline = true;
             txtMunicipio.Name = "txtMunicipio";
             txtMunicipio.Size = new Size(152, 34);
@@ -361,7 +361,7 @@
             button1.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Location = new Point(538, 702);
             button1.Name = "button1";
-            button1.Size = new Size(175, 29);
+            button1.Size = new Size(175, 32);
             button1.TabIndex = 29;
             button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = false;
@@ -374,7 +374,7 @@
             btnMenu_empleado.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMenu_empleado.Location = new Point(314, 702);
             btnMenu_empleado.Name = "btnMenu_empleado";
-            btnMenu_empleado.Size = new Size(175, 29);
+            btnMenu_empleado.Size = new Size(175, 32);
             btnMenu_empleado.TabIndex = 30;
             btnMenu_empleado.Text = "Menu principal";
             btnMenu_empleado.UseVisualStyleBackColor = false;

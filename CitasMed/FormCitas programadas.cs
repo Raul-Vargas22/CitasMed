@@ -308,9 +308,29 @@ namespace CitasMed
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(
+    object sender,
+    EventArgs e)
         {
+            if (dataGridView1.CurrentRow == null ||
+                dataGridView1.CurrentRow.IsNewRow)
+            {
+                MessageBox.Show(
+                    "Selecciona una cita para editar.");
+                return;
+            }
 
+            int idCita = Convert.ToInt32(
+                dataGridView1.CurrentRow
+                .Cells["CLAVE"].Value);
+
+            using (EditarCitas formulario =
+                   new EditarCitas(idCita))
+            {
+                formulario.ShowDialog(this);
+            }
+
+            CargarCitas();
         }
     }
 }
