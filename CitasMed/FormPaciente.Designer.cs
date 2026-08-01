@@ -51,7 +51,6 @@
             label8 = new Label();
             button3 = new Button();
             button2 = new Button();
-            button4 = new Button();
             ucMenuEmpleado1 = new UcMenuEmpleado();
             panel7 = new Panel();
             textBox1 = new TextBox();
@@ -232,36 +231,29 @@
             // button3
             // 
             button3.BackColor = Color.Turquoise;
-            button3.Location = new Point(756, 587);
+            button3.Location = new Point(456, 587);
             button3.Name = "button3";
             button3.Size = new Size(140, 50);
             button3.TabIndex = 112;
             button3.Text = "ELIMINAR";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
             button2.BackColor = Color.Turquoise;
-            button2.Location = new Point(561, 587);
+            button2.Location = new Point(305, 587);
             button2.Name = "button2";
             button2.Size = new Size(140, 50);
             button2.TabIndex = 111;
             button2.Text = "EDITAR";
             button2.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.Turquoise;
-            button4.Location = new Point(333, 587);
-            button4.Name = "button4";
-            button4.Size = new Size(140, 50);
-            button4.TabIndex = 110;
-            button4.Text = "NUEVA CITA";
-            button4.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // ucMenuEmpleado1
             // 
             ucMenuEmpleado1.Location = new Point(2, 4);
+            ucMenuEmpleado1.Margin = new Padding(4, 4, 4, 4);
             ucMenuEmpleado1.Name = "ucMenuEmpleado1";
             ucMenuEmpleado1.Size = new Size(281, 647);
             ucMenuEmpleado1.TabIndex = 113;
@@ -284,6 +276,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(232, 20);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // iconPictureBox4
             // 
@@ -303,12 +296,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1743, 657);
+            ClientSize = new Size(1539, 657);
+            Controls.Add(button3);
             Controls.Add(panel7);
             Controls.Add(ucMenuEmpleado1);
-            Controls.Add(button3);
             Controls.Add(button2);
-            Controls.Add(button4);
             Controls.Add(dgvPacientes);
             Controls.Add(pictureBox3);
             Controls.Add(label7);
@@ -365,7 +357,6 @@
         private Label label8;
         private Button button3;
         private Button button2;
-        private Button button4;
         private UcMenuEmpleado ucMenuEmpleado1;
         private Panel panel7;
         private TextBox textBox1;

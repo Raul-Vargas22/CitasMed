@@ -1,4 +1,5 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace CitasMed
         public FormMédicos_y_Especialidades()
         {
             InitializeComponent();
+
             ucMenuEmpleado1.SeleccionarMedicos();
             ucMenuEmpleado1.InicioClick += btnRegresar_Click;
             ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
@@ -23,8 +25,69 @@ namespace CitasMed
             ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
             ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
             ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+
             PanelRedondo(panel1);
+
+            CargarMedicos();
         }
+
+        private void CargarMedicos()
+        {
+            try
+            {
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"
+                SELECT
+                    m.nombre AS NOMBRE,
+                    m.apellido_paterno AS 'APELLIDO PATERNO',
+                    m.apellido_materno AS 'APELLIDO MATERNO',
+                    e.nombre AS ESPECIALIDAD,
+                    m.cedula AS CÉDULA
+                FROM Medico m
+                LEFT JOIN Especialidad e
+                    ON m.id_especialidad = e.id_especialidad
+                ORDER BY m.nombre;";
+
+                    MySqlDataAdapter adaptador =
+                        new MySqlDataAdapter(consulta, conexion);
+
+                    DataTable tabla = new DataTable();
+                    adaptador.Fill(tabla);
+
+                    dataGridView1.DataSource = null;
+                    dataGridView1.Columns.Clear();
+                    dataGridView1.AutoGenerateColumns = true;
+                    dataGridView1.DataSource = tabla;
+
+                    dataGridView1.ReadOnly = true;
+                    dataGridView1.AllowUserToAddRows = false;
+                    dataGridView1.AllowUserToDeleteRows = false;
+                    dataGridView1.EditMode =
+                        DataGridViewEditMode.EditProgrammatically;
+
+                    dataGridView1.SelectionMode =
+                        DataGridViewSelectionMode.FullRowSelect;
+
+                    dataGridView1.MultiSelect = false;
+
+                    dataGridView1.AutoSizeColumnsMode =
+                        DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar los médicos:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
         private void PanelRedondo(Panel panel)
         {
             GraphicsPath ruta = new GraphicsPath();
@@ -52,9 +115,11 @@ namespace CitasMed
         }
         private void lblNueva_Click(object sender, EventArgs e)
         {
-            Registro_de_paciente registro = new Registro_de_paciente();
-            registro.Show();
-            this.Hide();
+            using (Registro_de_paciente registro =
+                   new Registro_de_paciente())
+            {
+                registro.ShowDialog(this);
+            }
         }
 
         private void lblProgramada_Click(object sender, EventArgs e)
@@ -84,6 +149,11 @@ namespace CitasMed
         }
 
         private void ucMenuEmpleado1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

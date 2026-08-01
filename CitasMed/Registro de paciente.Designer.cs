@@ -68,6 +68,14 @@
             panel10 = new Panel();
             panel11 = new Panel();
             panel12 = new Panel();
+            dtFecha_cita = new DateTimePicker();
+            panel13 = new Panel();
+            numEdad = new NumericUpDown();
+            textBox1 = new TextBox();
+            label14 = new Label();
+            label15 = new Label();
+            txtHora = new DateTimePicker();
+            label16 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -81,6 +89,8 @@
             panel10.SuspendLayout();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
+            panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numEdad).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -121,6 +131,7 @@
             label3.Size = new Size(164, 28);
             label3.TabIndex = 3;
             label3.Text = "Apellido paterno:";
+            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -219,7 +230,7 @@
             // 
             txtMunicipio.BackColor = Color.FromArgb(133, 210, 208);
             txtMunicipio.BorderStyle = BorderStyle.None;
-            txtMunicipio.Location = new Point(12, 11);
+            txtMunicipio.Location = new Point(14, 11);
             txtMunicipio.Multiline = true;
             txtMunicipio.Name = "txtMunicipio";
             txtMunicipio.Size = new Size(152, 34);
@@ -229,7 +240,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(697, 484);
+            label8.Location = new Point(90, 603);
             label8.Name = "label8";
             label8.Size = new Size(220, 28);
             label8.TabIndex = 16;
@@ -239,7 +250,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(410, 484);
+            label9.Location = new Point(688, 486);
             label9.Name = "label9";
             label9.Size = new Size(212, 28);
             label9.TabIndex = 15;
@@ -249,7 +260,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(126, 484);
+            label10.Location = new Point(405, 486);
             label10.Name = "label10";
             label10.Size = new Size(104, 28);
             label10.TabIndex = 14;
@@ -289,7 +300,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(697, 368);
+            label11.Location = new Point(106, 486);
             label11.Name = "label11";
             label11.Size = new Size(83, 28);
             label11.TabIndex = 22;
@@ -299,7 +310,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label12.Location = new Point(410, 368);
+            label12.Location = new Point(706, 362);
             label12.Name = "label12";
             label12.Size = new Size(58, 28);
             label12.TabIndex = 21;
@@ -309,7 +320,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label13.Location = new Point(126, 368);
+            label13.Location = new Point(399, 364);
             label13.Name = "label13";
             label13.Size = new Size(58, 28);
             label13.TabIndex = 20;
@@ -328,7 +339,7 @@
             // 
             cmbEspecialidad.BackColor = Color.FromArgb(133, 210, 208);
             cmbEspecialidad.FormattingEnabled = true;
-            cmbEspecialidad.Location = new Point(11, 17);
+            cmbEspecialidad.Location = new Point(19, 18);
             cmbEspecialidad.Name = "cmbEspecialidad";
             cmbEspecialidad.Size = new Size(186, 28);
             cmbEspecialidad.TabIndex = 27;
@@ -336,7 +347,7 @@
             // txtEnfermedadCronica
             // 
             txtEnfermedadCronica.BackColor = Color.FromArgb(133, 210, 208);
-            txtEnfermedadCronica.Location = new Point(15, 8);
+            txtEnfermedadCronica.Location = new Point(16, 8);
             txtEnfermedadCronica.Name = "txtEnfermedadCronica";
             txtEnfermedadCronica.Size = new Size(195, 37);
             txtEnfermedadCronica.TabIndex = 28;
@@ -348,9 +359,9 @@
             button1.BackColor = Color.FromArgb(133, 210, 208);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(562, 642);
+            button1.Location = new Point(538, 702);
             button1.Name = "button1";
-            button1.Size = new Size(175, 29);
+            button1.Size = new Size(175, 32);
             button1.TabIndex = 29;
             button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = false;
@@ -361,9 +372,9 @@
             btnMenu_empleado.BackColor = Color.FromArgb(133, 210, 208);
             btnMenu_empleado.FlatStyle = FlatStyle.Flat;
             btnMenu_empleado.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMenu_empleado.Location = new Point(291, 642);
+            btnMenu_empleado.Location = new Point(314, 702);
             btnMenu_empleado.Name = "btnMenu_empleado";
-            btnMenu_empleado.Size = new Size(175, 29);
+            btnMenu_empleado.Size = new Size(175, 32);
             btnMenu_empleado.TabIndex = 30;
             btnMenu_empleado.Text = "Menu principal";
             btnMenu_empleado.UseVisualStyleBackColor = false;
@@ -427,7 +438,7 @@
             // 
             panel7.BackColor = Color.FromArgb(133, 210, 208);
             panel7.Controls.Add(txtCurp);
-            panel7.Location = new Point(91, 399);
+            panel7.Location = new Point(387, 393);
             panel7.Name = "panel7";
             panel7.Size = new Size(178, 55);
             panel7.TabIndex = 37;
@@ -436,7 +447,7 @@
             // 
             panel8.BackColor = Color.FromArgb(133, 210, 208);
             panel8.Controls.Add(txtCalle);
-            panel8.Location = new Point(385, 402);
+            panel8.Location = new Point(681, 395);
             panel8.Name = "panel8";
             panel8.Size = new Size(212, 52);
             panel8.TabIndex = 38;
@@ -445,7 +456,7 @@
             // 
             panel9.BackColor = Color.FromArgb(133, 210, 208);
             panel9.Controls.Add(txtColonia);
-            panel9.Location = new Point(683, 402);
+            panel9.Location = new Point(92, 520);
             panel9.Name = "panel9";
             panel9.Size = new Size(209, 52);
             panel9.TabIndex = 39;
@@ -454,35 +465,120 @@
             // 
             panel10.BackColor = Color.FromArgb(133, 210, 208);
             panel10.Controls.Add(txtMunicipio);
-            panel10.Location = new Point(91, 515);
+            panel10.Location = new Point(385, 518);
             panel10.Name = "panel10";
-            panel10.Size = new Size(178, 55);
+            panel10.Size = new Size(212, 55);
             panel10.TabIndex = 40;
             // 
             // panel11
             // 
             panel11.BackColor = Color.FromArgb(133, 210, 208);
             panel11.Controls.Add(cmbEspecialidad);
-            panel11.Location = new Point(385, 515);
+            panel11.Location = new Point(683, 518);
             panel11.Name = "panel11";
-            panel11.Size = new Size(212, 55);
+            panel11.Size = new Size(209, 55);
             panel11.TabIndex = 41;
             // 
             // panel12
             // 
             panel12.BackColor = Color.FromArgb(133, 210, 208);
             panel12.Controls.Add(txtEnfermedadCronica);
-            panel12.Location = new Point(683, 515);
+            panel12.Location = new Point(90, 632);
             panel12.Name = "panel12";
             panel12.Size = new Size(221, 55);
             panel12.TabIndex = 42;
+            // 
+            // dtFecha_cita
+            // 
+            dtFecha_cita.Location = new Point(385, 650);
+            dtFecha_cita.Margin = new Padding(2);
+            dtFecha_cita.MinDate = new DateTime(2026, 7, 24, 0, 0, 0, 0);
+            dtFecha_cita.Name = "dtFecha_cita";
+            dtFecha_cita.Size = new Size(277, 27);
+            dtFecha_cita.TabIndex = 44;
+            // 
+            // panel13
+            // 
+            panel13.BackColor = Color.FromArgb(133, 210, 208);
+            panel13.Controls.Add(numEdad);
+            panel13.Controls.Add(textBox1);
+            panel13.Location = new Point(90, 393);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(179, 55);
+            panel13.TabIndex = 46;
+            // 
+            // numEdad
+            // 
+            numEdad.Location = new Point(14, 12);
+            numEdad.Margin = new Padding(2);
+            numEdad.Name = "numEdad";
+            numEdad.Size = new Size(144, 27);
+            numEdad.TabIndex = 47;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(133, 210, 208);
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(12, 12);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(154, 34);
+            textBox1.TabIndex = 23;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label14.Location = new Point(117, 362);
+            label14.Name = "label14";
+            label14.Size = new Size(60, 28);
+            label14.TabIndex = 47;
+            label14.Text = "Edad:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label15.Location = new Point(385, 602);
+            label15.Name = "label15";
+            label15.Size = new Size(145, 28);
+            label15.TabIndex = 48;
+            label15.Text = "Fecha de la cita";
+            // 
+            // txtHora
+            // 
+            txtHora.CustomFormat = "HH:mm";
+            txtHora.Format = DateTimePickerFormat.Custom;
+            txtHora.Location = new Point(683, 650);
+            txtHora.MinDate = new DateTime(2026, 7, 24, 0, 0, 0, 0);
+            txtHora.Name = "txtHora";
+            txtHora.ShowUpDown = true;
+            txtHora.Size = new Size(250, 27);
+            txtHora.TabIndex = 52;
+            txtHora.ValueChanged += txtHora_ValueChanged;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label16.Location = new Point(683, 602);
+            label16.Name = "label16";
+            label16.Size = new Size(138, 28);
+            label16.TabIndex = 53;
+            label16.Text = "Hora de la cita";
             // 
             // Registro_de_paciente
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(984, 701);
+            ClientSize = new Size(1031, 780);
+            Controls.Add(label16);
+            Controls.Add(txtHora);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(panel13);
+            Controls.Add(dtFecha_cita);
             Controls.Add(panel12);
             Controls.Add(panel11);
             Controls.Add(panel10);
@@ -536,6 +632,9 @@
             panel10.PerformLayout();
             panel11.ResumeLayout(false);
             panel12.ResumeLayout(false);
+            panel13.ResumeLayout(false);
+            panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numEdad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -582,5 +681,13 @@
         private Panel panel10;
         private Panel panel11;
         private Panel panel12;
+        private DateTimePicker dtFecha_cita;
+        private Panel panel13;
+        private NumericUpDown numEdad;
+        private TextBox textBox1;
+        private Label label14;
+        private Label label15;
+        private DateTimePicker txtHora;
+        private Label label16;
     }
 }

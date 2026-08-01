@@ -1,25 +1,43 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace CitasMed
 {
     public partial class Form1 : Form
     {
-        private const string CONTRASENA = "faul";
+        private string rolSeleccionado = "Administrador";
 
         public Form1()
         {
             InitializeComponent();
 
-            Button botonIniciar = BuscarBotonIniciar(this);
+            txtUsuario.Multiline = false;
+            txtUsuario.AutoSize = false;
+            txtUsuario.Height = 41;
 
-            if (botonIniciar != null)
-            {
-                botonIniciar.Click -= btnIniciarSesion_Click;
-                botonIniciar.Click -= button1_Click;
-                botonIniciar.Click += btnIniciarSesion_Click;
-            }
+            textContrasena.Multiline = false;
+            textContrasena.AutoSize = false;
+            textContrasena.Height = 41;
+
+            // Evita eventos repetidos en el botón de inicio
+            btnSesion.Click -= button1_Click;
+            btnSesion.Click -= btnSesion_Click;
+            btnSesion.Click += btnSesion_Click;
+
+            // Eventos de los botones para mostrar u ocultar datos
+            iconoUsuario.Click -= iconoUsuario_Click;
+            iconoUsuario.Click += iconoUsuario_Click;
+
+            iconoPassword.Click -= iconoPassword_Click;
+            iconoPassword.Click += iconoPassword_Click;
+
+            btnSalir.Click -= btnSalir_Click;
+            btnSalir.Click += btnSalir_Click;
+
+            // Permite iniciar sesión presionando Enter
+            AcceptButton = btnSesion;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,19 +47,44 @@ namespace CitasMed
 
         private void PrepararRol(string rol)
         {
-            tntTitulo.TextAlign = ContentAlignment.MiddleCenter;
-            tntTitulo.Text = rol;
+            rolSeleccionado = rol;
 
-            lblPassword.Text = "Ingrese la contraseña";
+            // Mantiene el título principal del diseño
+            tntTitulo.Text = "¡Bienvenido de nuevo!";
+            tntTitulo.TextAlign = ContentAlignment.MiddleCenter;
+
+            lblUsuario.Text = "Ingrese su usuario";
+            lblUsuario.Visible = true;
+
+            lblPassword.Text = "Ingrese su contraseña";
             lblPassword.Visible = true;
 
+            txtUsuario.Visible = true;
             textContrasena.Visible = true;
 
-            textContrasena.UseSystemPasswordChar = false;
-            textContrasena.PasswordChar = '\0';
+            // El usuario se muestra normalmente
+            txtUsuario.UseSystemPasswordChar = false;
 
+            // La contraseña comienza oculta
+            textContrasena.UseSystemPasswordChar = true;
+
+            txtUsuario.Clear();
             textContrasena.Clear();
-            textContrasena.Focus();
+
+            // Muestra el rol seleccionado en el título de la ventana
+            Text = rol.ToUpper();
+
+            // Marca visualmente el rol seleccionado
+            lblAdministrador.LinkColor =
+                rol == "Administrador" ? Color.DarkBlue : Color.Black;
+
+            lblEmpleado.LinkColor =
+                rol == "Empleado" ? Color.DarkBlue : Color.Black;
+
+            lblDoctor.LinkColor =
+                rol == "Doctor" ? Color.DarkBlue : Color.Black;
+
+            txtUsuario.Focus();
         }
 
         private void lblAdministrador_LinkClicked(
@@ -65,34 +108,123 @@ namespace CitasMed
             PrepararRol("Empleado");
         }
 
-        private void btnIniciarSesion_Click(
+        private bool ValidarCredenciales(
+            string rol,
+            string usuario,
+            string contrasena)
+        {
+            try
+            {
+                using (MySqlConnection conexion =
+                       ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta;
+
+                    if (rol == "Administrador")
+                    {
+                        consulta = @"
+                            SELECT COUNT(*)
+                            FROM Administrador
+                            WHERE usuario = @usuario
+                            AND contrasena = @contrasena;";
+                    }
+                    else if (rol == "Doctor")
+                    {
+                        consulta = @"
+                            SELECT COUNT(*)
+                            FROM Medico
+                            WHERE usuario = @usuario
+                            AND contrasena = @contrasena;";
+                    }
+                    else if (rol == "Empleado")
+                    {
+                        consulta = @"
+                            SELECT COUNT(*)
+                            FROM Empleado
+                            WHERE usuario = @usuario
+                            AND contrasena = @contrasena;";
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    using (MySqlCommand comando =
+                           new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@usuario",
+                            usuario);
+
+                        comando.Parameters.AddWithValue(
+                            "@contrasena",
+                            contrasena);
+
+                        int cantidad = Convert.ToInt32(
+                            comando.ExecuteScalar());
+
+                        return cantidad > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al conectar con la base de datos:\n" +
+                    ex.Message,
+                    "Error de conexión",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        private void btnSesion_Click(
             object sender,
             EventArgs e)
         {
-            string datoIngresado = textContrasena.Text.Trim();
-            string rolSeleccionado = tntTitulo.Text.Trim();
+            IniciarSesion();
+        }
 
-            if (datoIngresado == "")
+        private void button1_Click(
+            object sender,
+            EventArgs e)
+        {
+            IniciarSesion();
+        }
+
+        private void IniciarSesion()
+        {
+            string usuario = txtUsuario.Text.Trim();
+            string contrasena = textContrasena.Text.Trim();
+
+            if (usuario == "" || contrasena == "")
             {
                 MessageBox.Show(
-                    "Ingrese la contraseña.",
+                    "Favor de llenar todos los campos.",
                     "Aviso",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+                    MessageBoxIcon.Warning);
 
-                textContrasena.Focus();
+                txtUsuario.Focus();
                 return;
             }
 
-            if (datoIngresado != CONTRASENA)
+            bool accesoCorrecto = ValidarCredenciales(
+                rolSeleccionado,
+                usuario,
+                contrasena);
+
+            if (!accesoCorrecto)
             {
                 MessageBox.Show(
-                    "Contraseña incorrecta.",
+                    "Usuario o contraseña incorrectos.",
                     "Error",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                    MessageBoxIcon.Error);
 
                 textContrasena.Clear();
                 textContrasena.Focus();
@@ -115,95 +247,97 @@ namespace CitasMed
             }
 
             MessageBox.Show(
-                "Bienvenido " + rolSeleccionado.ToLower() + ".",
+                "Bienvenido " +
+                rolSeleccionado.ToLower() + ".",
                 "Acceso correcto",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+                MessageBoxIcon.Information);
 
-            formularioDestino.FormClosed += (s, args) =>
-            {
-                this.Show();
-                textContrasena.Clear();
-                textContrasena.Focus();
-            };
+            formularioDestino.FormClosed +=
+                (s, argumentos) =>
+                {
+                    Show();
+
+                    txtUsuario.Clear();
+                    textContrasena.Clear();
+
+                    txtUsuario.Focus();
+                };
 
             formularioDestino.Show();
-            this.Hide();
+            Hide();
         }
 
-        private Button BuscarBotonIniciar(Control contenedor)
+        private void iconoUsuario_Click(
+            object sender,
+            EventArgs e)
         {
-            foreach (Control control in contenedor.Controls)
+            txtUsuario.UseSystemPasswordChar =
+                !txtUsuario.UseSystemPasswordChar;
+
+            txtUsuario.Focus();
+
+            txtUsuario.SelectionStart =
+                txtUsuario.Text.Length;
+        }
+
+        private void iconoPassword_Click(
+            object sender,
+            EventArgs e)
+        {
+            textContrasena.UseSystemPasswordChar =
+                !textContrasena.UseSystemPasswordChar;
+
+            textContrasena.Focus();
+
+            textContrasena.SelectionStart =
+                textContrasena.Text.Length;
+        }
+
+        private void btnSalir_Click(
+            object sender,
+            EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show(
+                "¿Estás seguro de querer salir?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
             {
-                if (control is Button boton &&
-                    boton.Text.Trim().Equals(
-                        "Iniciar sesión",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    return boton;
-                }
-
-                Button botonEncontrado =
-                    BuscarBotonIniciar(control);
-
-                if (botonEncontrado != null)
-                {
-                    return botonEncontrado;
-                }
+                Application.Exit();
             }
-
-            return null;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label1_Click(
+            object sender,
+            EventArgs e)
         {
-            btnIniciarSesion_Click(sender, e);
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void lblPassword_Click(
+            object sender,
+            EventArgs e)
         {
-            Application.Exit();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(
+            object sender,
+            EventArgs e)
         {
-
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void txtUsuario_TextChanged(
+            object sender,
+            EventArgs e)
         {
-
         }
 
-        private void lblPassword_Click(object sender, EventArgs e)
+        private void iconPictureBox1_Click(
+            object sender,
+            EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void iconPictureBox3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
