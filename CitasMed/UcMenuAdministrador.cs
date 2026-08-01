@@ -20,6 +20,7 @@ namespace CitasMed
         public event EventHandler RegistrarClick;
         public event EventHandler ProgramadasClick;
         public event EventHandler MedicosEspecialidadesClick;
+
         
 
         public UcMenuAdministrador()
@@ -62,6 +63,20 @@ namespace CitasMed
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
             HistorialCitasClick?.Invoke(this, EventArgs.Empty);
+        }
+        private void lblRegistrar_Click(object sender, EventArgs e)
+        {
+            RegistrarClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void lblProgramadas_Click(object sender, EventArgs e)
+        {
+            ProgramadasClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void lblMedicosEspecialidades_Click(object sender, EventArgs e)
+        {
+            MedicosEspecialidadesClick?.Invoke(this, EventArgs.Empty);
         }
         private void LimpiarSeleccion()
         {

@@ -20,6 +20,9 @@ namespace CitasMed
             ucMenuAdministrador1.InicioClick += btnInicio_admin_Click;
             ucMenuAdministrador1.PersonalMedicoClick += lblPersonalMedico_Click;
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
+            ucMenuAdministrador1.RegistrarClick += lblRegistrar_Click;
+            ucMenuAdministrador1.ProgramadasClick += lblProgramadas_Click;
+            ucMenuAdministrador1.MedicosEspecialidadesClick += lblMedicos_especialidades_Click;
             ucMenuAdministrador1.SeleccionarInicio();
             RedondearPanel(panel7, 20);
 
