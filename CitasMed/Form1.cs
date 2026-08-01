@@ -245,6 +245,22 @@ namespace CitasMed
             {
                 formularioDestino = new FormEmpleado();
             }
+            if (rolSeleccionado == "Doctor")
+            {
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string sql = "SELECT id_medico FROM Medico WHERE usuario=@usuario";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conexion);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    Sesion.IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                formularioDestino = new FormDoctor();
+            }
 
             MessageBox.Show(
                 "Bienvenido " +

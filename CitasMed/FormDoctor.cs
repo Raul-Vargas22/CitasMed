@@ -47,11 +47,15 @@ namespace CitasMed
                 FROM Cita c
                 INNER JOIN Paciente p
                     ON c.id_paciente = p.id_paciente
-                WHERE c.estado IN ('Programada', 'Reagendada')
+                WHERE c.id_medico=@idMedico
+                AND c.estado IN ('Programada','Reagendada')
                 ORDER BY c.fecha, c.hora;";
 
                     MySqlDataAdapter adaptador =
                         new MySqlDataAdapter(consulta, conexion);
+                    adaptador.SelectCommand.Parameters.AddWithValue(
+                    "@idMedico",
+                    Sesion.IdUsuario);
 
                     DataTable tabla = new DataTable();
                     adaptador.Fill(tabla);
