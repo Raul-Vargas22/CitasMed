@@ -17,6 +17,10 @@ namespace CitasMed
         public event EventHandler InicioClick;
         public event EventHandler PersonalMedicoClick;
         public event EventHandler HistorialCitasClick;
+        public event EventHandler RegistrarClick;
+        public event EventHandler ProgramadasClick;
+        public event EventHandler MedicosEspecialidadesClick;
+        
 
         public UcMenuAdministrador()
         {
