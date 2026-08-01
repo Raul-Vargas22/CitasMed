@@ -36,20 +36,20 @@ namespace CitasMed
                     conexion.Open();
 
                     string consulta = @"
-                SELECT
+                    SELECT
                     c.id_cita AS ID_CITA,
                     p.curp AS CURP,
                     p.nombre AS NOMBRE,
                     p.apellido_paterno AS APELLIDO_PATERNO,
                     p.apellido_materno AS APELLIDO_MATERNO,
                     p.enfermedad_cronica AS ENFERMEDADES_CRONICAS,
-                    DATE_FORMAT(c.fecha, '%d/%m/%Y') AS FECHA
-                FROM Cita c
-                INNER JOIN Paciente p
+                    DATE_FORMAT(c.fecha,'%d/%m/%Y') AS FECHA
+                    FROM Cita c
+                    INNER JOIN Paciente p
                     ON c.id_paciente = p.id_paciente
-                WHERE c.id_medico=@idMedico
-                AND c.estado IN ('Programada','Reagendada')
-                ORDER BY c.fecha, c.hora;";
+                    WHERE c.id_medico=@idMedico
+                    AND c.estado IN ('Programada','Reagendada')
+                    ORDER BY c.fecha,c.hora;";
 
                     MySqlDataAdapter adaptador =
                         new MySqlDataAdapter(consulta, conexion);
