@@ -47,12 +47,20 @@ namespace CitasMed
                     FROM Cita c
                     INNER JOIN Paciente p
                     ON c.id_paciente = p.id_paciente
-                    WHERE c.id_medico=@idMedico
-                    AND c.estado IN ('Programada','Reagendada')
+                    WHERE c.id_medico = @idMedico
+                    AND c.estado IN ('Programada', 'Reagendada')
                     ORDER BY c.fecha,c.hora;";
+                   
+                    
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+
+                    comando.Parameters.AddWithValue(
+                        "@idMedico",
+                        Sesion.IdMedico);
 
                     MySqlDataAdapter adaptador =
-                        new MySqlDataAdapter(consulta, conexion);
+                        new MySqlDataAdapter(comando);
+
                     adaptador.SelectCommand.Parameters.AddWithValue(
                     "@idMedico",
                     Sesion.IdUsuario);
@@ -111,11 +119,9 @@ namespace CitasMed
             object sender,
             EventArgs e)
         {
-            using (FormPaciente pacientes =
-                   new FormPaciente())
-            {
-                pacientes.ShowDialog(this);
-            }
+            FormPaciente pacientes = new FormPaciente();
+            pacientes.Show();
+            this.Hide();
         }
 
         // Regresar al login
