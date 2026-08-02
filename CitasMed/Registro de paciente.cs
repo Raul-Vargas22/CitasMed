@@ -167,6 +167,16 @@ namespace CitasMed
                         }
 
                         comando.ExecuteNonQuery();
+                        int idPaciente = 0;
+
+                        if (!modoEdicion)
+                        {
+                            idPaciente = Convert.ToInt32(comando.LastInsertedId);
+                        }
+                        else
+                        {
+                            idPaciente = idPacienteEditar;
+                        }
                     }
                 }
 
@@ -213,6 +223,7 @@ namespace CitasMed
 
         private void btnMenu_empleado_Click_1(object sender, EventArgs e)
         {
+            Sesion.AbrirFormularioSegunRol();
             this.Close();
         }
 

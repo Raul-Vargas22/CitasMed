@@ -42,8 +42,18 @@ namespace CitasMed
         {
             CargarPacientes();
 
-            button3.Enabled = true;
-            button3.Visible = true;
+            if (Sesion.perfil == "Doctor")
+            {
+                button2.Visible = false;   // Editar
+                button3.Visible = false;   // Eliminar
+                label10.Text = "DOCTOR";
+            }
+            else
+            {
+                button2.Visible = true;
+                button3.Visible = true;
+                label10.Text = "EMPLEADO";
+            }
         }
 
         private void lblNueva_Click(object sender, EventArgs e)

@@ -146,11 +146,9 @@ namespace CitasMed
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
-            this.Hide();
+            Sesion.AbrirFormularioSegunRol();
+            this.Close();
         }
-
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -207,6 +205,11 @@ namespace CitasMed
             RedondearBoton(button3, 20);
 
             CargarCitas();
+            if (Sesion.perfil == "Doctor")
+            {
+                button2.Visible = false;
+                button3.Visible = false; 
+            }
 
         }
 

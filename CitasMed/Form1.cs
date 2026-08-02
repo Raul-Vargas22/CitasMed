@@ -256,7 +256,7 @@ namespace CitasMed
                     MySqlCommand cmd = new MySqlCommand(sql, conexion);
                     cmd.Parameters.AddWithValue("@usuario", usuario);
 
-                    Sesion.IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
+                    Sesion.IdMedico = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
                 formularioDestino = new FormDoctor();
