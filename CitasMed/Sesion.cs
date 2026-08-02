@@ -10,6 +10,13 @@ namespace CitasMed
     public static class Sesion
     {
         public static string perfil { get; set; } = string.Empty;
+        public static int IdUsuario { get; set; }
+        public static int IdAdministrador { get; set; }
+        public static int IdEmpleado { get; set; }
+        public static int IdMedico { get; set; }
+
+        public static string Usuario { get; set; } = string.Empty;
+        public static string Nombre { get; set; } = string.Empty;
 
         public static void AbrirFormularioSegunRol()
         {

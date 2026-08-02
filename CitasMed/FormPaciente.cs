@@ -18,6 +18,7 @@ namespace CitasMed
             InitializeComponent();
 
             button3.Enabled = true;
+            button3.Visible = true;
             button3.BringToFront();
 
             button3.Click -= button3_Click;
@@ -40,11 +41,9 @@ namespace CitasMed
         private void FormPaciente_Load(object sender, EventArgs e)
         {
             CargarPacientes();
-            
-            if (Sesion.perfil != "Admin")
-            {
-                button3.Enabled = false;
-            }
+
+            button3.Enabled = true;
+            button3.Visible = true;
         }
 
         private void lblNueva_Click(object sender, EventArgs e)

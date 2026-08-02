@@ -23,6 +23,8 @@ namespace CitasMed
         public FormEmpleado()
         {
             InitializeComponent();
+
+
             CrearMenuEmpleado();
             ConectarEventosMenu();
             RedondearPanel(panel6, 25);
@@ -963,6 +965,23 @@ namespace CitasMed
 
         private void btnInicio_empleado_Click(object? sender, EventArgs e)
         {
+            Form1? login = Application.OpenForms
+                .OfType<Form1>()
+                .FirstOrDefault();
+
+            if (login == null)
+            {
+                login = new Form1();
+                login.Show();
+            }
+            else
+            {
+                login.Show();
+                login.WindowState = FormWindowState.Normal;
+                login.BringToFront();
+                login.Activate();
+            }
+
             this.Close();
         }
 

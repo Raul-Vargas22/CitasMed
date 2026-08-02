@@ -224,6 +224,7 @@
             button2.TabIndex = 79;
             button2.Text = "EDITAR";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
