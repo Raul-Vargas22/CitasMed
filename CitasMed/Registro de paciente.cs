@@ -16,16 +16,21 @@ namespace CitasMed
     {
         private bool modoEdicion = false;
         private int idPacienteEditar = 0;
+        private ZoomFormulario zoomFormulario;
+
 
         public Registro_de_paciente()
         {
             InitializeComponent();
+            zoomFormulario = new ZoomFormulario(this);
+
         }
+
 
         public Registro_de_paciente(int idPaciente)
         {
             InitializeComponent();
-
+            zoomFormulario = new ZoomFormulario(this);
             modoEdicion = true;
             idPacienteEditar = idPaciente;
         }
@@ -398,6 +403,9 @@ namespace CitasMed
                     "Error al cargar el paciente: " + ex.Message);
             }
         }
+        
+       
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -421,6 +429,18 @@ namespace CitasMed
 
         private void txtHora_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnZoomMas_Click(object sender, EventArgs e)
+        {
+            zoomFormulario.ZoomMas();
+
+        }
+
+        private void btnZoomMenos_Click(object sender, EventArgs e)
+        {
+            zoomFormulario.ZoomMenos();
 
         }
     }
