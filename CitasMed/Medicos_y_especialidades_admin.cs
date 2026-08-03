@@ -1,5 +1,5 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,19 +12,20 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
-    public partial class FormMédicos_y_Especialidades : Form
+    public partial class Medicos_y_espcialidades_admin : Form
     {
-        public FormMédicos_y_Especialidades()
+        public Medicos_y_espcialidades_admin()
         {
             InitializeComponent();
+            InitializeComponent();
 
-            ucMenuEmpleado1.SeleccionarMedicos();
-            ucMenuEmpleado1.InicioClick += btnRegresar_Click;
-            ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
-            ucMenuEmpleado1.ProgramadasClick += lblProgramada_Click;
-            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
-            ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
-            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+
+            ucMenuAdministrador1.InicioClick += btnInicio_admin_Click;
+            ucMenuAdministrador1.PersonalMedicoClick += lblPersonalMedico_Click;
+            ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
+            ucMenuAdministrador1.RegistrarClick += lblRegistrar_Click;
+            ucMenuAdministrador1.ProgramadasClick += lblProgramadas_Click;
+            ucMenuAdministrador1.MedicosEspecialidadesClick += lblMedicosEspecialidades_Click;
 
             PanelRedondo(panel1);
 
@@ -130,21 +131,26 @@ namespace CitasMed
         }
 
 
-        private void btnRegresar_Click(object sender, EventArgs e)
+        private void btnInicio_admin_Click(
+              object sender,
+              EventArgs e)
         {
-            AsistenteVoz.Decir("Regresando al menú principal.");
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
-            this.Hide();
+            btnRegresar_Click(sender, e);
         }
 
-        private void FormMédicos_y_Especialidades_Load(object sender, EventArgs e)
+        private void btnRegresar_Click(
+            object sender,
+            EventArgs e)
         {
-            AsistenteVoz.Decir($"Pantalla de médicos y especialidades. {dataGridView1.Rows.Count} médicos registrados.");
+            FormAdministrador admin = new FormAdministrador();
+            admin.Show();
+            this.Close();
         }
-        private void lblNueva_Click(object sender, EventArgs e)
+
+        private void lblRegistrar_Click(
+            object sender,
+            EventArgs e)
         {
-            AsistenteVoz.Decir("Nueva cita");
             using (Registro_de_paciente registro =
                    new Registro_de_paciente())
             {
@@ -152,59 +158,45 @@ namespace CitasMed
             }
         }
 
-        private void lblProgramada_Click(object sender, EventArgs e)
+        private void lblProgramadas_Click(
+            object sender,
+            EventArgs e)
         {
-            AsistenteVoz.Decir("Citas programadas");
-            FormCitas_programadas programadas = new FormCitas_programadas();
+            FormCitas_programadas programadas =
+                new FormCitas_programadas();
+
             programadas.Show();
             this.Hide();
         }
 
-        private void lblHistorial_Click(object sender, EventArgs e)
+        private void lblHistorialCitas_Click(
+            object sender,
+            EventArgs e)
         {
-            AsistenteVoz.Decir("Historial de consultas");
-            FormHistorial_de_consultas historial = new FormHistorial_de_consultas();
-            historial.Show();
+            MessageBox.Show(
+                "Actualmente se encuentra en esta sección");
+        }
+
+        private void lblPersonalMedico_Click(
+            object sender,
+            EventArgs e)
+        {
+            FormMédicos_y_Especialidades medicos =
+                new FormMédicos_y_Especialidades();
+
+            medicos.Show();
             this.Hide();
         }
 
-        private void lblMedicos_Click(object sender, EventArgs e)
+        private void lblMedicosEspecialidades_Click(
+            object sender,
+            EventArgs e)
         {
-            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
-            MessageBox.Show("Actualmente se encuentra en esta sección");
-        }
+            FormPaciente pacientes =
+                new FormPaciente();
 
-        private void lblPacientes_Click(object sender, EventArgs e)
-        {
-            AsistenteVoz.Decir("Pacientes");
-            FormPaciente paciente = new FormPaciente();
-            paciente.Show();
+            pacientes.Show();
             this.Hide();
-        }
-
-        private void ucMenuEmpleado1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

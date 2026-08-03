@@ -117,7 +117,7 @@ namespace CitasMed
         private void lblMedicos_especialidades_Click(object sender, EventArgs e)
         {
             AsistenteVoz.Decir("Médicos y especialidades");
-            FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
+            Medicos_y_espcialidades_admin especialidades = new Medicos_y_espcialidades_admin();
             especialidades.Show();
             this.Close();
         }
