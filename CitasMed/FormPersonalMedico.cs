@@ -21,6 +21,20 @@ namespace CitasMed
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
             ucMenuAdministrador1.SeleccionarPersonalMedico();
             RedondearPanel(panel7, 20);
+
+            ConfigurarAccesibilidadVoz();
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        "Pantalla de personal médico. Use el menú lateral para navegar.");
+                }
+            };
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,10 +44,12 @@ namespace CitasMed
 
         private void FormPersonalMedico_Load(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Pantalla de personal médico.");
 
         }
         private void btnInicio_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Regresando al inicio.");
             FormAdministrador administardor= new FormAdministrador();
             administardor.Show();
             this.Hide();
@@ -41,10 +57,11 @@ namespace CitasMed
         }
         private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
-
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Historial de citas");
             FormHistorialCitas historial = new FormHistorialCitas();
             historial.Show();
             this.Hide();

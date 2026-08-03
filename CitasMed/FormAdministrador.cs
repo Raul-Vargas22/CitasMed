@@ -26,10 +26,26 @@ namespace CitasMed
             ucMenuAdministrador1.SeleccionarInicio();
             RedondearPanel(panel7, 20);
 
+            ConfigurarAccesibilidadVoz();
+
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        "Panel de administrador. Use el menú lateral para navegar entre inicio, " +
+                        "personal médico, historial de citas, registrar, programadas y médicos y especialidades.");
+                }
+            };
         }
 
         private void btnInicio_admin_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Cerrando sesión.");
             Form1 login = new Form1();
             login.Show();
             this.Close();
@@ -37,10 +53,11 @@ namespace CitasMed
 
         private void FormAdministrador_Load(object sender, EventArgs e)
         {
-
+            AsistenteVoz.Decir("Bienvenido al panel de administrador.");
         }
         private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Personal médico");
             FormPersonalMedico personal = new FormPersonalMedico();
             personal.Show();
             this.Hide();
@@ -48,6 +65,7 @@ namespace CitasMed
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Historial de citas");
             FormHistorialCitas historial = new FormHistorialCitas();
             historial.Show();
             this.Hide();
@@ -74,6 +92,7 @@ namespace CitasMed
 
         private void lblRegistrar_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Registrar paciente");
             FormPaciente registro = new FormPaciente();
             registro.Show();
             this.Hide();
@@ -81,6 +100,8 @@ namespace CitasMed
 
         private void lblProgramadas_Click(object sender, EventArgs e)
         {
+
+            AsistenteVoz.Decir("Citas programadas");
             FormPaciente registro = new FormPaciente();
             registro.Show();
             this.Close();
@@ -95,6 +116,7 @@ namespace CitasMed
 
         private void lblMedicos_especialidades_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Médicos y especialidades");
             FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
             especialidades.Show();
             this.Close();

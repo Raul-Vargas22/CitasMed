@@ -70,6 +70,36 @@ namespace CitasMed
 
             AcceptButton = btnRegistrarE;
             CancelButton = btnMenuprincipalE;
+
+            ConfigurarAccesibilidadVoz();
+        }
+
+        private void ConfigurarAccesibilidadVoz()
+        {
+            // Campos de solo lectura: se identifican como información, no como algo editable
+            txtPaciente.Enter += (s, e) => AsistenteVoz.Decir("Paciente, información no editable: " + txtPaciente.Text);
+            txtTelefono.Enter += (s, e) => AsistenteVoz.Decir("Teléfono, información no editable: " + txtTelefono.Text);
+            txtEspecialidad.Enter += (s, e) => AsistenteVoz.Decir("Especialidad, información no editable: " + txtEspecialidad.Text);
+            txtDoctor.Enter += (s, e) => AsistenteVoz.Decir("Doctor, información no editable: " + txtDoctor.Text);
+
+            // Campos editables
+            dtFecha_citaE.Enter += (s, e) => AsistenteVoz.Decir("Fecha de la cita, editable");
+            dtHoraE.Enter += (s, e) => AsistenteVoz.Decir("Hora de la cita, editable");
+            txtMotivo.Enter += (s, e) => AsistenteVoz.Decir("Motivo de la cita, editable");
+
+            btnRegistrarE.Enter += (s, e) => AsistenteVoz.Decir("Botón guardar cambios");
+            btnMenuprincipalE.Enter += (s, e) => AsistenteVoz.Decir("Botón cancelar");
+
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Editando cita de {txtPaciente.Text} con el doctor {txtDoctor.Text}. " +
+                        "Puede modificar fecha, hora y motivo, luego presione guardar cambios.");
+                }
+            };
         }
 
         private void EditarCitas_Load(
@@ -78,9 +108,8 @@ namespace CitasMed
         {
             if (idCitaEditar <= 0)
             {
-                MessageBox.Show(
-                    "No se recibió una cita válida.",
-                    "Aviso",
+                AsistenteVoz.Decir("No se recibió una cita válida.");
+                MessageBox.Show("No se recibió una cita válida.", "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
@@ -154,9 +183,8 @@ namespace CitasMed
                         {
                             if (!lector.Read())
                             {
-                                MessageBox.Show(
-                                    "No se encontró la cita.",
-                                    "Aviso",
+                                AsistenteVoz.Decir("No se encontró la cita.");
+                                MessageBox.Show( "No se encontró la cita.","Aviso",
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Warning);
 
@@ -195,16 +223,17 @@ namespace CitasMed
 
                             dtHoraE.Value =
                                 DateTime.Today.Add(hora);
+                            
+                            AsistenteVoz.Decir($"Datos de la cita cargados. Paciente {txtPaciente.Text}, doctor {txtDoctor.Text}.");
+
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar la cita:\n" +
-                    ex.Message,
-                    "Error",
+                AsistenteVoz.Decir("Error al cargar la cita.");
+                MessageBox.Show("Error al cargar la cita:\n" + ex.Message, "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -216,20 +245,18 @@ namespace CitasMed
         {
             if (txtMotivo.Text.Trim() == "")
             {
-                MessageBox.Show(
-                    "Escribe el motivo de la cita.",
-                    "Aviso",
+                AsistenteVoz.Decir("Escribe el motivo de la cita.");
+                MessageBox.Show( "Escribe el motivo de la cita.", "Aviso",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
                 txtMotivo.Focus();
                 return;
             }
+            AsistenteVoz.Decir("¿Desea guardar los cambios?");
 
             DialogResult respuesta =
-                MessageBox.Show(
-                    "¿Deseas guardar los cambios?",
-                    "Editar cita",
+                MessageBox.Show("¿Deseas guardar los cambios?","Editar cita",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
@@ -282,9 +309,8 @@ namespace CitasMed
 
                         if (filas > 0)
                         {
-                            MessageBox.Show(
-                                "Cita actualizada correctamente.",
-                                "Cambios guardados",
+                            AsistenteVoz.Decir("Cita actualizada correctamente.");
+                            MessageBox.Show("Cita actualizada correctamente.","Cambios guardados",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
 
@@ -293,8 +319,8 @@ namespace CitasMed
                         }
                         else
                         {
-                            MessageBox.Show(
-                                "No se pudo actualizar la cita.");
+                            AsistenteVoz.Decir("No se pudo actualizar la cita.");
+                            MessageBox.Show("No se pudo actualizar la cita.");
                         }
                     }
                 }
@@ -303,29 +329,24 @@ namespace CitasMed
             {
                 if (ex.Number == 1062)
                 {
-                    MessageBox.Show(
-                        "El médico ya tiene otra cita " +
-                        "registrada en esa fecha y hora.",
-                        "Horario ocupado",
+                    AsistenteVoz.Decir("El médico ya tiene otra cita registrada en esa fecha y hora.");
+                    MessageBox.Show( "El médico ya tiene otra cita " + "registrada en esa fecha y hora.", "Horario ocupado",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Error al actualizar la cita:\n" +
-                        ex.Message,
-                        "Error",
+                    AsistenteVoz.Decir("Error al actualizar la cita.");
+                    MessageBox.Show( "Error al actualizar la cita:\n" +ex.Message, "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void btnMenuprincipalE_Click(
-            object sender,
-            EventArgs e)
+        private void btnMenuprincipalE_Click(object sender,EventArgs e)
         {
+            AsistenteVoz.Decir("Edición cancelada.");
             DialogResult = DialogResult.Cancel;
             Close();
         }
