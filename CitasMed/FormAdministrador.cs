@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace CitasMed
 {
-        
+
     public partial class FormAdministrador : Form
     {
         public FormAdministrador()
@@ -93,7 +93,7 @@ namespace CitasMed
         private void lblRegistrar_Click(object sender, EventArgs e)
         {
             AsistenteVoz.Decir("Registrar paciente");
-            FormPaciente registro = new FormPaciente();
+            Registro_de_paciente registro = new Registro_de_paciente();
             registro.Show();
             this.Hide();
         }
@@ -119,6 +119,14 @@ namespace CitasMed
             AsistenteVoz.Decir("Médicos y especialidades");
             FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
             especialidades.Show();
+            this.Close();
+        }
+
+        private void lblPacientes_Click(object sender, EventArgs e)
+        {
+            AsistenteVoz.Decir("Pacientes");
+            FormPaciente pacientes = new FormPaciente();
+            pacientes.Show();
             this.Close();
         }
     }

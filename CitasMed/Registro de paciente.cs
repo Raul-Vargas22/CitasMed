@@ -30,17 +30,13 @@ namespace CitasMed
         public Registro_de_paciente(int idPaciente)
         {
             InitializeComponent();
-            ConfigurarAccesibilidadVoz();
-        }
-        public Registro_de_paciente(int idPaciente)
-        {
-            InitializeComponent();
 
             modoEdicion = true;
             idPacienteEditar = idPaciente;
 
             ConfigurarAccesibilidadVoz();
         }
+
         private void ConfigurarAccesibilidadVoz()
         {
             txtCurp.Enter += (s, e) => AsistenteVoz.Decir("CURP");
@@ -443,8 +439,6 @@ namespace CitasMed
             }
         }
         
-       
-
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
