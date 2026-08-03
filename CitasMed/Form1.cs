@@ -38,13 +38,38 @@ namespace CitasMed
 
             // Permite iniciar sesión presionando Enter
             AcceptButton = btnSesion;
-        }
 
+            ConfigurarAccesibilidadVoz();
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            txtUsuario.Enter += (s, e) => AsistenteVoz.Decir("Campo de usuario");
+            textContrasena.Enter += (s, e) => AsistenteVoz.Decir("Campo de contraseña");
+
+            lblAdministrador.Enter += (s, e) => AsistenteVoz.Decir("Rol Administrador");
+            lblDoctor.Enter += (s, e) => AsistenteVoz.Decir("Rol Doctor");
+            lblEmpleado.Enter += (s, e) => AsistenteVoz.Decir("Rol Empleado");
+
+            btnSesion.Enter += (s, e) => AsistenteVoz.Decir("Botón iniciar sesión");
+            btnSalir.Enter += (s, e) => AsistenteVoz.Decir("Botón salir");
+
+            // Repetir la pantalla completa con F1
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Pantalla de inicio de sesión. Rol seleccionado: {rolSeleccionado}. " +
+                        "Ingrese su usuario y contraseña, luego presione el botón iniciar sesión.");
+                }
+            };
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             PrepararRol("Administrador");
+            AsistenteVoz.Decir("Pantalla de inicio de sesión. Seleccione su rol e ingrese sus credenciales.");
         }
-
         private void PrepararRol(string rol)
         {
             rolSeleccionado = rol;
@@ -85,6 +110,9 @@ namespace CitasMed
                 rol == "Doctor" ? Color.DarkBlue : Color.Black;
 
             txtUsuario.Focus();
+
+            AsistenteVoz.Decir($"Rol seleccionado: {rol}");
+        
         }
 
         private void lblAdministrador_LinkClicked(
@@ -203,6 +231,8 @@ namespace CitasMed
 
             if (usuario == "" || contrasena == "")
             {
+
+                AsistenteVoz.Decir("Favor de llenar todos los campos.");
                 MessageBox.Show(
                     "Favor de llenar todos los campos.",
                     "Aviso",
@@ -220,6 +250,7 @@ namespace CitasMed
 
             if (!accesoCorrecto)
             {
+                AsistenteVoz.Decir("Usuario o contraseña incorrectos.");
                 MessageBox.Show(
                     "Usuario o contraseña incorrectos.",
                     "Error",
@@ -261,6 +292,8 @@ namespace CitasMed
 
                 formularioDestino = new FormDoctor();
             }
+
+            AsistenteVoz.Decir("Bienvenido " + rolSeleccionado.ToLower() + ".");
 
             MessageBox.Show(
                 "Bienvenido " +
@@ -314,6 +347,7 @@ namespace CitasMed
             object sender,
             EventArgs e)
         {
+            AsistenteVoz.Decir("¿Está seguro de querer salir?");
             DialogResult respuesta = MessageBox.Show(
                 "¿Estás seguro de querer salir?",
                 "Confirmar salida",
