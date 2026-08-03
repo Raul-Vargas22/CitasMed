@@ -62,22 +62,10 @@ namespace CitasMed
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
-            HistorialCitasClick?.Invoke(this, EventArgs.Empty);
-        }
-        private void lblRegistrar_Click(object sender, EventArgs e)
-        {
-            RegistrarClick?.Invoke(this, EventArgs.Empty);
+            Historial_consultas_admin historial = new Historial_consultas_admin();
+            historial.Show();
         }
 
-        private void lblProgramadas_Click(object sender, EventArgs e)
-        {
-            ProgramadasClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void lblMedicosEspecialidades_Click(object sender, EventArgs e)
-        {
-            MedicosEspecialidadesClick?.Invoke(this, EventArgs.Empty);
-        }
         private void LimpiarSeleccion()
         {
             

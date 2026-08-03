@@ -441,7 +441,7 @@
             // 
             lblMedicos_especialidades.AutoSize = true;
             lblMedicos_especialidades.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMedicos_especialidades.ForeColor = Color.CornflowerBlue;
+            lblMedicos_especialidades.ForeColor = Color.FromArgb(155, 179, 232);
             lblMedicos_especialidades.Location = new Point(54, 471);
             lblMedicos_especialidades.Margin = new Padding(4, 0, 4, 0);
             lblMedicos_especialidades.Name = "lblMedicos_especialidades";
@@ -455,7 +455,7 @@
             lblConsultas.AutoSize = true;
             lblConsultas.BackColor = Color.Transparent;
             lblConsultas.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblConsultas.ForeColor = Color.CornflowerBlue;
+            lblConsultas.ForeColor = Color.FromArgb(155, 179, 232);
             lblConsultas.Location = new Point(54, 406);
             lblConsultas.Margin = new Padding(4, 0, 4, 0);
             lblConsultas.Name = "lblConsultas";
@@ -468,7 +468,7 @@
             // 
             lblProgramadas.AutoSize = true;
             lblProgramadas.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblProgramadas.ForeColor = Color.CornflowerBlue;
+            lblProgramadas.ForeColor = Color.FromArgb(155, 179, 232);
             lblProgramadas.Location = new Point(54, 352);
             lblProgramadas.Margin = new Padding(4, 0, 4, 0);
             lblProgramadas.Name = "lblProgramadas";
@@ -481,7 +481,7 @@
             // 
             lblRegistrar.AutoSize = true;
             lblRegistrar.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRegistrar.ForeColor = Color.CornflowerBlue;
+            lblRegistrar.ForeColor = Color.FromArgb(155, 179, 232);
             lblRegistrar.Location = new Point(54, 254);
             lblRegistrar.Margin = new Padding(4, 0, 4, 0);
             lblRegistrar.Name = "lblRegistrar";
@@ -494,7 +494,7 @@
             // 
             lblPacientes.AutoSize = true;
             lblPacientes.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPacientes.ForeColor = Color.CornflowerBlue;
+            lblPacientes.ForeColor = Color.FromArgb(155, 179, 232);
             lblPacientes.Location = new Point(54, 563);
             lblPacientes.Margin = new Padding(4, 0, 4, 0);
             lblPacientes.Name = "lblPacientes";

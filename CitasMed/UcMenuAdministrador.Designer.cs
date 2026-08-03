@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcMenuAdministrador));
             panel1 = new Panel();
             label1 = new Label();
-            lblHistorialCitas = new Label();
             lblPersonalMedico = new Label();
             btnInicio = new Button();
+            lblHistorialCitas = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,8 +47,9 @@
             panel1.Controls.Add(btnInicio);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(281, 647);
+            panel1.Size = new Size(351, 809);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -57,24 +58,12 @@
             label1.AutoSize = true;
             label1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(0, 119, 182);
-            label1.Location = new Point(139, 41);
+            label1.Location = new Point(174, 51);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(106, 20);
+            label1.Size = new Size(126, 24);
             label1.TabIndex = 4;
             label1.Text = "CITASMED";
-            // 
-            // lblHistorialCitas
-            // 
-            lblHistorialCitas.AutoSize = true;
-            lblHistorialCitas.BackColor = Color.Transparent;
-            lblHistorialCitas.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblHistorialCitas.ForeColor = Color.FromArgb(155, 179, 232);
-            lblHistorialCitas.Location = new Point(12, 395);
-            lblHistorialCitas.Name = "lblHistorialCitas";
-            lblHistorialCitas.Size = new Size(218, 20);
-            lblHistorialCitas.TabIndex = 3;
-            lblHistorialCitas.Text = "> HISTORIAL  DE CITAS";
-            lblHistorialCitas.Click += lblHistorialCitas_Click;
             // 
             // lblPersonalMedico
             // 
@@ -82,9 +71,10 @@
             lblPersonalMedico.BackColor = Color.Transparent;
             lblPersonalMedico.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPersonalMedico.ForeColor = Color.FromArgb(155, 179, 232);
-            lblPersonalMedico.Location = new Point(12, 219);
+            lblPersonalMedico.Location = new Point(15, 274);
+            lblPersonalMedico.Margin = new Padding(4, 0, 4, 0);
             lblPersonalMedico.Name = "lblPersonalMedico";
-            lblPersonalMedico.Size = new Size(199, 20);
+            lblPersonalMedico.Size = new Size(244, 24);
             lblPersonalMedico.TabIndex = 2;
             lblPersonalMedico.Text = "> PERSONAL MEDICO";
             lblPersonalMedico.Click += lblPersonalMedico_Click;
@@ -93,21 +83,37 @@
             // 
             btnInicio.BackColor = Color.FromArgb(133, 210, 208);
             btnInicio.FlatStyle = FlatStyle.Flat;
-            btnInicio.Location = new Point(71, 114);
+            btnInicio.Location = new Point(89, 142);
+            btnInicio.Margin = new Padding(4, 4, 4, 4);
             btnInicio.Name = "btnInicio";
-            btnInicio.Size = new Size(94, 29);
+            btnInicio.Size = new Size(118, 36);
             btnInicio.TabIndex = 1;
             btnInicio.Text = "INICIO";
             btnInicio.UseVisualStyleBackColor = false;
             btnInicio.Click += btnInicio_Click;
             // 
+            // lblHistorialCitas
+            // 
+            lblHistorialCitas.AutoSize = true;
+            lblHistorialCitas.BackColor = Color.Transparent;
+            lblHistorialCitas.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHistorialCitas.ForeColor = Color.FromArgb(155, 179, 232);
+            lblHistorialCitas.Location = new Point(15, 494);
+            lblHistorialCitas.Margin = new Padding(4, 0, 4, 0);
+            lblHistorialCitas.Name = "lblHistorialCitas";
+            lblHistorialCitas.Size = new Size(269, 24);
+            lblHistorialCitas.TabIndex = 3;
+            lblHistorialCitas.Text = "> HISTORIAL  DE CITAS";
+            lblHistorialCitas.Click += lblHistorialCitas_Click;
+            // 
             // UcMenuAdministrador
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "UcMenuAdministrador";
-            Size = new Size(281, 647);
+            Size = new Size(351, 809);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -116,9 +122,9 @@
         #endregion
 
         private Panel panel1;
-        private Label lblHistorialCitas;
         private Label lblPersonalMedico;
         private Button btnInicio;
         private Label label1;
+        private Label lblHistorialCitas;
     }
 }

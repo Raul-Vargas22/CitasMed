@@ -59,7 +59,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column5, Column6 });
             dataGridView1.Location = new Point(374, 132);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1404, 675);
@@ -149,7 +149,7 @@
             // pictureBox3
             // 
             pictureBox3.Location = new Point(970, 15);
-            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Margin = new Padding(4);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(110, 50);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
@@ -191,7 +191,7 @@
             // 
             ucMenuEmpleado1.AutoValidate = AutoValidate.EnablePreventFocusChange;
             ucMenuEmpleado1.Location = new Point(2, 5);
-            ucMenuEmpleado1.Margin = new Padding(5, 5, 5, 5);
+            ucMenuEmpleado1.Margin = new Padding(5);
             ucMenuEmpleado1.Name = "ucMenuEmpleado1";
             ucMenuEmpleado1.Size = new Size(351, 809);
             ucMenuEmpleado1.TabIndex = 78;
@@ -203,7 +203,7 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(iconPictureBox1);
             panel1.Location = new Point(582, 15);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(338, 61);
             panel1.TabIndex = 79;
@@ -213,7 +213,7 @@
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(61, 15);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(271, 24);
             textBox1.TabIndex = 47;
@@ -227,7 +227,7 @@
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox1.IconSize = 50;
             iconPictureBox1.Location = new Point(4, 4);
-            iconPictureBox1.Margin = new Padding(4, 4, 4, 4);
+            iconPictureBox1.Margin = new Padding(4);
             iconPictureBox1.Name = "iconPictureBox1";
             iconPictureBox1.Size = new Size(50, 50);
             iconPictureBox1.TabIndex = 61;
@@ -250,7 +250,7 @@
             Controls.Add(label9);
             Controls.Add(label10);
             Controls.Add(label8);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "FormMédicos_y_Especialidades";
             Text = "FormMédicos_y_Especialidades";
             Load += FormMédicos_y_Especialidades_Load;

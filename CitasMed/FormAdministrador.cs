@@ -93,7 +93,7 @@ namespace CitasMed
         private void lblRegistrar_Click(object sender, EventArgs e)
         {
             AsistenteVoz.Decir("Registrar paciente");
-            Registro_de_paciente registro = new Registro_de_paciente();
+            Registro_de_paciente_admin registro = new Registro_de_paciente_admin();
             registro.Show();
             this.Hide();
         }
@@ -102,15 +102,15 @@ namespace CitasMed
         {
 
             AsistenteVoz.Decir("Citas programadas");
-            FormPaciente registro = new FormPaciente();
-            registro.Show();
+            FormCitas_programadas_admin programadas = new FormCitas_programadas_admin();
+            programadas.Show();
             this.Close();
         }
 
         private void lblConsultas_Click(object sender, EventArgs e)
         {
-            FormCitas_programadas programadas = new FormCitas_programadas();
-            programadas.Show();
+            Historial_consultas_admin historial = new Historial_consultas_admin();
+            historial.Show();
             this.Close();
         }
 
