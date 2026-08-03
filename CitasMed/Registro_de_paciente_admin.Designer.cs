@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             panel14 = new Panel();
+            btnMenu_admin = new Button();
+            label17 = new Label();
+            pictureBox2 = new PictureBox();
             panel1 = new Panel();
-            txtNombre = new TextBox();
+            txtnombre = new TextBox();
             btnZoomMenos = new Button();
             label1 = new Label();
             btnZoomMas = new Button();
@@ -72,16 +75,14 @@
             button1 = new Button();
             panel5 = new Panel();
             txtTelefono = new TextBox();
-            btnMenu_empleado = new Button();
             panel4 = new Panel();
             cmbGenero = new ComboBox();
             panel2 = new Panel();
             txtApellidoPaterno = new TextBox();
             panel3 = new Panel();
             txtApellidoMaterno = new TextBox();
-            pictureBox2 = new PictureBox();
-            label17 = new Label();
             panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel13.SuspendLayout();
@@ -97,7 +98,6 @@
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel14
@@ -105,6 +105,7 @@
             panel14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel14.AutoSize = true;
             panel14.BackColor = Color.Transparent;
+            panel14.Controls.Add(btnMenu_admin);
             panel14.Controls.Add(label17);
             panel14.Controls.Add(pictureBox2);
             panel14.Controls.Add(panel1);
@@ -139,7 +140,6 @@
             panel14.Controls.Add(panel6);
             panel14.Controls.Add(button1);
             panel14.Controls.Add(panel5);
-            panel14.Controls.Add(btnMenu_empleado);
             panel14.Controls.Add(panel4);
             panel14.Controls.Add(panel2);
             panel14.Controls.Add(panel3);
@@ -149,27 +149,61 @@
             panel14.Size = new Size(1748, 1450);
             panel14.TabIndex = 57;
             // 
+            // btnMenu_admin
+            // 
+            btnMenu_admin.BackColor = Color.FromArgb(133, 210, 208);
+            btnMenu_admin.FlatStyle = FlatStyle.Flat;
+            btnMenu_admin.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMenu_admin.Location = new Point(704, 1098);
+            btnMenu_admin.Margin = new Padding(4);
+            btnMenu_admin.Name = "btnMenu_admin";
+            btnMenu_admin.Size = new Size(219, 40);
+            btnMenu_admin.TabIndex = 58;
+            btnMenu_admin.Text = "Menu principal";
+            btnMenu_admin.UseVisualStyleBackColor = false;
+            btnMenu_admin.Click += btnMenu_admin_Click;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Cooper Black", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label17.Location = new Point(661, 286);
+            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new Size(685, 55);
+            label17.TabIndex = 57;
+            label17.Text = "REGISTRO DEL PACIENTE";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new Point(463, 275);
+            pictureBox2.Margin = new Padding(4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(92, 78);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 56;
+            pictureBox2.TabStop = false;
+            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(133, 210, 208);
-            panel1.Controls.Add(txtNombre);
+            panel1.Controls.Add(txtnombre);
             panel1.Location = new Point(404, 433);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(222, 69);
             panel1.TabIndex = 31;
             // 
-            // txtNombre
+            // txtnombre
             // 
-            txtNombre.BackColor = Color.FromArgb(133, 210, 208);
-            txtNombre.BorderStyle = BorderStyle.None;
-            txtNombre.Location = new Point(15, 10);
-            txtNombre.Margin = new Padding(4);
-            txtNombre.Multiline = true;
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(190, 42);
-            txtNombre.TabIndex = 5;
-            txtNombre.TextChanged += txtNombre_TextChanged;
+            txtnombre.BackColor = Color.FromArgb(133, 210, 208);
+            txtnombre.BorderStyle = BorderStyle.None;
+            txtnombre.Location = new Point(17, 10);
+            txtnombre.Margin = new Padding(4);
+            txtnombre.Multiline = true;
+            txtnombre.Name = "txtnombre";
+            txtnombre.Size = new Size(190, 42);
+            txtnombre.TabIndex = 59;
             // 
             // btnZoomMenos
             // 
@@ -180,6 +214,7 @@
             btnZoomMenos.TabIndex = 55;
             btnZoomMenos.Text = "zoom -";
             btnZoomMenos.UseVisualStyleBackColor = true;
+            btnZoomMenos.Click += btnZoomMenos_Click_1;
             // 
             // label1
             // 
@@ -607,19 +642,6 @@
             txtTelefono.Size = new Size(232, 42);
             txtTelefono.TabIndex = 12;
             // 
-            // btnMenu_empleado
-            // 
-            btnMenu_empleado.BackColor = Color.FromArgb(133, 210, 208);
-            btnMenu_empleado.FlatStyle = FlatStyle.Flat;
-            btnMenu_empleado.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMenu_empleado.Location = new Point(683, 1099);
-            btnMenu_empleado.Margin = new Padding(4);
-            btnMenu_empleado.Name = "btnMenu_empleado";
-            btnMenu_empleado.Size = new Size(219, 40);
-            btnMenu_empleado.TabIndex = 30;
-            btnMenu_empleado.Text = "Menu principal";
-            btnMenu_empleado.UseVisualStyleBackColor = false;
-            // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(133, 210, 208);
@@ -682,27 +704,6 @@
             txtApellidoMaterno.Size = new Size(221, 42);
             txtApellidoMaterno.TabIndex = 7;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Location = new Point(463, 275);
-            pictureBox2.Margin = new Padding(4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(92, 78);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 56;
-            pictureBox2.TabStop = false;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Cooper Black", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label17.Location = new Point(661, 286);
-            label17.Margin = new Padding(4, 0, 4, 0);
-            label17.Name = "label17";
-            label17.Size = new Size(685, 55);
-            label17.TabIndex = 57;
-            label17.Text = "REGISTRO DEL PACIENTE";
-            // 
             // Registro_de_paciente_admin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -713,6 +714,7 @@
             Text = "Registro_de_paciente_admin";
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -738,7 +740,6 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -747,7 +748,6 @@
 
         private Panel panel14;
         private Panel panel1;
-        private TextBox txtNombre;
         private Button btnZoomMenos;
         private Label label1;
         private Button btnZoomMas;
@@ -789,7 +789,6 @@
         private Button button1;
         private Panel panel5;
         private TextBox txtTelefono;
-        private Button btnMenu_empleado;
         private Panel panel4;
         private ComboBox cmbGenero;
         private Panel panel2;
@@ -798,5 +797,7 @@
         private TextBox txtApellidoMaterno;
         private PictureBox pictureBox2;
         private Label label17;
+        private Button btnMenu_admin;
+        private TextBox txtnombre;
     }
 }

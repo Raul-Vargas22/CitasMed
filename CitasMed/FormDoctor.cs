@@ -31,7 +31,7 @@ namespace CitasMed
         {
             lblNuevaCitaD.Enter += (s, e) => AsistenteVoz.Decir("Nueva cita");
             lblPacientesD.Enter += (s, e) => AsistenteVoz.Decir("Ver pacientes");
-            btnInicio_Doc.Enter += (s, e) => AsistenteVoz.Decir("Botón regresar al inicio de sesión");
+        
 
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
 
@@ -51,11 +51,10 @@ namespace CitasMed
             if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
                 return;
 
-            string nombre = Convert.ToString(dataGridView1.CurrentRow.Cells["NOMBRE"].Value);
-            string apellido = Convert.ToString(dataGridView1.CurrentRow.Cells["APELLIDO_PATERNO"].Value);
-            string fecha = Convert.ToString(dataGridView1.CurrentRow.Cells["FECHA"].Value);
-            string enfermedades = Convert.ToString(dataGridView1.CurrentRow.Cells["ENFERMEDADES_CRONICAS"].Value);
-
+            string nombre = Convert.ToString(dataGridView1.CurrentRow.Cells[1].Value);
+            string apellido = Convert.ToString(dataGridView1.CurrentRow.Cells[2].Value);
+            string fecha = Convert.ToString(dataGridView1.CurrentRow.Cells[5].Value);
+            string enfermedades = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value);
             string mensaje = $"Paciente {nombre} {apellido}, cita el {fecha}";
 
             if (!string.IsNullOrWhiteSpace(enfermedades))
