@@ -31,7 +31,7 @@ namespace CitasMed
         {
             lblNuevaCitaD.Enter += (s, e) => AsistenteVoz.Decir("Nueva cita");
             lblPacientesD.Enter += (s, e) => AsistenteVoz.Decir("Ver pacientes");
-        
+
 
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
 
@@ -90,18 +90,18 @@ namespace CitasMed
                     WHERE c.id_medico = @idMedico
                     AND c.estado IN ('Programada', 'Reagendada')
                     ORDER BY c.fecha,c.hora;";
-                   
-                    
+
+
                     MySqlCommand comando = new MySqlCommand(consulta, conexion);
 
-                    comando.Parameters.AddWithValue( "@idMedico",Sesion.IdMedico);
+                    comando.Parameters.AddWithValue("@idMedico", Sesion.IdMedico);
 
                     MySqlDataAdapter adaptador =
                         new MySqlDataAdapter(comando);
 
                     DataTable tabla = new DataTable();
                     adaptador.Fill(tabla);
-                    
+
                     dataGridView1.AutoGenerateColumns = false;
 
                     dataGridView1.Columns[0].DataPropertyName = "CURP";
@@ -124,7 +124,7 @@ namespace CitasMed
             catch (Exception ex)
             {
                 AsistenteVoz.Decir("Error al cargar las citas.");
-                MessageBox.Show( "Error al cargar las citas:\n" + ex.Message, "Error",
+                MessageBox.Show("Error al cargar las citas:\n" + ex.Message, "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -291,6 +291,11 @@ namespace CitasMed
         private void dataGridView1_CellContentClick(
             object sender,
             DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
 
         }

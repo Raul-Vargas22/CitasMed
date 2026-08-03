@@ -125,7 +125,7 @@ namespace CitasMed
         private void lblPacientes_Click(object sender, EventArgs e)
         {
             AsistenteVoz.Decir("Pacientes");
-            FormPaciente pacientes = new FormPaciente();
+            Paciente_admin pacientes = new Paciente_admin();
             pacientes.Show();
             this.Close();
         }

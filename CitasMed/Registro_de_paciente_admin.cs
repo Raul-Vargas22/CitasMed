@@ -52,7 +52,7 @@ namespace CitasMed
             txtMunicipio.Enter += (s, e) => AsistenteVoz.Decir("Municipio");
             txtEnfermedadCronica.Enter += (s, e) => AsistenteVoz.Decir("Enfermedad crónica");
             cmbEspecialidad.Enter += (s, e) => AsistenteVoz.Decir("Especialidad");
-            button1.Enter += (s, e) => AsistenteVoz.Decir(
+            btnRegistro.Enter += (s, e) => AsistenteVoz.Decir(
                 modoEdicion ? "Botón guardar cambios" : "Botón registrar");
             btnMenu_admin.Enter += (s, e) => AsistenteVoz.Decir("Botón regresar al menú");
 
@@ -85,13 +85,7 @@ namespace CitasMed
             panel.Region = new Region(path);
         }
 
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -242,6 +236,7 @@ namespace CitasMed
             }
         }
 
+
         private void LimpiarCampos()
         {
             txtnombre.Clear();
@@ -290,8 +285,7 @@ namespace CitasMed
             }
         }
 
-
-        private void Registro_de_paciente_Load(object sender, EventArgs e)
+        private void Registro_de_paciente_admin_Load(object sender, EventArgs e)
         {
             RedondearPanel(panel1, 20);
             RedondearPanel(panel2, 20);
@@ -317,7 +311,7 @@ namespace CitasMed
 
             if (modoEdicion)
             {
-                button1.Text = "GUARDAR CAMBIOS";
+                btnRegistro.Text = "GUARDAR CAMBIOS";
                 this.Text = "Editar paciente";
 
                 CargarDatosPaciente();
@@ -325,11 +319,10 @@ namespace CitasMed
             }
             else
             {
-                button1.Text = "REGISTRAR";
+                btnRegistro.Text = "REGISTRAR";
                 AsistenteVoz.Decir("Formulario de registro de nuevo paciente.");
             }
         }
-
         private void CargarDatosPaciente()
         {
             try
@@ -448,5 +441,13 @@ namespace CitasMed
         {
             zoomFormulario.ZoomMenos();
         }
+
+        private void panel14_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+
     }
 }

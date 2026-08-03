@@ -72,7 +72,7 @@
             label11 = new Label();
             panel6 = new Panel();
             txtCorreo = new TextBox();
-            button1 = new Button();
+            btnRegistro = new Button();
             panel5 = new Panel();
             txtTelefono = new TextBox();
             panel4 = new Panel();
@@ -138,7 +138,7 @@
             panel14.Controls.Add(panel7);
             panel14.Controls.Add(label11);
             panel14.Controls.Add(panel6);
-            panel14.Controls.Add(button1);
+            panel14.Controls.Add(btnRegistro);
             panel14.Controls.Add(panel5);
             panel14.Controls.Add(panel4);
             panel14.Controls.Add(panel2);
@@ -148,6 +148,7 @@
             panel14.Name = "panel14";
             panel14.Size = new Size(1748, 1450);
             panel14.TabIndex = 57;
+            panel14.Paint += panel14_Paint;
             // 
             // btnMenu_admin
             // 
@@ -608,18 +609,19 @@
             txtCorreo.Size = new Size(221, 42);
             txtCorreo.TabIndex = 13;
             // 
-            // button1
+            // btnRegistro
             // 
-            button1.BackColor = Color.FromArgb(133, 210, 208);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(963, 1099);
-            button1.Margin = new Padding(4);
-            button1.Name = "button1";
-            button1.Size = new Size(219, 40);
-            button1.TabIndex = 29;
-            button1.Text = "Registrar";
-            button1.UseVisualStyleBackColor = false;
+            btnRegistro.BackColor = Color.FromArgb(133, 210, 208);
+            btnRegistro.FlatStyle = FlatStyle.Flat;
+            btnRegistro.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRegistro.Location = new Point(963, 1099);
+            btnRegistro.Margin = new Padding(4);
+            btnRegistro.Name = "btnRegistro";
+            btnRegistro.Size = new Size(219, 40);
+            btnRegistro.TabIndex = 29;
+            btnRegistro.Text = "Registrar";
+            btnRegistro.UseVisualStyleBackColor = false;
+            btnRegistro.Click += button1_Click_1;
             // 
             // panel5
             // 
@@ -712,6 +714,7 @@
             Controls.Add(panel14);
             Name = "Registro_de_paciente_admin";
             Text = "Registro_de_paciente_admin";
+            Load += Registro_de_paciente_admin_Load;
             panel14.ResumeLayout(false);
             panel14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -786,7 +789,7 @@
         private Label label11;
         private Panel panel6;
         private TextBox txtCorreo;
-        private Button button1;
+        private Button btnRegistro;
         private Panel panel5;
         private TextBox txtTelefono;
         private Panel panel4;

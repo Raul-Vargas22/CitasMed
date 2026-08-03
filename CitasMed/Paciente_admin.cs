@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace CitasMed
 {
-    public partial class FormPaciente : Form
+    public partial class Paciente_admin : Form
     {
-        public FormPaciente()
+        public Paciente_admin()
         {
             InitializeComponent();
 
@@ -23,16 +23,12 @@ namespace CitasMed
             button3.Visible = true;
             button3.BringToFront();
 
-            button3.Click -= button3_Click;
-            button3.Click += button3_Click;
-
-            ucMenuEmpleado1.SeleccionarPacientes();
-            ucMenuEmpleado1.InicioClick += btnRegresar_Click;
-            ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
-            ucMenuEmpleado1.ProgramadasClick += lblProgramada_Click;
-            ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
-            ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
-            ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+            ucMenuAdministrador1.InicioClick += btnInicio_admin_Click;
+            ucMenuAdministrador1.PersonalMedicoClick += lblPersonalMedico_Click;
+            ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
+            ucMenuAdministrador1.RegistrarClick += lblRegistrar_Click;
+            ucMenuAdministrador1.ProgramadasClick += lblProgramadas_Click;
+            ucMenuAdministrador1.MedicosEspecialidadesClick += lblMedicosEspecialidades_Click;
 
             ConfigurarAccesibilidadVoz();
         }
@@ -76,26 +72,22 @@ namespace CitasMed
             MessageBox.Show("Actualmente se encuentra en esta seccion");
         }
 
-        private void FormPaciente_Load(object sender, EventArgs e)
-        {
-            CargarPacientes();
 
-            if (Sesion.perfil == "Doctor")
-            {
-                button2.Visible = false;   // Editar
-                button3.Visible = false;   // Eliminar
-                label10.Text = "DOCTOR";
-            }
-            else
-            {
-                button2.Visible = true;
-                button3.Visible = true;
-                label10.Text = "EMPLEADO";
-            }
-            AsistenteVoz.Decir($"Pantalla de pacientes. {dgvPacientes.Rows.Count} pacientes registrados.");
+        private void btnInicio_admin_Click(object sender, EventArgs e)
+        {
+            btnRegresar_Click(sender, e);
         }
 
-        private void lblNueva_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            FormAdministrador admin = new FormAdministrador();
+            admin.Show();
+            this.Close();
+        }
+
+        private void lblRegistrar_Click(
+            object sender,
+            EventArgs e)
         {
             using (Registro_de_paciente registro =
                    new Registro_de_paciente())
@@ -104,24 +96,44 @@ namespace CitasMed
             }
         }
 
-        private void lblProgramada_Click(object sender, EventArgs e)
+        private void lblProgramadas_Click(
+            object sender,
+            EventArgs e)
         {
-            FormCitas_programadas programadas = new FormCitas_programadas();
+            FormCitas_programadas programadas =
+                new FormCitas_programadas();
+
             programadas.Show();
             this.Hide();
         }
 
-        private void lblHistorial_Click(object sender, EventArgs e)
+        private void lblHistorialCitas_Click(
+            object sender,
+            EventArgs e)
         {
-            FormHistorial_de_consultas historial = new FormHistorial_de_consultas();
-            historial.Show();
+            MessageBox.Show(
+                "Actualmente se encuentra en esta sección");
+        }
+
+        private void lblPersonalMedico_Click(
+            object sender,
+            EventArgs e)
+        {
+            FormMédicos_y_Especialidades medicos =
+                new FormMédicos_y_Especialidades();
+
+            medicos.Show();
             this.Hide();
         }
 
-        private void lblMedicos_Click(object sender, EventArgs e)
+        private void lblMedicosEspecialidades_Click(
+            object sender,
+            EventArgs e)
         {
-            FormMédicos_y_Especialidades Medicos_especialidades = new FormMédicos_y_Especialidades();
-            Medicos_especialidades.Show();
+            FormPaciente pacientes =
+                new FormPaciente();
+
+            pacientes.Show();
             this.Hide();
         }
 
@@ -175,21 +187,26 @@ namespace CitasMed
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Paciente_admin_Load_1(object sender, EventArgs e)
         {
+            CargarPacientes();
+
+            if (Sesion.perfil == "Doctor")
+            {
+                button2.Visible = false;   // Editar
+                button3.Visible = false;   // Eliminar
+                label10.Text = "DOCTOR";
+            }
+            else
+            {
+                button2.Visible = true;
+                button3.Visible = true;
+                label10.Text = "EMPLEADO";
+            }
+            AsistenteVoz.Decir($"Pantalla de pacientes. {dgvPacientes.Rows.Count} pacientes registrados.");
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-
-            Sesion.AbrirFormularioSegunRol();
-            this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Entró al botón Editar");
 
@@ -210,7 +227,7 @@ namespace CitasMed
             CargarPacientes();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
@@ -267,15 +284,6 @@ namespace CitasMed
                 }
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel7_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
+
 }
