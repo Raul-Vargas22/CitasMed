@@ -108,6 +108,9 @@ namespace CitasMed
         public FormCitas_programadas()
         {
             InitializeComponent();
+
+            AsistenteVoz.AgregarBotonToggle(this);
+
             ucMenuEmpleado1.SeleccionarProgramadas();
             ucMenuEmpleado1.InicioClick += btnRegresar_Click;
             ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
@@ -115,7 +118,41 @@ namespace CitasMed
             ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
             ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
             ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+            
+            ConfigurarAccesibilidadVoz();
         }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            textBox1.Enter += (s, e) => AsistenteVoz.Decir("Buscar cita, por paciente, doctor, especialidad o motivo");
+            button2.Enter += (s, e) => AsistenteVoz.Decir("Botón editar cita");
+            button3.Enter += (s, e) => AsistenteVoz.Decir("Botón eliminar cita");
+
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Pantalla de citas programadas. {dataGridView1.Rows.Count} citas en la lista. " +
+                        "Use las flechas para navegar la tabla, o el buscador para filtrar.");
+                }
+            };
+        }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
+                return;
+
+            string paciente = Convert.ToString(dataGridView1.CurrentRow.Cells["PACIENTE"].Value);
+            string doctor = Convert.ToString(dataGridView1.CurrentRow.Cells["DOCTOR"].Value);
+            string fecha = Convert.ToString(dataGridView1.CurrentRow.Cells["FECHA"].Value);
+            string hora = Convert.ToString(dataGridView1.CurrentRow.Cells["HORA"].Value);
+
+            AsistenteVoz.Decir($"Cita de {paciente} con el doctor {doctor}, el {fecha} a las {hora}");
+        }
+
         private void RedondearPanel(Panel panel, int radio)
         {
             GraphicsPath path = new GraphicsPath();
@@ -146,11 +183,9 @@ namespace CitasMed
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            FormEmpleado empleado = new FormEmpleado();
-            empleado.Show();
-            this.Hide();
+            Sesion.AbrirFormularioSegunRol();
+            this.Close();
         }
-
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -166,6 +201,7 @@ namespace CitasMed
 
         private void lblProgramada_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
             MessageBox.Show("Actualmente se encuentra en esta sección");
         }
 
@@ -207,7 +243,13 @@ namespace CitasMed
             RedondearBoton(button3, 20);
 
             CargarCitas();
-
+            if (Sesion.perfil == "Doctor")
+            {
+                button2.Visible = false;
+                button3.Visible = false; 
+            }
+            AsistenteVoz.Decir($"Pantalla de citas programadas. {dataGridView1.Rows.Count} citas en la lista.");
+        
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -221,6 +263,13 @@ namespace CitasMed
                 "DOCTOR LIKE '%" + texto + "%' OR " +
                 "ESPECIALIDAD LIKE '%" + texto + "%' OR " +
                 "MOTIVO LIKE '%" + texto + "%'";
+
+
+            if (!string.IsNullOrWhiteSpace(texto))
+            {
+                int resultados = tablaCitas.DefaultView.Count;
+                AsistenteVoz.Decir($"{resultados} resultado" + (resultados == 1 ? "" : "s") + " encontrado" + (resultados == 1 ? "" : "s"));
+            }
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
@@ -242,27 +291,22 @@ namespace CitasMed
         {
             if (dataGridView1.CurrentRow == null)
             {
-                MessageBox.Show(
-                    "Selecciona una cita para eliminar.");
+                AsistenteVoz.Decir("Selecciona una cita para eliminar.");
+                MessageBox.Show( "Selecciona una cita para eliminar.");
                 return;
             }
 
-            int idCita = Convert.ToInt32(
-                dataGridView1.CurrentRow.Cells["CLAVE"].Value);
+            int idCita = Convert.ToInt32( dataGridView1.CurrentRow.Cells["CLAVE"].Value);
 
-            string paciente = Convert.ToString(
-                dataGridView1.CurrentRow.Cells["PACIENTE"].Value);
+            string paciente = Convert.ToString(dataGridView1.CurrentRow.Cells["PACIENTE"].Value);
+            AsistenteVoz.Decir($"¿Confirma eliminar la cita de {paciente}?");
 
-            DialogResult respuesta = MessageBox.Show(
-                "¿Estás seguro de eliminar la cita de " +
-                paciente + "?",
-                "Eliminar cita",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
+
+            DialogResult respuesta = MessageBox.Show("¿Estás seguro de eliminar la cita de " +  paciente + "?", "Eliminar cita", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
 
             if (respuesta != DialogResult.Yes)
             {
+                AsistenteVoz.Decir("Eliminación cancelada.");
                 return;
             }
 
@@ -286,9 +330,9 @@ namespace CitasMed
                         comando.ExecuteNonQuery();
                     }
                 }
-
-                MessageBox.Show(
-                    "Cita eliminada correctamente.");
+               
+                AsistenteVoz.Decir("Cita eliminada correctamente.");
+                MessageBox.Show( "Cita eliminada correctamente.");
 
                 CargarCitas();
             }
@@ -296,33 +340,30 @@ namespace CitasMed
             {
                 if (ex.Number == 1451)
                 {
-                    MessageBox.Show(
-                        "No se puede eliminar porque esta cita ya tiene una consulta registrada.");
+                    AsistenteVoz.Decir("No se puede eliminar porque esta cita ya tiene una consulta registrada.");
+                    MessageBox.Show( "No se puede eliminar porque esta cita ya tiene una consulta registrada.");
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Error al eliminar la cita:\n" +
-                        ex.Message);
+                    AsistenteVoz.Decir("Error al eliminar la cita.");
+                    MessageBox.Show("Error al eliminar la cita:\n" +ex.Message);
                 }
             }
         }
 
-        private void button2_Click(
-    object sender,
-    EventArgs e)
+        private void button2_Click( object sender,  EventArgs e)
         {
             if (dataGridView1.CurrentRow == null ||
                 dataGridView1.CurrentRow.IsNewRow)
             {
-                MessageBox.Show(
-                    "Selecciona una cita para editar.");
+                AsistenteVoz.Decir("Selecciona una cita para editar.");
+                MessageBox.Show( "Selecciona una cita para editar.");
                 return;
             }
 
-            int idCita = Convert.ToInt32(
-                dataGridView1.CurrentRow
-                .Cells["CLAVE"].Value);
+            int idCita = Convert.ToInt32(dataGridView1.CurrentRow.Cells["CLAVE"].Value);
+            AsistenteVoz.Decir("Abriendo formulario de edición de cita.");
+
 
             using (EditarCitas formulario =
                    new EditarCitas(idCita))

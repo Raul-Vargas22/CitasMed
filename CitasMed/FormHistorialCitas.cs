@@ -21,27 +21,43 @@ namespace CitasMed
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
             ucMenuAdministrador1.SeleccionarHistorialCitas();
             RedondearPanel(panel7, 20);
+
+            ConfigurarAccesibilidadVoz();
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        "Pantalla de historial de citas. Use el menú lateral para navegar.");
+                }
+            };
         }
 
         private void FormHistorialCitas_Load(object sender, EventArgs e)
         {
-
+            AsistenteVoz.Decir("Pantalla de historial de citas.");
         }
         private void btnInicio_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Regresando al inicio.");
             FormAdministrador administrador = new FormAdministrador();
             administrador.Show();
             this.Hide();
         }
         private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Personal médico");
             FormPersonalMedico personal = new FormPersonalMedico();
             personal.Show();
             this.Hide();
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
-           
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
         }
 
         private void ucMenuAdministrador1_Load(object sender, EventArgs e)

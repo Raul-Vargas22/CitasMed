@@ -501,6 +501,7 @@
             lblPacientes.Size = new Size(147, 25);
             lblPacientes.TabIndex = 72;
             lblPacientes.Text = "PACIENTES";
+            lblPacientes.Click += lblPacientes_Click;
             // 
             // FormAdministrador
             // 

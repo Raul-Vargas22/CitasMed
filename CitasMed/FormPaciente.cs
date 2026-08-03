@@ -17,6 +17,8 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            AsistenteVoz.AgregarBotonToggle(this);
+
             button3.Enabled = true;
             button3.Visible = true;
             button3.BringToFront();
@@ -31,10 +33,46 @@ namespace CitasMed
             ucMenuEmpleado1.HistorialClick += lblHistorial_Click;
             ucMenuEmpleado1.MedicosClick += lblMedicos_Click;
             ucMenuEmpleado1.PacientesClick += lblPacientes_Click;
+
+            ConfigurarAccesibilidadVoz();
         }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            // Botones de acción
+            button2.Enter += (s, e) => AsistenteVoz.Decir("Botón editar paciente");
+            button3.Enter += (s, e) => AsistenteVoz.Decir("Botón eliminar paciente");
+
+            // Lee el paciente seleccionado al cambiar de fila con teclado o mouse
+            dgvPacientes.SelectionChanged += dgvPacientes_SelectionChanged;
+
+            // Repetir la pantalla completa con F1
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Pantalla de pacientes. {dgvPacientes.Rows.Count} pacientes registrados. " +
+                        "Use las flechas para navegar la tabla, o el menú para ir a otras secciones.");
+                }
+            };
+        }
+        private void dgvPacientes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
+                return;
+
+            string nombre = Convert.ToString(dgvPacientes.CurrentRow.Cells["NOMBRE"].Value);
+            string apellido = Convert.ToString(dgvPacientes.CurrentRow.Cells["APELLIDO PATERNO"].Value);
+            string edad = Convert.ToString(dgvPacientes.CurrentRow.Cells["EDAD"].Value);
+
+            AsistenteVoz.Decir($"Paciente seleccionado: {nombre} {apellido}, {edad} años");
+        }
+
 
         private void lblPacientes_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
             MessageBox.Show("Actualmente se encuentra en esta seccion");
         }
 
@@ -42,8 +80,19 @@ namespace CitasMed
         {
             CargarPacientes();
 
-            button3.Enabled = true;
-            button3.Visible = true;
+            if (Sesion.perfil == "Doctor")
+            {
+                button2.Visible = false;   // Editar
+                button3.Visible = false;   // Eliminar
+                label10.Text = "DOCTOR";
+            }
+            else
+            {
+                button2.Visible = true;
+                button3.Visible = true;
+                label10.Text = "EMPLEADO";
+            }
+            AsistenteVoz.Decir($"Pantalla de pacientes. {dgvPacientes.Rows.Count} pacientes registrados.");
         }
 
         private void lblNueva_Click(object sender, EventArgs e)
@@ -146,12 +195,14 @@ namespace CitasMed
 
             if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
-                MessageBox.Show(
-                    "Selecciona un paciente para editar.");
+                AsistenteVoz.Decir("Selecciona un paciente para editar.");
+                MessageBox.Show( "Selecciona un paciente para editar.");
                 return;
             }
 
             int idPaciente = Convert.ToInt32(dgvPacientes.CurrentRow.Cells["CLAVE"].Value);
+            AsistenteVoz.Decir("Abriendo formulario de edición.");
+
 
             Registro_de_paciente formulario = new Registro_de_paciente(idPaciente);
             formulario.ShowDialog();
@@ -163,12 +214,14 @@ namespace CitasMed
         {
             if (dgvPacientes.CurrentRow == null || dgvPacientes.CurrentRow.IsNewRow)
             {
+                AsistenteVoz.Decir("Selecciona un paciente.");
                 MessageBox.Show("Selecciona un paciente.");
                 return;
             }
 
             int idPaciente = Convert.ToInt32(dgvPacientes.CurrentRow.Cells[0].Value);
             string nombre = Convert.ToString(dgvPacientes.CurrentRow.Cells[2].Value);
+            AsistenteVoz.Decir($"¿Confirma eliminar al paciente {nombre}?");
 
             DialogResult respuesta = MessageBox.Show(
                 "¿Estás seguro de eliminar al paciente " + nombre + "?",
@@ -178,6 +231,7 @@ namespace CitasMed
 
             if (respuesta != DialogResult.Yes)
             {
+                AsistenteVoz.Decir("Eliminación cancelada.");
                 return;
             }
 
@@ -195,7 +249,7 @@ namespace CitasMed
                         comando.ExecuteNonQuery();
                     }
                 }
-
+                AsistenteVoz.Decir("Paciente eliminado correctamente.");
                 MessageBox.Show("Paciente eliminado correctamente.");
                 CargarPacientes();
             }
@@ -203,10 +257,12 @@ namespace CitasMed
             {
                 if (ex.Number == 1451)
                 {
+                    AsistenteVoz.Decir("No se puede eliminar porque el paciente tiene citas registradas.");
                     MessageBox.Show("No se puede eliminar porque el paciente tiene citas registradas.");
                 }
                 else
                 {
+                    AsistenteVoz.Decir("Error al eliminar el paciente.");
                     MessageBox.Show("Error al eliminar: " + ex.Message);
                 }
             }

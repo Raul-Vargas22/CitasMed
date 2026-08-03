@@ -21,6 +21,20 @@ namespace CitasMed
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
             ucMenuAdministrador1.SeleccionarPersonalMedico();
             RedondearPanel(panel7, 20);
+
+            ConfigurarAccesibilidadVoz();
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        "Pantalla de personal médico. Use el menú lateral para navegar.");
+                }
+            };
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,21 +44,24 @@ namespace CitasMed
 
         private void FormPersonalMedico_Load(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Pantalla de personal médico.");
 
         }
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            FormAdministrador administardor= new FormAdministrador();
+            AsistenteVoz.Decir("Regresando al inicio.");
+            FormAdministrador administardor = new FormAdministrador();
             administardor.Show();
             this.Hide();
 
         }
         private void lblPersonalMedico_Click(object sender, EventArgs e)
         {
-
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
         }
         private void lblHistorialCitas_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Historial de citas");
             FormHistorialCitas historial = new FormHistorialCitas();
             historial.Show();
             this.Hide();
@@ -61,6 +78,45 @@ namespace CitasMed
             path.CloseFigure();
 
             panel.Region = new Region(path);
+        }
+
+        private void lblRegistrar_Click(object sender, EventArgs e)
+        {
+            AsistenteVoz.Decir("Registrar paciente");
+            Registro_de_paciente registro = new Registro_de_paciente();
+            registro.Show();
+            this.Hide();
+        }
+
+        private void lblProgramadas_Click(object sender, EventArgs e)
+        {
+            AsistenteVoz.Decir("Citas programadas");
+            FormPaciente registro = new FormPaciente();
+            registro.Show();
+            this.Close();
+        }
+
+        private void lblConsultas_Click(object sender, EventArgs e)
+        {
+            FormCitas_programadas programadas = new FormCitas_programadas();
+            programadas.Show();
+            this.Close();
+        }
+
+        private void lblMedicos_especialidades_Click(object sender, EventArgs e)
+        {
+            AsistenteVoz.Decir("Médicos y especialidades");
+            FormMédicos_y_Especialidades especialidades = new FormMédicos_y_Especialidades();
+            especialidades.Show();
+            this.Close();
+        }
+
+        private void lblPacientes_Click(object sender, EventArgs e)
+        {
+            AsistenteVoz.Decir("Pacientes");
+            FormPaciente pacientes = new FormPaciente();
+            pacientes.Show();
+            this.Close();
         }
     }
 }

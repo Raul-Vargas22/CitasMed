@@ -16,11 +16,16 @@ namespace CitasMed
     {
         private bool modoEdicion = false;
         private int idPacienteEditar = 0;
+        private ZoomFormulario zoomFormulario;
+
 
         public Registro_de_paciente()
         {
             InitializeComponent();
+            zoomFormulario = new ZoomFormulario(this);
+
         }
+
 
         public Registro_de_paciente(int idPaciente)
         {
@@ -28,7 +33,43 @@ namespace CitasMed
 
             modoEdicion = true;
             idPacienteEditar = idPaciente;
+
+            ConfigurarAccesibilidadVoz();
         }
+
+        private void ConfigurarAccesibilidadVoz()
+        {
+            txtCurp.Enter += (s, e) => AsistenteVoz.Decir("CURP");
+            txtNombre.Enter += (s, e) => AsistenteVoz.Decir("Nombre");
+            txtApellidoPaterno.Enter += (s, e) => AsistenteVoz.Decir("Apellido paterno");
+            txtApellidoMaterno.Enter += (s, e) => AsistenteVoz.Decir("Apellido materno");
+            cmbGenero.Enter += (s, e) => AsistenteVoz.Decir("Género");
+            numEdad.Enter += (s, e) => AsistenteVoz.Decir("Edad");
+            txtTelefono.Enter += (s, e) => AsistenteVoz.Decir("Teléfono");
+            txtCorreo.Enter += (s, e) => AsistenteVoz.Decir("Correo electrónico");
+            txtCalle.Enter += (s, e) => AsistenteVoz.Decir("Calle");
+            txtColonia.Enter += (s, e) => AsistenteVoz.Decir("Colonia");
+            txtMunicipio.Enter += (s, e) => AsistenteVoz.Decir("Municipio");
+            txtEnfermedadCronica.Enter += (s, e) => AsistenteVoz.Decir("Enfermedad crónica");
+            cmbEspecialidad.Enter += (s, e) => AsistenteVoz.Decir("Especialidad");
+            button1.Enter += (s, e) => AsistenteVoz.Decir(
+                modoEdicion ? "Botón guardar cambios" : "Botón registrar");
+            btnMenu_empleado.Enter += (s, e) => AsistenteVoz.Decir("Botón regresar al menú");
+
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        modoEdicion
+                            ? "Formulario de edición de paciente. Modifique los campos necesarios y presione guardar cambios."
+                            : "Formulario de registro de paciente. Complete todos los campos y presione registrar.");
+                }
+            };
+        }
+
+
 
         private void RedondearPanel(Panel panel, int radio)
         {
@@ -167,28 +208,37 @@ namespace CitasMed
                         }
 
                         comando.ExecuteNonQuery();
+                        int idPaciente = 0;
+
+                        if (!modoEdicion)
+                        {
+                            idPaciente = Convert.ToInt32(comando.LastInsertedId);
+                        }
+                        else
+                        {
+                            idPaciente = idPacienteEditar;
+                        }
                     }
                 }
 
                 if (modoEdicion)
                 {
-                    MessageBox.Show(
-                        "Paciente actualizado correctamente.");
+                    AsistenteVoz.Decir("Paciente actualizado correctamente.");
+                    MessageBox.Show("Paciente actualizado correctamente.");
 
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show(
-                        "Paciente registrado correctamente.");
-
+                    AsistenteVoz.Decir("Paciente registrado correctamente.");
+                    MessageBox.Show("Paciente registrado correctamente.");
                     LimpiarCampos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al guardar paciente: " + ex.Message);
+                AsistenteVoz.Decir("Error al guardar el paciente.");
+                MessageBox.Show("Error al guardar paciente: " + ex.Message);
             }
         }
 
@@ -213,6 +263,7 @@ namespace CitasMed
 
         private void btnMenu_empleado_Click_1(object sender, EventArgs e)
         {
+            Sesion.AbrirFormularioSegunRol();
             this.Close();
         }
 
@@ -276,10 +327,12 @@ namespace CitasMed
                 this.Text = "Editar paciente";
 
                 CargarDatosPaciente();
+                AsistenteVoz.Decir("Editando datos del paciente.");
             }
             else
             {
                 button1.Text = "REGISTRAR";
+                AsistenteVoz.Decir("Formulario de registro de nuevo paciente.");
             }
         }
 
@@ -367,8 +420,7 @@ namespace CitasMed
                             }
                             else
                             {
-                                MessageBox.Show(
-                                    "No se encontró el paciente.");
+                                MessageBox.Show("No se encontró el paciente.");
 
                                 txtMunicipio.Text = Convert.ToString(lector["municipio"]);
 
@@ -383,10 +435,10 @@ namespace CitasMed
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar el paciente: " + ex.Message);
+                MessageBox.Show("Error al cargar el paciente: " + ex.Message);
             }
         }
+        
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -410,6 +462,18 @@ namespace CitasMed
 
         private void txtHora_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnZoomMas_Click(object sender, EventArgs e)
+        {
+            zoomFormulario.ZoomMas();
+
+        }
+
+        private void btnZoomMenos_Click(object sender, EventArgs e)
+        {
+            zoomFormulario.ZoomMenos();
 
         }
     }

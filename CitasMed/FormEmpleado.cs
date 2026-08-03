@@ -33,6 +33,22 @@ namespace CitasMed
             menuEmpleado.SeleccionarInicio();
             Shown -= FormEmpleado_Shown;
             Shown += FormEmpleado_Shown;
+
+            ConfigurarAccesibilidadVoz();
+        }
+
+        private void ConfigurarAccesibilidadVoz()
+        {
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        "Panel de empleado. Use el menú lateral para navegar entre inicio, " +
+                        "nueva cita, citas programadas, historial, médicos y pacientes.");
+                }
+            };
         }
 
         private void CrearMenuEmpleado()
@@ -79,8 +95,9 @@ namespace CitasMed
                 txtBusquedaCitas.KeyDown -= txtBusquedaCitas_KeyDown;
                 txtBusquedaCitas.KeyDown += txtBusquedaCitas_KeyDown;
 
-                Control? lupaSuperior =
-                    BuscarIconoCercaDelTextBox(txtBusquedaCitas);
+                txtBusquedaCitas.Enter += (s, e) => AsistenteVoz.Decir("Buscar cita por paciente o médico");
+
+                Control? lupaSuperior =BuscarIconoCercaDelTextBox(txtBusquedaCitas);
 
                 if (lupaSuperior != null)
                 {
@@ -95,6 +112,7 @@ namespace CitasMed
                 controlBuscar.Click -= controlBuscar_Click;
                 controlBuscar.Click += controlBuscar_Click;
                 controlBuscar.Cursor = Cursors.Hand;
+                controlBuscar.Enter += (s, e) => AsistenteVoz.Decir("Botón buscar cita");
             }
 
             if (controlEditar != null)
@@ -102,6 +120,7 @@ namespace CitasMed
                 controlEditar.Click -= controlEditar_Click;
                 controlEditar.Click += controlEditar_Click;
                 controlEditar.Cursor = Cursors.Hand;
+                controlEditar.Enter += (s, e) => AsistenteVoz.Decir("Botón editar cita");
             }
 
             if (controlEliminar != null)
@@ -109,6 +128,7 @@ namespace CitasMed
                 controlEliminar.Click -= controlEliminar_Click;
                 controlEliminar.Click += controlEliminar_Click;
                 controlEliminar.Cursor = Cursors.Hand;
+                controlEliminar.Enter += (s, e) => AsistenteVoz.Decir("Botón eliminar cita");
             }
 
             accionesConfiguradas = true;
@@ -224,9 +244,8 @@ namespace CitasMed
 
                 if (tabla.Rows.Count == 0)
                 {
-                    MessageBox.Show(
-                        "No se encontraron citas con ese nombre.",
-                        "Sin resultados",
+                    AsistenteVoz.Decir("No se encontraron citas con ese nombre.");
+                    MessageBox.Show( "No se encontraron citas con ese nombre.", "Sin resultados",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
@@ -234,17 +253,13 @@ namespace CitasMed
                     return;
                 }
 
-                MostrarResultados(
-                    "Resultados de búsqueda",
-                    tabla
-                );
+                AsistenteVoz.Decir($"{tabla.Rows.Count} citas encontradas.");
+                MostrarResultados( "Resultados de búsqueda",tabla );
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No fue posible buscar las citas.\n\n" +
-                    ex.Message,
-                    "Error",
+                AsistenteVoz.Decir("No fue posible buscar las citas.");
+                MessageBox.Show( "No fue posible buscar las citas.\n\n" +ex.Message,"Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -314,9 +329,8 @@ namespace CitasMed
 
             if (!int.TryParse(resultado, out int idCita))
             {
-                MessageBox.Show(
-                    "El ID debe ser un número.",
-                    "Dato incorrecto",
+                AsistenteVoz.Decir("El ID debe ser un número.");
+                MessageBox.Show("El ID debe ser un número.", "Dato incorrecto",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
@@ -361,6 +375,7 @@ namespace CitasMed
                 {
                     if (!lector.Read())
                     {
+                        AsistenteVoz.Decir("No existe una cita con ese ID.");
                         MessageBox.Show(
                             "No existe una cita con ese ID.",
                             "Cita no encontrada",
@@ -382,7 +397,7 @@ namespace CitasMed
                     estado =
                         lector[columnaEstado]?.ToString() ?? "";
                 }
-
+                AsistenteVoz.Decir($"Cargando cita número {idCita}");
                 MostrarVentanaEditarCita(
                     conexion,
                     columnaEstado,
@@ -395,6 +410,7 @@ namespace CitasMed
             }
             catch (Exception ex)
             {
+                AsistenteVoz.Decir("No fue posible cargar la cita.");
                 MessageBox.Show(
                     "No fue posible cargar la cita.\n\n" +
                     ex.Message,
@@ -517,6 +533,14 @@ namespace CitasMed
 
             ventana.AcceptButton = btnGuardar;
 
+            dtpFecha.Enter += (s, e) => AsistenteVoz.Decir("Fecha de la cita");
+            dtpHora.Enter += (s, e) => AsistenteVoz.Decir("Hora de la cita");
+            txtMotivo.Enter += (s, e) => AsistenteVoz.Decir("Motivo de la cita");
+            cmbEstado.Enter += (s, e) => AsistenteVoz.Decir("Estado de la cita");
+            btnGuardar.Enter += (s, e) => AsistenteVoz.Decir("Botón guardar cambios");
+
+            ventana.Shown += (s, e) => AsistenteVoz.Decir($"Editando cita número {idCita}");
+
             if (ventana.ShowDialog(this) !=
                 DialogResult.OK)
             {
@@ -526,6 +550,7 @@ namespace CitasMed
             if (txtMotivo.Text.Trim() == "" ||
                 cmbEstado.Text.Trim() == "")
             {
+                AsistenteVoz.Decir("Completa el motivo y el estado.");
                 MessageBox.Show(
                     "Completa el motivo y el estado.",
                     "Datos incompletos",
@@ -577,15 +602,12 @@ namespace CitasMed
 
                 comando.ExecuteNonQuery();
 
-                MessageBox.Show(
-      "Cita actualizada correctamente.",
-      "Edición completada",
-      MessageBoxButtons.OK,
-      MessageBoxIcon.Information
-  );
+                AsistenteVoz.Decir("Cita actualizada correctamente.");
+                MessageBox.Show( "Cita actualizada correctamente.", "Edición completada",MessageBoxButtons.OK,MessageBoxIcon.Information );
             }
             catch (Exception ex)
             {
+                AsistenteVoz.Decir("No fue posible actualizar la cita.");
                 MessageBox.Show(
                     "No fue posible actualizar la cita.\n\n" +
                     ex.Message,
@@ -608,6 +630,7 @@ namespace CitasMed
 
             if (!int.TryParse(resultado, out int idCita))
             {
+                AsistenteVoz.Decir("El ID debe ser un número.");
                 MessageBox.Show(
                     "El ID debe ser un número.",
                     "Dato incorrecto",
@@ -644,6 +667,7 @@ namespace CitasMed
 
                 if (cantidadCitas == 0)
                 {
+                    AsistenteVoz.Decir("No existe una cita con ese ID.");
                     MessageBox.Show(
                         "No existe una cita con ese ID.",
                         "Cita no encontrada",
@@ -673,6 +697,7 @@ namespace CitasMed
 
                 if (consultasRelacionadas > 0)
                 {
+                    AsistenteVoz.Decir("Esta cita ya tiene una consulta médica registrada y no puede eliminarse.");
                     MessageBox.Show(
                         "Esta cita ya tiene una consulta médica " +
                         "registrada y no puede eliminarse.",
@@ -682,6 +707,8 @@ namespace CitasMed
                     );
                     return;
                 }
+
+                AsistenteVoz.Decir($"¿Confirma eliminar la cita número {idCita}?");
 
                 DialogResult confirmacion =
                     MessageBox.Show(
@@ -694,6 +721,7 @@ namespace CitasMed
 
                 if (confirmacion != DialogResult.Yes)
                 {
+                    AsistenteVoz.Decir("Eliminación cancelada.");
                     return;
                 }
 
@@ -710,7 +738,7 @@ namespace CitasMed
                 );
 
                 eliminar.ExecuteNonQuery();
-
+                AsistenteVoz.Decir("Cita eliminada correctamente.");
                 MessageBox.Show(
                     "Cita eliminada correctamente.",
                     "Eliminación completada",
@@ -720,6 +748,7 @@ namespace CitasMed
             }
             catch (Exception ex)
             {
+                AsistenteVoz.Decir("No fue posible eliminar la cita.");
                 MessageBox.Show(
                     "No fue posible eliminar la cita.\n\n" +
                     ex.Message,
@@ -773,6 +802,10 @@ namespace CitasMed
                 DialogResult = DialogResult.Cancel
             };
 
+            cajaTexto.Enter += (s, e) => AsistenteVoz.Decir(mensaje);
+            aceptar.Enter += (s, e) => AsistenteVoz.Decir("Botón aceptar");
+            cancelar.Enter += (s, e) => AsistenteVoz.Decir("Botón cancelar");
+
             ventana.Controls.Add(etiqueta);
             ventana.Controls.Add(cajaTexto);
             ventana.Controls.Add(aceptar);
@@ -780,6 +813,7 @@ namespace CitasMed
 
             ventana.AcceptButton = aceptar;
             ventana.CancelButton = cancelar;
+            ventana.Shown += (s, e) => AsistenteVoz.Decir(mensaje);
 
             return ventana.ShowDialog(this) ==
                    DialogResult.OK
@@ -965,6 +999,7 @@ namespace CitasMed
 
         private void btnInicio_empleado_Click(object? sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Cerrando sesión.");
             Form1? login = Application.OpenForms
                 .OfType<Form1>()
                 .FirstOrDefault();
@@ -988,6 +1023,7 @@ namespace CitasMed
         private void lblNuevaCita_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarNuevaCita();
+            AsistenteVoz.Decir("Nueva cita");
 
             Registro_de_paciente registro =
                 new Registro_de_paciente();
@@ -998,6 +1034,7 @@ namespace CitasMed
         private void lblProgramadas_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarProgramadas();
+            AsistenteVoz.Decir("Citas programadas");
 
             FormCitas_programadas programadas =
                 new FormCitas_programadas();
@@ -1008,6 +1045,7 @@ namespace CitasMed
         private void lblHistorial_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarHistorial();
+            AsistenteVoz.Decir("Historial de consultas");
 
             FormHistorial_de_consultas historial =
                 new FormHistorial_de_consultas();
@@ -1018,6 +1056,7 @@ namespace CitasMed
         private void lblMedicos_Especialidades_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarMedicos();
+            AsistenteVoz.Decir("Médicos y especialidades");
 
             FormMédicos_y_Especialidades medicos =
                 new FormMédicos_y_Especialidades();
@@ -1028,6 +1067,7 @@ namespace CitasMed
         private void lblPacientes_Click(object? sender, EventArgs e)
         {
             menuEmpleado.SeleccionarPacientes();
+            AsistenteVoz.Decir("Pacientes");
 
             FormPaciente pacientes =
                 new FormPaciente();
@@ -1103,6 +1143,9 @@ namespace CitasMed
             RedondearPanel(panel6, 25);
             RedondearPanel(panel5, 25);
             RedondearPanel(panel7, 25);
+
+            AsistenteVoz.Decir("Bienvenido al panel de empleado.");
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
