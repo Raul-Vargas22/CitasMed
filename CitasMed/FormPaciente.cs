@@ -17,6 +17,8 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            AsistenteVoz.AgregarBotonToggle(this);
+
             button3.Enabled = true;
             button3.Visible = true;
             button3.BringToFront();

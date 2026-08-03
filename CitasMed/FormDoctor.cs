@@ -24,7 +24,48 @@ namespace CitasMed
             // Conectar PACIENTES
             lblPacientesD.Click -= lblPacientesD_Click;
             lblPacientesD.Click += lblPacientesD_Click;
+
+            ConfigurarAccesibilidadVoz();
         }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            lblNuevaCitaD.Enter += (s, e) => AsistenteVoz.Decir("Nueva cita");
+            lblPacientesD.Enter += (s, e) => AsistenteVoz.Decir("Ver pacientes");
+            btnInicio_Doc.Enter += (s, e) => AsistenteVoz.Decir("Botón regresar al inicio de sesión");
+
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Panel del doctor. {dataGridView1.Rows.Count} citas pendientes. " +
+                        "Use las flechas para navegar la lista de pacientes citados.");
+                }
+            };
+        }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
+                return;
+
+            string nombre = Convert.ToString(dataGridView1.CurrentRow.Cells["NOMBRE"].Value);
+            string apellido = Convert.ToString(dataGridView1.CurrentRow.Cells["APELLIDO_PATERNO"].Value);
+            string fecha = Convert.ToString(dataGridView1.CurrentRow.Cells["FECHA"].Value);
+            string enfermedades = Convert.ToString(dataGridView1.CurrentRow.Cells["ENFERMEDADES_CRONICAS"].Value);
+
+            string mensaje = $"Paciente {nombre} {apellido}, cita el {fecha}";
+
+            if (!string.IsNullOrWhiteSpace(enfermedades))
+            {
+                mensaje += $". Enfermedad crónica: {enfermedades}";
+            }
+
+            AsistenteVoz.Decir(mensaje);
+        }
+
 
         private void CargarCitasDoctor()
         {
@@ -54,20 +95,14 @@ namespace CitasMed
                     
                     MySqlCommand comando = new MySqlCommand(consulta, conexion);
 
-                    comando.Parameters.AddWithValue(
-                        "@idMedico",
-                        Sesion.IdMedico);
+                    comando.Parameters.AddWithValue( "@idMedico",Sesion.IdMedico);
 
                     MySqlDataAdapter adaptador =
                         new MySqlDataAdapter(comando);
 
-                    adaptador.SelectCommand.Parameters.AddWithValue(
-                    "@idMedico",
-                    Sesion.IdUsuario);
-
                     DataTable tabla = new DataTable();
                     adaptador.Fill(tabla);
-
+                    
                     dataGridView1.AutoGenerateColumns = false;
 
                     dataGridView1.Columns[0].DataPropertyName = "CURP";
@@ -89,9 +124,8 @@ namespace CitasMed
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar las citas:\n" + ex.Message,
-                    "Error",
+                AsistenteVoz.Decir("Error al cargar las citas.");
+                MessageBox.Show( "Error al cargar las citas:\n" + ex.Message, "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
@@ -99,7 +133,9 @@ namespace CitasMed
 
         private void FormDoctor_Load(object sender, EventArgs e)
         {
+
             CargarCitasDoctor();
+            AsistenteVoz.Decir($"Bienvenido doctor. Tiene {dataGridView1.Rows.Count} citas pendientes.");
         }
 
         // Abre el registro de paciente que ya utiliza Empleado
@@ -129,6 +165,8 @@ namespace CitasMed
             object sender,
             EventArgs e)
         {
+            AsistenteVoz.Decir("Cerrando sesión.");
+
             Form1? login = Application.OpenForms
                 .OfType<Form1>()
                 .FirstOrDefault();

@@ -29,8 +29,35 @@ namespace CitasMed
             PanelRedondo(panel1);
 
             CargarMedicos();
-        }
 
+            ConfigurarAccesibilidadVoz();
+        }
+        private void ConfigurarAccesibilidadVoz()
+        {
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+
+            this.KeyPreview = true;
+            this.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    AsistenteVoz.Decir(
+                        $"Pantalla de médicos y especialidades. {dataGridView1.Rows.Count} médicos registrados. " +
+                        "Use las flechas para navegar la lista.");
+                }
+            };
+        }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null || dataGridView1.CurrentRow.IsNewRow)
+                return;
+
+            string nombre = Convert.ToString(dataGridView1.CurrentRow.Cells["NOMBRE"].Value);
+            string apellido = Convert.ToString(dataGridView1.CurrentRow.Cells["APELLIDO PATERNO"].Value);
+            string especialidad = Convert.ToString(dataGridView1.CurrentRow.Cells["ESPECIALIDAD"].Value);
+
+            AsistenteVoz.Decir($"Doctor {nombre} {apellido}, especialidad {especialidad}");
+        }
         private void CargarMedicos()
         {
             try
@@ -79,6 +106,7 @@ namespace CitasMed
             }
             catch (Exception ex)
             {
+                AsistenteVoz.Decir("Error al cargar los médicos.");
                 MessageBox.Show(
                     "Error al cargar los médicos:\n" + ex.Message,
                     "Error",
@@ -104,6 +132,7 @@ namespace CitasMed
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Regresando al menú principal.");
             FormEmpleado empleado = new FormEmpleado();
             empleado.Show();
             this.Hide();
@@ -111,10 +140,11 @@ namespace CitasMed
 
         private void FormMédicos_y_Especialidades_Load(object sender, EventArgs e)
         {
-
+            AsistenteVoz.Decir($"Pantalla de médicos y especialidades. {dataGridView1.Rows.Count} médicos registrados.");
         }
         private void lblNueva_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Nueva cita");
             using (Registro_de_paciente registro =
                    new Registro_de_paciente())
             {
@@ -124,6 +154,7 @@ namespace CitasMed
 
         private void lblProgramada_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Citas programadas");
             FormCitas_programadas programadas = new FormCitas_programadas();
             programadas.Show();
             this.Hide();
@@ -131,6 +162,7 @@ namespace CitasMed
 
         private void lblHistorial_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Historial de consultas");
             FormHistorial_de_consultas historial = new FormHistorial_de_consultas();
             historial.Show();
             this.Hide();
@@ -138,11 +170,13 @@ namespace CitasMed
 
         private void lblMedicos_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Actualmente se encuentra en esta sección");
             MessageBox.Show("Actualmente se encuentra en esta sección");
         }
 
         private void lblPacientes_Click(object sender, EventArgs e)
         {
+            AsistenteVoz.Decir("Pacientes");
             FormPaciente paciente = new FormPaciente();
             paciente.Show();
             this.Hide();

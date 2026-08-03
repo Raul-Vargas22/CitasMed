@@ -13,6 +13,8 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            AsistenteVoz.AgregarBotonToggle(this);
+
             txtUsuario.Multiline = false;
             txtUsuario.AutoSize = false;
             txtUsuario.Height = 41;
