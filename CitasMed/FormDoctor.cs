@@ -297,7 +297,55 @@ namespace CitasMed
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
 
+                    string consulta = @"INSERT INTO consulta
+        (
+            diagnostico,
+            tratamiento
+        )
+        VALUES
+        (
+            @diagnostico,
+            @tratamiento
+        )";
+
+                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue(
+                            "@diagnostico",
+                            txtDiagnostico.Text.Trim());
+
+                        comando.Parameters.AddWithValue(
+                            "@tratamiento",
+                            txtTratamiento.Text.Trim());
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                AsistenteVoz.Decir("Consulta guardada correctamente.");
+
+                MessageBox.Show(
+                    "Consulta guardada correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                AsistenteVoz.Decir("Error al guardar la consulta.");
+
+                MessageBox.Show(
+                    "Error al guardar consulta: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

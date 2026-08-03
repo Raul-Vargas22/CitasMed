@@ -42,12 +42,12 @@
             Cedula = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             btnRegistar = new Button();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txtEspecialidad = new TextBox();
+            txtCargo = new TextBox();
+            txtCedula = new TextBox();
+            txtA_Materno = new TextBox();
+            txtA_Paterno = new TextBox();
+            txtNombre = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -171,12 +171,12 @@
             panel1.BackColor = Color.White;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.Controls.Add(btnRegistar);
-            panel1.Controls.Add(textBox7);
-            panel1.Controls.Add(textBox6);
-            panel1.Controls.Add(textBox5);
-            panel1.Controls.Add(textBox4);
-            panel1.Controls.Add(textBox3);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(txtEspecialidad);
+            panel1.Controls.Add(txtCargo);
+            panel1.Controls.Add(txtCedula);
+            panel1.Controls.Add(txtA_Materno);
+            panel1.Controls.Add(txtA_Paterno);
+            panel1.Controls.Add(txtNombre);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
@@ -200,66 +200,68 @@
             btnRegistar.TabIndex = 68;
             btnRegistar.Text = "Registrar";
             btnRegistar.UseVisualStyleBackColor = false;
+            btnRegistar.Click += btnRegistar_Click;
             // 
-            // textBox7
+            // txtEspecialidad
             // 
-            textBox7.Location = new Point(21, 535);
-            textBox7.Margin = new Padding(4);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(304, 31);
-            textBox7.TabIndex = 11;
+            txtEspecialidad.Location = new Point(21, 534);
+            txtEspecialidad.Margin = new Padding(4);
+            txtEspecialidad.Name = "txtEspecialidad";
+            txtEspecialidad.Size = new Size(304, 31);
+            txtEspecialidad.TabIndex = 11;
             // 
-            // textBox6
+            // txtCargo
             // 
-            textBox6.Location = new Point(21, 434);
-            textBox6.Margin = new Padding(4);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(304, 31);
-            textBox6.TabIndex = 10;
+            txtCargo.Location = new Point(21, 434);
+            txtCargo.Margin = new Padding(4);
+            txtCargo.Name = "txtCargo";
+            txtCargo.Size = new Size(304, 31);
+            txtCargo.TabIndex = 10;
             // 
-            // textBox5
+            // txtCedula
             // 
-            textBox5.Location = new Point(24, 336);
-            textBox5.Margin = new Padding(4);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(302, 31);
-            textBox5.TabIndex = 9;
+            txtCedula.Location = new Point(24, 336);
+            txtCedula.Margin = new Padding(4);
+            txtCedula.Name = "txtCedula";
+            txtCedula.Size = new Size(302, 31);
+            txtCedula.TabIndex = 9;
             // 
-            // textBox4
+            // txtA_Materno
             // 
-            textBox4.Location = new Point(21, 234);
-            textBox4.Margin = new Padding(4);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(304, 31);
-            textBox4.TabIndex = 8;
+            txtA_Materno.Location = new Point(21, 234);
+            txtA_Materno.Margin = new Padding(4);
+            txtA_Materno.Name = "txtA_Materno";
+            txtA_Materno.Size = new Size(304, 31);
+            txtA_Materno.TabIndex = 8;
             // 
-            // textBox3
+            // txtA_Paterno
             // 
-            textBox3.Location = new Point(24, 139);
-            textBox3.Margin = new Padding(4);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(302, 31);
-            textBox3.TabIndex = 7;
+            txtA_Paterno.Location = new Point(24, 139);
+            txtA_Paterno.Margin = new Padding(4);
+            txtA_Paterno.Name = "txtA_Paterno";
+            txtA_Paterno.Size = new Size(302, 31);
+            txtA_Paterno.TabIndex = 7;
             // 
-            // textBox2
+            // txtNombre
             // 
-            textBox2.Location = new Point(21, 41);
-            textBox2.Margin = new Padding(4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(304, 31);
-            textBox2.TabIndex = 6;
+            txtNombre.Location = new Point(21, 41);
+            txtNombre.Margin = new Padding(4);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(304, 31);
+            txtNombre.TabIndex = 6;
             // 
             // label7
             // 
+            label7.AccessibleRole = AccessibleRole.None;
             label7.AutoSize = true;
             label7.Font = new Font("Cooper Black", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(155, 179, 232);
             label7.Location = new Point(21, 506);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(155, 24);
+            label7.Size = new Size(177, 24);
             label7.TabIndex = 5;
-            label7.Text = "Especialidad :";
+            label7.Text = "ID_especialidad";
             // 
             // label6
             // 
@@ -470,12 +472,12 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtEspecialidad;
+        private TextBox txtCargo;
+        private TextBox txtCedula;
+        private TextBox txtA_Materno;
+        private TextBox txtA_Paterno;
+        private TextBox txtNombre;
         private Label label7;
         private Button btnRegistar;
         private Button btnEditar;

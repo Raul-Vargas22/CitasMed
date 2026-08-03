@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel14 = new Panel();
+            button1 = new Button();
             btnMenu_admin = new Button();
             label17 = new Label();
             pictureBox2 = new PictureBox();
@@ -105,6 +106,7 @@
             panel14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel14.AutoSize = true;
             panel14.BackColor = Color.Transparent;
+            panel14.Controls.Add(button1);
             panel14.Controls.Add(btnMenu_admin);
             panel14.Controls.Add(label17);
             panel14.Controls.Add(pictureBox2);
@@ -149,6 +151,17 @@
             panel14.Size = new Size(1748, 1450);
             panel14.TabIndex = 57;
             panel14.Paint += panel14_Paint;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(314, 1148);
+            button1.Margin = new Padding(4);
+            button1.Name = "button1";
+            button1.Size = new Size(106, 36);
+            button1.TabIndex = 58;
+            button1.Text = "zoom +";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnMenu_admin
             // 
@@ -386,6 +399,7 @@
             dtFecha_cita.Name = "dtFecha_cita";
             dtFecha_cita.Size = new Size(345, 31);
             dtFecha_cita.TabIndex = 44;
+            dtFecha_cita.ValueChanged += dtFecha_cita_ValueChanged;
             // 
             // label5
             // 
@@ -802,5 +816,6 @@
         private Label label17;
         private Button btnMenu_admin;
         private TextBox txtnombre;
+        private Button button1;
     }
 }

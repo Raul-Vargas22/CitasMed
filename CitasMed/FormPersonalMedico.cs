@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -117,6 +118,75 @@ namespace CitasMed
             FormPaciente pacientes = new FormPaciente();
             pacientes.Show();
             this.Close();
+        }
+
+        private void btnRegistar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (MySqlConnection conexion = ConexionBD.ObtenerConexion())
+                {
+                    conexion.Open();
+
+                    string consulta = @"INSERT INTO Medico
+            (
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                cargo,
+                cedula,
+                id_especialidad
+            )
+            VALUES
+            (
+                @nombre,
+                @apellido_paterno,
+                @apellido_materno,
+                @cargo,
+                @cedula,
+                @id_especialidad
+            )";
+
+                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+                        comando.Parameters.AddWithValue("@apellido_paterno", txtA_Paterno.Text.Trim());
+                        comando.Parameters.AddWithValue("@apellido_materno", txtA_Materno.Text.Trim());
+                        comando.Parameters.AddWithValue("@cargo", txtCargo.Text.Trim());
+                        comando.Parameters.AddWithValue("@cedula", txtCedula.Text.Trim());
+                        comando.Parameters.AddWithValue("@id_especialidad", int.Parse(txtEspecialidad.Text.Trim()));
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
+
+                AsistenteVoz.Decir("Personal médico registrado correctamente.");
+
+                MessageBox.Show(
+                    "Personal médico registrado correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                txtNombre.Clear();
+                txtA_Paterno.Clear();
+                txtA_Materno.Clear();
+                txtCargo.Clear();
+                txtEspecialidad.Clear();
+                txtCedula.Clear();
+
+                txtNombre.Focus();
+            }
+            catch (Exception ex)
+            {
+                AsistenteVoz.Decir("Error al registrar el personal médico.");
+
+                MessageBox.Show(
+                    "Error al registrar: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

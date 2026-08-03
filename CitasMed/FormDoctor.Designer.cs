@@ -41,8 +41,8 @@
             lblPacientesD = new Label();
             lblNuevaCitaD = new Label();
             label3 = new Label();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txtDiagnostico = new TextBox();
+            txtTratamiento = new TextBox();
             label2 = new Label();
             label1 = new Label();
             dataGridView1 = new DataGridView();
@@ -114,7 +114,7 @@
             panel7.Controls.Add(textBox1);
             panel7.Controls.Add(iconPictureBox4);
             panel7.Location = new Point(706, 15);
-            panel7.Margin = new Padding(4, 4, 4, 4);
+            panel7.Margin = new Padding(4);
             panel7.Name = "panel7";
             panel7.Size = new Size(370, 59);
             panel7.TabIndex = 67;
@@ -124,7 +124,7 @@
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(59, 18);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(290, 24);
             textBox1.TabIndex = 0;
@@ -138,7 +138,7 @@
             iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox4.IconSize = 50;
             iconPictureBox4.Location = new Point(4, 0);
-            iconPictureBox4.Margin = new Padding(4, 4, 4, 4);
+            iconPictureBox4.Margin = new Padding(4);
             iconPictureBox4.Name = "iconPictureBox4";
             iconPictureBox4.Size = new Size(50, 50);
             iconPictureBox4.TabIndex = 65;
@@ -151,12 +151,12 @@
             panel1.Controls.Add(lblPacientesD);
             panel1.Controls.Add(lblNuevaCitaD);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox3);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(txtDiagnostico);
+            panel1.Controls.Add(txtTratamiento);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(1, 5);
-            panel1.Margin = new Padding(4, 4, 4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
             panel1.Size = new Size(468, 799);
             panel1.TabIndex = 68;
@@ -197,23 +197,23 @@
             label3.TabIndex = 69;
             label3.Text = "Diagnostico :";
             // 
-            // textBox3
+            // txtDiagnostico
             // 
-            textBox3.Location = new Point(4, 75);
-            textBox3.Margin = new Padding(4, 4, 4, 4);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(445, 214);
-            textBox3.TabIndex = 69;
+            txtDiagnostico.Location = new Point(4, 75);
+            txtDiagnostico.Margin = new Padding(4);
+            txtDiagnostico.Multiline = true;
+            txtDiagnostico.Name = "txtDiagnostico";
+            txtDiagnostico.Size = new Size(445, 214);
+            txtDiagnostico.TabIndex = 69;
             // 
-            // textBox2
+            // txtTratamiento
             // 
-            textBox2.Location = new Point(4, 344);
-            textBox2.Margin = new Padding(4, 4, 4, 4);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(445, 175);
-            textBox2.TabIndex = 69;
+            txtTratamiento.Location = new Point(4, 344);
+            txtTratamiento.Margin = new Padding(4);
+            txtTratamiento.Multiline = true;
+            txtTratamiento.Name = "txtTratamiento";
+            txtTratamiento.Size = new Size(445, 175);
+            txtTratamiento.TabIndex = 69;
             // 
             // label2
             // 
@@ -241,7 +241,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dataGridView1.Location = new Point(476, 95);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1295, 612);
@@ -294,7 +294,7 @@
             // 
             btnRegresar.BackColor = Color.FromArgb(133, 210, 208);
             btnRegresar.Location = new Point(654, 739);
-            btnRegresar.Margin = new Padding(4, 4, 4, 4);
+            btnRegresar.Margin = new Padding(4);
             btnRegresar.Name = "btnRegresar";
             btnRegresar.Size = new Size(128, 68);
             btnRegresar.TabIndex = 70;
@@ -307,7 +307,7 @@
             btnGuardar.BackColor = Color.FromArgb(133, 210, 208);
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.Location = new Point(502, 739);
-            btnGuardar.Margin = new Padding(4, 4, 4, 4);
+            btnGuardar.Margin = new Padding(4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(144, 65);
             btnGuardar.TabIndex = 71;
@@ -384,8 +384,8 @@
         private Label label21;
         private Panel panel7;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtDiagnostico;
+        private TextBox txtTratamiento;
         private DataGridView dataGridView1;
         private Label lblNuevaCitaD;
         private DataGridViewTextBoxColumn Column1;

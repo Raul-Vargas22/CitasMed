@@ -22,6 +22,7 @@ namespace CitasMed
         public Registro_de_paciente()
         {
             InitializeComponent();
+            GuardarColores(this);
             zoomFormulario = new ZoomFormulario(this);
 
         }
@@ -91,6 +92,11 @@ namespace CitasMed
 
         }
 
+        private void dtFecha_cita_ValueChanged(object sender, EventArgs e)
+        {
+            dtFecha_cita.MinDate = DateTime.Today;
+            dtFecha_cita.Value = DateTime.Today;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -438,7 +444,7 @@ namespace CitasMed
                 MessageBox.Show("Error al cargar el paciente: " + ex.Message);
             }
         }
-        
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -474,6 +480,91 @@ namespace CitasMed
         private void btnZoomMenos_Click(object sender, EventArgs e)
         {
             zoomFormulario.ZoomMenos();
+
+        }
+        private bool altoContraste = false;
+        private Dictionary<Control, Color> coloresFondo = new Dictionary<Control, Color>();
+        private Dictionary<Control, Color> coloresTexto = new Dictionary<Control, Color>();
+
+        private void GuardarColores(Control control)
+        {
+            coloresFondo[control] = control.BackColor;
+            coloresTexto[control] = control.ForeColor;
+
+            foreach (Control c in control.Controls)
+            {
+                GuardarColores(c);
+            }
+        }
+        private void CambiarContraste(Control control)
+        {
+            if (altoContraste)
+            {
+                control.BackColor = Color.Black;
+                control.ForeColor = Color.Yellow;
+
+                if (control is Button)
+                {
+                    control.BackColor = Color.Black;
+                    control.ForeColor = Color.Yellow;
+                }
+
+                if (control is TextBox)
+                {
+                    control.BackColor = Color.Black;
+                    control.ForeColor = Color.White;
+                }
+
+                if (control is ComboBox)
+                {
+                    control.BackColor = Color.Black;
+                    control.ForeColor = Color.White;
+                }
+
+                if (control is DataGridView dgv)
+                {
+                    dgv.BackgroundColor = Color.Black;
+                    dgv.GridColor = Color.Yellow;
+                    dgv.DefaultCellStyle.BackColor = Color.Black;
+                    dgv.DefaultCellStyle.ForeColor = Color.Yellow;
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Yellow;
+                    dgv.EnableHeadersVisualStyles = false;
+                }
+            }
+            else
+            {
+                control.BackColor = coloresFondo[control];
+                control.ForeColor = coloresTexto[control];
+
+                if (control is DataGridView dgv)
+                {
+                    dgv.BackgroundColor = coloresFondo[control];
+                    dgv.GridColor = Color.Gray;
+                    dgv.DefaultCellStyle.BackColor = Color.White;
+                    dgv.DefaultCellStyle.ForeColor = Color.Black;
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                    dgv.EnableHeadersVisualStyles = false;
+                }
+            }
+
+            foreach (Control c in control.Controls)
+            {
+                CambiarContraste(c);
+            }
+        }
+
+        private void btnContraste_Click(object sender, EventArgs e)
+        {
+            altoContraste = !altoContraste;
+
+            CambiarContraste(this);
+
+            if (altoContraste)
+                AsistenteVoz.Decir("Modo de alto contraste activado.");
+            else
+                AsistenteVoz.Decir("Modo de alto contraste desactivado.");
 
         }
     }

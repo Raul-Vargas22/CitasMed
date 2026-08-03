@@ -84,7 +84,13 @@ namespace CitasMed
 
             panel.Region = new Region(path);
         }
+        private void dtFecha_cita_ValueChanged(object sender, EventArgs e)
+        {
 
+            dtFecha_cita.MinDate = DateTime.Today;
+            dtFecha_cita.Value = DateTime.Today;
+
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
@@ -447,6 +453,10 @@ namespace CitasMed
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            zoomFormulario.ZoomMas();
+        }
 
 
     }
