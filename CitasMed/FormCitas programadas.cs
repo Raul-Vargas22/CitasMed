@@ -108,6 +108,9 @@ namespace CitasMed
         public FormCitas_programadas()
         {
             InitializeComponent();
+
+            AsistenteVoz.AgregarBotonToggle(this);
+
             ucMenuEmpleado1.SeleccionarProgramadas();
             ucMenuEmpleado1.InicioClick += btnRegresar_Click;
             ucMenuEmpleado1.NuevaCitaClick += lblNueva_Click;
