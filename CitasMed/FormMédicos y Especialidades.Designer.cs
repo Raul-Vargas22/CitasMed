@@ -217,6 +217,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(271, 24);
             textBox1.TabIndex = 47;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // iconPictureBox1
             // 

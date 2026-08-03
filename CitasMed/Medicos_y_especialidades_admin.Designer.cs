@@ -193,9 +193,9 @@
             label10.Location = new Point(953, 24);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(156, 27);
+            label10.Size = new Size(238, 27);
             label10.TabIndex = 85;
-            label10.Text = "EMPLEADO";
+            label10.Text = "ADMINISTRADOR";
             // 
             // lblPacientes
             // 
