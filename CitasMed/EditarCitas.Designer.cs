@@ -237,22 +237,23 @@
             // 
             dtFecha_citaE.Location = new Point(389, 332);
             dtFecha_citaE.Margin = new Padding(2);
-            dtFecha_citaE.MinDate = new DateTime(2026, 7, 24, 0, 0, 0, 0);
+            dtFecha_citaE.MinDate = new DateTime(2026, 8, 3, 0, 0, 0, 0);
             dtFecha_citaE.Name = "dtFecha_citaE";
             dtFecha_citaE.Size = new Size(277, 27);
             dtFecha_citaE.TabIndex = 49;
-            dtFecha_citaE.Value = new DateTime(2026, 7, 24, 0, 0, 0, 0);
+            dtFecha_citaE.Value = new DateTime(2026, 8, 3, 0, 0, 0, 0);
             // 
             // dtHoraE
             // 
             dtHoraE.CustomFormat = "HH:mm";
             dtHoraE.Format = DateTimePickerFormat.Custom;
             dtHoraE.Location = new Point(683, 332);
-            dtHoraE.MinDate = new DateTime(2026, 7, 24, 0, 0, 0, 0);
+            dtHoraE.MinDate = new DateTime(2026, 8, 3, 17, 20, 18, 0);
             dtHoraE.Name = "dtHoraE";
             dtHoraE.ShowUpDown = true;
             dtHoraE.Size = new Size(250, 27);
             dtHoraE.TabIndex = 51;
+            dtHoraE.Value = new DateTime(2026, 8, 3, 17, 20, 18, 0);
             // 
             // label7
             // 
