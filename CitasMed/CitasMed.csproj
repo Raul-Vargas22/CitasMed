@@ -30,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ActivityDesigner1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Resources\Blue Dental Clinic Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -48,7 +48,7 @@
             lblProgramadas = new Label();
             lblConsultas = new Label();
             lblMedicos_especialidades = new Label();
-            ucMenuAdministrador1 = new UcMenuAdministrador();
+            btnDarAlta = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -60,20 +60,18 @@
             panel1.BackColor = Color.FromArgb(133, 210, 208);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(iconPictureBox1);
-            panel1.Location = new Point(434, 3);
-            panel1.Margin = new Padding(4);
+            panel1.Location = new Point(347, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(338, 61);
+            panel1.Size = new Size(270, 49);
             panel1.TabIndex = 88;
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(133, 210, 208);
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(61, 15);
-            textBox1.Margin = new Padding(4);
+            textBox1.Location = new Point(49, 12);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(271, 24);
+            textBox1.Size = new Size(217, 20);
             textBox1.TabIndex = 47;
             // 
             // iconPictureBox1
@@ -83,11 +81,10 @@
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Search;
             iconPictureBox1.IconColor = SystemColors.ControlText;
             iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox1.IconSize = 50;
-            iconPictureBox1.Location = new Point(4, 4);
-            iconPictureBox1.Margin = new Padding(4);
+            iconPictureBox1.IconSize = 40;
+            iconPictureBox1.Location = new Point(3, 3);
             iconPictureBox1.Name = "iconPictureBox1";
-            iconPictureBox1.Size = new Size(50, 50);
+            iconPictureBox1.Size = new Size(40, 40);
             iconPictureBox1.TabIndex = 61;
             iconPictureBox1.TabStop = false;
             // 
@@ -96,11 +93,10 @@
             dataGridView1.BackgroundColor = Color.PaleTurquoise;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column5, Column6 });
-            dataGridView1.Location = new Point(438, 105);
-            dataGridView1.Margin = new Padding(4);
+            dataGridView1.Location = new Point(350, 84);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1404, 675);
+            dataGridView1.Size = new Size(1123, 461);
             dataGridView1.TabIndex = 87;
             // 
             // Column1
@@ -141,36 +137,32 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(378, 493);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(302, 394);
             label6.Name = "label6";
-            label6.Size = new Size(0, 25);
+            label6.Size = new Size(0, 20);
             label6.TabIndex = 83;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(373, 339);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(298, 271);
             label5.Name = "label5";
-            label5.Size = new Size(0, 25);
+            label5.Size = new Size(0, 20);
             label5.TabIndex = 82;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(467, 222);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(374, 178);
             label2.Name = "label2";
-            label2.Size = new Size(0, 25);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 80;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(822, 3);
-            pictureBox3.Margin = new Padding(4);
+            pictureBox3.Location = new Point(658, 2);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(110, 50);
+            pictureBox3.Size = new Size(88, 40);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 86;
             pictureBox3.TabStop = false;
@@ -179,10 +171,9 @@
             // 
             label9.AutoSize = true;
             label9.ForeColor = SystemColors.ActiveCaption;
-            label9.Location = new Point(512, 132);
-            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Location = new Point(410, 106);
             label9.Name = "label9";
-            label9.Size = new Size(0, 25);
+            label9.Size = new Size(0, 20);
             label9.TabIndex = 84;
             // 
             // label10
@@ -190,10 +181,9 @@
             label10.AutoSize = true;
             label10.Font = new Font("Cooper Black", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = SystemColors.ActiveCaption;
-            label10.Location = new Point(953, 24);
-            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Location = new Point(762, 19);
             label10.Name = "label10";
-            label10.Size = new Size(238, 27);
+            label10.Size = new Size(202, 23);
             label10.TabIndex = 85;
             label10.Text = "ADMINISTRADOR";
             // 
@@ -202,10 +192,9 @@
             lblPacientes.AutoSize = true;
             lblPacientes.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPacientes.ForeColor = Color.FromArgb(155, 179, 232);
-            lblPacientes.Location = new Point(32, 533);
-            lblPacientes.Margin = new Padding(4, 0, 4, 0);
+            lblPacientes.Location = new Point(26, 426);
             lblPacientes.Name = "lblPacientes";
-            lblPacientes.Size = new Size(147, 25);
+            lblPacientes.Size = new Size(121, 21);
             lblPacientes.TabIndex = 94;
             lblPacientes.Text = "PACIENTES";
             // 
@@ -214,10 +203,9 @@
             lblRegistrar.AutoSize = true;
             lblRegistrar.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRegistrar.ForeColor = Color.FromArgb(155, 179, 232);
-            lblRegistrar.Location = new Point(32, 224);
-            lblRegistrar.Margin = new Padding(4, 0, 4, 0);
+            lblRegistrar.Location = new Point(26, 179);
             lblRegistrar.Name = "lblRegistrar";
-            lblRegistrar.Size = new Size(180, 25);
+            lblRegistrar.Size = new Size(148, 21);
             lblRegistrar.TabIndex = 93;
             lblRegistrar.Text = "> NUEVA CITA";
             // 
@@ -226,10 +214,9 @@
             lblProgramadas.AutoSize = true;
             lblProgramadas.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblProgramadas.ForeColor = Color.FromArgb(155, 179, 232);
-            lblProgramadas.Location = new Point(32, 322);
-            lblProgramadas.Margin = new Padding(4, 0, 4, 0);
+            lblProgramadas.Location = new Point(26, 258);
             lblProgramadas.Name = "lblProgramadas";
-            lblProgramadas.Size = new Size(295, 25);
+            lblProgramadas.Size = new Size(244, 21);
             lblProgramadas.TabIndex = 92;
             lblProgramadas.Text = "> CITAS PROGRAMADAS";
             // 
@@ -239,10 +226,9 @@
             lblConsultas.BackColor = Color.Transparent;
             lblConsultas.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblConsultas.ForeColor = Color.FromArgb(155, 179, 232);
-            lblConsultas.Location = new Point(32, 376);
-            lblConsultas.Margin = new Padding(4, 0, 4, 0);
+            lblConsultas.Location = new Point(26, 301);
             lblConsultas.Name = "lblConsultas";
-            lblConsultas.Size = new Size(205, 50);
+            lblConsultas.Size = new Size(167, 42);
             lblConsultas.TabIndex = 91;
             lblConsultas.Text = "> HISTORIAL DE \r\nCONSULTAS";
             // 
@@ -251,32 +237,34 @@
             lblMedicos_especialidades.AutoSize = true;
             lblMedicos_especialidades.Font = new Font("Cooper Black", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMedicos_especialidades.ForeColor = Color.FromArgb(155, 179, 232);
-            lblMedicos_especialidades.Location = new Point(32, 441);
-            lblMedicos_especialidades.Margin = new Padding(4, 0, 4, 0);
+            lblMedicos_especialidades.Location = new Point(26, 353);
             lblMedicos_especialidades.Name = "lblMedicos_especialidades";
-            lblMedicos_especialidades.Size = new Size(220, 50);
+            lblMedicos_especialidades.Size = new Size(178, 42);
             lblMedicos_especialidades.TabIndex = 90;
             lblMedicos_especialidades.Text = "> MEDICOS Y  \r\nESPECIALIDADES";
             // 
-            // ucMenuAdministrador1
+            // btnDarAlta
             // 
-            ucMenuAdministrador1.Location = new Point(14, 7);
-            ucMenuAdministrador1.Margin = new Padding(5);
-            ucMenuAdministrador1.Name = "ucMenuAdministrador1";
-            ucMenuAdministrador1.Size = new Size(331, 782);
-            ucMenuAdministrador1.TabIndex = 89;
+            btnDarAlta.BackColor = Color.Turquoise;
+            btnDarAlta.Location = new Point(350, 562);
+            btnDarAlta.Name = "btnDarAlta";
+            btnDarAlta.Size = new Size(140, 50);
+            btnDarAlta.TabIndex = 112;
+            btnDarAlta.Text = "DAR DE ALTA";
+            btnDarAlta.UseVisualStyleBackColor = false;
+            btnDarAlta.Click += btnDarAlta_Click;
             // 
             // Medicos_y_espcialidades_admin
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1661, 671);
+            ClientSize = new Size(1568, 650);
+            Controls.Add(btnDarAlta);
             Controls.Add(lblPacientes);
             Controls.Add(lblRegistrar);
             Controls.Add(lblProgramadas);
             Controls.Add(lblConsultas);
             Controls.Add(lblMedicos_especialidades);
-            Controls.Add(ucMenuAdministrador1);
             Controls.Add(panel1);
             Controls.Add(dataGridView1);
             Controls.Add(label6);
@@ -285,8 +273,10 @@
             Controls.Add(pictureBox3);
             Controls.Add(label9);
             Controls.Add(label10);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Medicos_y_espcialidades_admin";
             Text = "Medicos_y_espcialidades_admin";
+            Load += Medicos_y_espcialidades_admin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
@@ -319,5 +309,6 @@
         private Label lblConsultas;
         private Label lblMedicos_especialidades;
         private UcMenuAdministrador ucMenuAdministrador1;
+        private Button btnDarAlta;
     }
 }

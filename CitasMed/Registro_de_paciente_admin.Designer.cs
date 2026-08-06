@@ -675,7 +675,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1007, 740);
             Controls.Add(panel14);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Registro_de_paciente_admin";
             Text = "Registro_de_paciente_admin";
             Load += Registro_de_paciente_admin_Load;
