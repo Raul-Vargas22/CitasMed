@@ -12,6 +12,9 @@ namespace CitasMed
         {
             InitializeComponent();
 
+            btnDarAlta.Click -= btnDarAlta_Click;
+            btnDarAlta.Click += btnDarAlta_Click;
+
             ucMenuAdministrador1.InicioClick += btnInicio_admin_Click;
             ucMenuAdministrador1.PersonalMedicoClick += lblPersonalMedico_Click;
             ucMenuAdministrador1.HistorialCitasClick += lblHistorialCitas_Click;
@@ -20,9 +23,7 @@ namespace CitasMed
             ucMenuAdministrador1.MedicosEspecialidadesClick += lblMedicosEspecialidades_Click;
 
             PanelRedondo(panel1);
-
             CargarMedicos();
-
             ConfigurarAccesibilidadVoz();
         }
 
@@ -66,7 +67,7 @@ namespace CitasMed
             }
         }
 
-         private void CargarMedicos()
+        private void CargarMedicos()
         {
             try
             {
@@ -213,6 +214,22 @@ namespace CitasMed
             pacientes.Show();
 
             Hide();
+        }
+
+        private void btnDarAlta_Click(object sender, EventArgs e)
+        {
+            using (Form2 formulario = new Form2())
+            {
+                if (formulario.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarMedicos();
+                }
+            }
+        }
+
+        private void Medicos_y_espcialidades_admin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
